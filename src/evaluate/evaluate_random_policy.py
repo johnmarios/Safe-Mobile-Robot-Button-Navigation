@@ -5,11 +5,6 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
-
-src_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if src_dir not in sys.path:
-    sys.path.insert(0, src_dir)
-
 from config import ENV_ID, MAX_STEPS, NUM_EPISODES, SEED
 
 RESULTS_PATH = Path(__file__).resolve().parents[2] / "results" / "random_policy_results.json"
