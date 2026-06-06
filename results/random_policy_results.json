@@ -1,0 +1,8020 @@
+{
+  "environment": "SafetyRacecarButton2-v0",
+  "num_episodes": 1,
+  "max_steps": 1000,
+  "seed": 42,
+  "generated_at": "2026-06-06T13:37:18.867486+00:00",
+  "episode_summaries": [
+    {
+      "episode": 1,
+      "steps": 1000,
+      "total_reward": 0.6760421841565813,
+      "total_cost": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "seed": 42
+    }
+  ],
+  "step_records": [
+    {
+      "episode": 1,
+      "step": 1,
+      "reward": 0.0005311352060886065,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 2,
+      "reward": 0.001826097314205244,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 3,
+      "reward": 0.0018780932745074974,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 4,
+      "reward": 0.0019400124226252036,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 5,
+      "reward": 0.0019957368182190738,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 6,
+      "reward": 0.000671087964074335,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 7,
+      "reward": -0.0007112063924741285,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 8,
+      "reward": -0.0009793534404807236,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 9,
+      "reward": 0.00023761667843213985,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 10,
+      "reward": 0.0014448519608916133,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 11,
+      "reward": 0.0018993551434507427,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 12,
+      "reward": 0.0004899348102100909,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 13,
+      "reward": -0.00014505474467685353,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 14,
+      "reward": 0.00040223412706041906,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 15,
+      "reward": 0.0007803839828983694,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 16,
+      "reward": 0.0010602658631106987,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 17,
+      "reward": 0.0011281995151086743,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 18,
+      "reward": 0.0010267497471714293,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 19,
+      "reward": 0.001153727715507591,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 20,
+      "reward": 0.0013409586599344436,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 21,
+      "reward": 0.0014820323569826321,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 22,
+      "reward": 0.00023610661164163993,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 23,
+      "reward": -0.0010845741265406161,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 24,
+      "reward": -0.00126516827813683,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 25,
+      "reward": 9.060226778534464e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 26,
+      "reward": 0.00019440187371810858,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 27,
+      "reward": -0.000996752636495346,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 28,
+      "reward": -0.000849073988175908,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 29,
+      "reward": -0.000967791267202367,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 30,
+      "reward": -0.0011320773097469594,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 31,
+      "reward": -0.0010484649531405932,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 32,
+      "reward": -0.002370431766894665,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 33,
+      "reward": -0.0034935875586605825,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 34,
+      "reward": -0.0035522527608846666,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 35,
+      "reward": -0.0023358010556642217,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 36,
+      "reward": -0.0009270451759015863,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 37,
+      "reward": -0.0007493141562817662,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 38,
+      "reward": -0.001738585976501561,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 39,
+      "reward": -0.0020349591669590605,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 40,
+      "reward": -0.0020855653521971718,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 41,
+      "reward": -0.003203658174286028,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 42,
+      "reward": -0.0042559677806688345,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 43,
+      "reward": -0.0043208897610289565,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 44,
+      "reward": -0.003020989922849937,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 45,
+      "reward": -0.00294165733759999,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 46,
+      "reward": -0.004162071023782854,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 47,
+      "reward": -0.0054912652153398245,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 48,
+      "reward": -0.005601582812234884,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 49,
+      "reward": -0.004930191224621794,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 50,
+      "reward": -0.005461673783003107,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 51,
+      "reward": -0.004111221219909034,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 52,
+      "reward": -0.0027656055479212682,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 53,
+      "reward": -0.0010981596087038525,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 54,
+      "reward": -0.0009319028369678684,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 55,
+      "reward": -0.0009475004244681173,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 56,
+      "reward": -0.0007337213907017137,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 57,
+      "reward": -0.0014177395063965648,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 58,
+      "reward": -0.0016794341599775109,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 59,
+      "reward": -0.0007675519103464978,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 60,
+      "reward": 0.00035590205101332373,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 61,
+      "reward": 0.0009838159607418184,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 62,
+      "reward": 0.0008517653807276204,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 63,
+      "reward": 0.0006137349649830703,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 64,
+      "reward": 0.0009400337197575936,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 65,
+      "reward": -0.00014174582713533113,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 66,
+      "reward": -0.0008006986553890094,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 67,
+      "reward": -4.130511869959719e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 68,
+      "reward": 0.0009397683881791075,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 69,
+      "reward": 0.001980065220717808,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 70,
+      "reward": 0.0033536523770369975,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 71,
+      "reward": 0.00371124417224733,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 72,
+      "reward": 0.0025285558079999326,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 73,
+      "reward": 0.0020870784600455217,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 74,
+      "reward": 0.0023393253745123133,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 75,
+      "reward": 0.000851335974441092,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 76,
+      "reward": -0.00046854394594797455,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 77,
+      "reward": -0.0007097301563057101,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 78,
+      "reward": 0.0002723942089213338,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 79,
+      "reward": 0.0020452203415408654,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 80,
+      "reward": 0.0030281451917573143,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 81,
+      "reward": 0.003036649072607034,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 82,
+      "reward": 0.0017116223274480369,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 83,
+      "reward": 0.0010894774779299787,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 84,
+      "reward": 0.0017737473899810396,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 85,
+      "reward": 0.0018340870772846074,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 86,
+      "reward": 0.0014785221915565305,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 87,
+      "reward": 0.0025319786076427597,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 88,
+      "reward": 0.003757437736163327,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 89,
+      "reward": 0.0039945352296675285,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 90,
+      "reward": 0.0029187510225889834,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 91,
+      "reward": 0.0017007720538075866,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 92,
+      "reward": 0.0004965201504760763,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 93,
+      "reward": -0.0005870851639051544,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 94,
+      "reward": 0.0002659648829579364,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 95,
+      "reward": 0.0004992646470163287,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 96,
+      "reward": -0.0005013008881336045,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 97,
+      "reward": -0.001913381912481471,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 98,
+      "reward": -0.0018473738751665358,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 99,
+      "reward": -0.0017414330090181895,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 100,
+      "reward": -0.002083327991525996,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 101,
+      "reward": -0.0019812974600001976,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 102,
+      "reward": -0.0027458740869330533,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 103,
+      "reward": -0.002679651328509447,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 104,
+      "reward": -0.0016887741217646024,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 105,
+      "reward": -0.00040290000343334853,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 106,
+      "reward": 0.0008135817314447458,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 107,
+      "reward": 0.0023410395073450996,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 108,
+      "reward": 0.0037061013327472914,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 109,
+      "reward": 0.0038063974393971467,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 110,
+      "reward": 0.0037364664042052187,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 111,
+      "reward": 0.0038043810951009505,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 112,
+      "reward": 0.0036887978733792792,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 113,
+      "reward": 0.003698580489625458,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 114,
+      "reward": 0.003769661248713474,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 115,
+      "reward": 0.005124452422420767,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 116,
+      "reward": 0.006487675026058071,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 117,
+      "reward": 0.007894057626037121,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 118,
+      "reward": 0.007913269386863986,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 119,
+      "reward": 0.005786419380152896,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 120,
+      "reward": 0.005456595184703428,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 121,
+      "reward": 0.00702623886804199,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 122,
+      "reward": 0.006630686052553347,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 123,
+      "reward": 0.005817950011057338,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 124,
+      "reward": 0.007332834218431561,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 125,
+      "reward": 0.007888799758763554,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 126,
+      "reward": 0.007342005668763418,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 127,
+      "reward": 0.005612142838304468,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 128,
+      "reward": 0.004585398221768511,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 129,
+      "reward": 0.007330029932351989,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 130,
+      "reward": 0.009114829775271893,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 131,
+      "reward": 0.009634561351761883,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 132,
+      "reward": 0.009848110642750818,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 133,
+      "reward": 0.01052639186152482,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 134,
+      "reward": 0.010506193876406833,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 135,
+      "reward": 0.009030074925317821,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 136,
+      "reward": 0.007527208453510514,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 137,
+      "reward": 0.006203465551807286,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 138,
+      "reward": 0.0036684619280689112,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 139,
+      "reward": 0.003220978002993702,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 140,
+      "reward": 0.004936561368908521,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 141,
+      "reward": 0.0058425442468299504,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 142,
+      "reward": 0.0061634119964593115,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 143,
+      "reward": 0.005580043527876999,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 144,
+      "reward": 0.005847742580323612,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 145,
+      "reward": 0.004403237096344714,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 146,
+      "reward": 0.0028178576818238543,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 147,
+      "reward": 0.0028350523898974522,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 148,
+      "reward": 0.003942422869770201,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 149,
+      "reward": 0.00570278114602174,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 150,
+      "reward": 0.007386151223677251,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 151,
+      "reward": 0.009524868366740158,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 152,
+      "reward": 0.010110335400160153,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 153,
+      "reward": 0.008537737125396072,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 154,
+      "reward": 0.0074743607986667016,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 155,
+      "reward": 0.008265002608751626,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 156,
+      "reward": 0.007129072972750672,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 157,
+      "reward": 0.005324851319806756,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 158,
+      "reward": 0.003992007055834135,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 159,
+      "reward": 0.005560263737437232,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 160,
+      "reward": 0.005793320908209498,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 161,
+      "reward": 0.004008467794860415,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 162,
+      "reward": 0.0034565539996653794,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 163,
+      "reward": 0.003669697777699099,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 164,
+      "reward": 0.0021676838909294727,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 165,
+      "reward": 0.0009118072767122509,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 166,
+      "reward": 0.0007375029418144052,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 167,
+      "reward": 0.0008157826270727142,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 168,
+      "reward": 0.0007113029719012509,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 169,
+      "reward": 0.0009490496245820879,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 170,
+      "reward": -1.1808917298905541e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 171,
+      "reward": -0.0009416920610443302,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 172,
+      "reward": -0.0010923181991377984,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 173,
+      "reward": -0.00026529895017857186,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 174,
+      "reward": -0.00012026262846909219,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 175,
+      "reward": -0.00015366957822959826,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 176,
+      "reward": -0.0001201701329192062,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 177,
+      "reward": -0.0014366024287755241,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 178,
+      "reward": -0.0016315562123239147,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 179,
+      "reward": -0.0015876929127303097,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 180,
+      "reward": -0.0017439769044673703,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 181,
+      "reward": -0.0014602165219572694,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 182,
+      "reward": -0.0015788189799841312,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 183,
+      "reward": -0.00017082477804564178,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 184,
+      "reward": -4.620125174281675e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 185,
+      "reward": -0.00014797803946708932,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 186,
+      "reward": 0.00100001634719038,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 187,
+      "reward": 0.0012184490984425977,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 188,
+      "reward": -2.3933018148181162e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 189,
+      "reward": -0.00011126286061791113,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 190,
+      "reward": 0.001218987169278929,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 191,
+      "reward": 0.0025978212335271422,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 192,
+      "reward": 0.003699068780554704,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 193,
+      "reward": 0.003943302101359958,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 194,
+      "reward": 0.0025551875465232854,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 195,
+      "reward": 0.0024459319967915505,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 196,
+      "reward": 0.003552654694943591,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 197,
+      "reward": 0.003436515652319061,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 198,
+      "reward": 0.003432080083707323,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 199,
+      "reward": 0.0035602897846369608,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 200,
+      "reward": 0.002235471320721105,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 201,
+      "reward": 0.0004840001153552098,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 202,
+      "reward": -6.935543885355777e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 203,
+      "reward": 4.65958524524801e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 204,
+      "reward": 6.755528815438616e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 205,
+      "reward": 0.0004466037165840042,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 206,
+      "reward": 0.00016293285402624313,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 207,
+      "reward": 0.0007169803439015521,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 208,
+      "reward": 0.0007446576117171588,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 209,
+      "reward": -0.0005141658556853113,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 210,
+      "reward": -0.0017000690637225535,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 211,
+      "reward": -0.0023499317192612335,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 212,
+      "reward": -0.0021073560081332765,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 213,
+      "reward": -0.0013460404903913314,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 214,
+      "reward": -0.0011110507022418226,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 215,
+      "reward": -0.002696601328348036,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 216,
+      "reward": -0.0028337036249075354,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 217,
+      "reward": -0.001674862008615774,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 218,
+      "reward": -0.00025127104819921975,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 219,
+      "reward": -0.0003297668310087154,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 220,
+      "reward": -0.0016490245500451195,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 221,
+      "reward": -0.0016880973479074246,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 222,
+      "reward": -0.0003587152581667752,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 223,
+      "reward": -0.0003277379851702733,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 224,
+      "reward": -0.0003443858886587048,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 225,
+      "reward": 0.0009532127450135874,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 226,
+      "reward": 0.000915369358581497,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 227,
+      "reward": 0.0009631980364894766,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 228,
+      "reward": 0.00211300233864109,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 229,
+      "reward": 0.002237192759708906,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 230,
+      "reward": 0.0017016879709941257,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 231,
+      "reward": 0.0011438507478269688,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 232,
+      "reward": -0.00018441819493086875,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 233,
+      "reward": -0.0002210237088267064,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 234,
+      "reward": 0.0009873535391506927,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 235,
+      "reward": 0.0020180199121424547,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 236,
+      "reward": 0.002440182060028384,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 237,
+      "reward": 0.0021311287784770983,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 238,
+      "reward": 0.002330296908527929,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 239,
+      "reward": 0.0034134569819916916,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 240,
+      "reward": 0.004487713558474216,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 241,
+      "reward": 0.003534712391067174,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 242,
+      "reward": 0.0025606260920827406,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 243,
+      "reward": 0.0028982223379263594,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 244,
+      "reward": 0.0018756774582056046,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 245,
+      "reward": 0.0005469275498419801,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 246,
+      "reward": -6.074190710680938e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 247,
+      "reward": 0.0006000234195293608,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 248,
+      "reward": 0.0007688836903974039,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 249,
+      "reward": 0.0005174512671075604,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 250,
+      "reward": 0.000483125555455155,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 251,
+      "reward": 0.00044063621946133225,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 252,
+      "reward": 0.0015723889083762987,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 253,
+      "reward": 0.001786824554444566,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 254,
+      "reward": 0.0018067211927861315,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 255,
+      "reward": 0.002802123326732575,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 256,
+      "reward": 0.003609328400457912,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 257,
+      "reward": 0.004156286738373316,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 258,
+      "reward": 0.004183798717321219,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 259,
+      "reward": 0.005382208562990876,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 260,
+      "reward": 0.005453700970875275,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 261,
+      "reward": 0.003927166816340533,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 262,
+      "reward": 0.003859398167616934,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 263,
+      "reward": 0.004265779462471642,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 264,
+      "reward": 0.0034024798353819996,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 265,
+      "reward": 0.00519989599709203,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 266,
+      "reward": 0.0067277332210320395,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 267,
+      "reward": 0.00606372233281216,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 268,
+      "reward": 0.006918288569405018,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 269,
+      "reward": 0.007008339704494881,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 270,
+      "reward": 0.007208408593509574,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 271,
+      "reward": 0.0063045478053971316,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 272,
+      "reward": 0.004866186489914881,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 273,
+      "reward": 0.0038110126001353883,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 274,
+      "reward": 0.0026212270830372475,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 275,
+      "reward": 0.0012190461192100877,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 276,
+      "reward": 0.001386891458530437,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 277,
+      "reward": 0.0015706978944027838,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 278,
+      "reward": 0.0016654554079027495,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 279,
+      "reward": 0.0006049148836968499,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 280,
+      "reward": -0.0006453498369134447,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 281,
+      "reward": -0.0008692024189658198,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 282,
+      "reward": 0.00039169511509173915,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 283,
+      "reward": 0.001483458110573821,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 284,
+      "reward": 0.002719875352334755,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 285,
+      "reward": 0.0033379136534723575,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 286,
+      "reward": 0.0028294985538641626,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 287,
+      "reward": 0.0013675699806645625,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 288,
+      "reward": 0.0001736058428862819,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 289,
+      "reward": 0.0010569031215621472,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 290,
+      "reward": 0.0023816166377259584,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 291,
+      "reward": 0.0037697772898990234,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 292,
+      "reward": 0.005425264944148633,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 293,
+      "reward": 0.00670104121141013,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 294,
+      "reward": 0.008395973661064593,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 295,
+      "reward": 0.010037443641134347,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 296,
+      "reward": 0.011123518338086003,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 297,
+      "reward": 0.011764041000862813,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 298,
+      "reward": 0.011679944132011455,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 299,
+      "reward": 0.012030572565253861,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 300,
+      "reward": 0.011260388637545082,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 301,
+      "reward": 0.009948459056281056,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 302,
+      "reward": 0.008652556759000563,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 303,
+      "reward": 0.007794925875876713,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 304,
+      "reward": 0.0056342393617718756,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 305,
+      "reward": 0.0042880576783448365,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 306,
+      "reward": 0.004964270943501381,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 307,
+      "reward": 0.004345483975452646,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 308,
+      "reward": 0.0029582252115445407,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 309,
+      "reward": 0.0015280457102011535,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 310,
+      "reward": 0.0008736589594686706,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 311,
+      "reward": 0.0016335398709637072,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 312,
+      "reward": 0.002485673745501904,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 313,
+      "reward": 0.0030293511705830056,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 314,
+      "reward": 0.0021095574577201237,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 315,
+      "reward": 0.0009548508619994234,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 316,
+      "reward": 0.0010538117798533086,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 317,
+      "reward": 0.0017024931263789345,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 318,
+      "reward": 0.002681781676534989,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 319,
+      "reward": 0.002569868824860322,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 320,
+      "reward": 0.0030572688146193183,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 321,
+      "reward": 0.002428540056283124,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 322,
+      "reward": 0.0027686592842202096,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 323,
+      "reward": 0.0052956946492273005,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 324,
+      "reward": 0.006663511560198732,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 325,
+      "reward": 0.0056068690411070765,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 326,
+      "reward": 0.0042040878418889704,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 327,
+      "reward": 0.0028537283379401757,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 328,
+      "reward": 0.0023295246672487835,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 329,
+      "reward": 0.0034957788669627288,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 330,
+      "reward": 0.0047940105950055045,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 331,
+      "reward": 0.0060700200356536005,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 332,
+      "reward": 0.006520660363489972,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 333,
+      "reward": 0.006613516080028026,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 334,
+      "reward": 0.006723897912014332,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 335,
+      "reward": 0.0064110639048080564,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 336,
+      "reward": 0.0074668014919092585,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 337,
+      "reward": 0.008699547805379071,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 338,
+      "reward": 0.010142559893245862,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 339,
+      "reward": 0.010512922797479618,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 340,
+      "reward": 0.010327608092246088,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 341,
+      "reward": 0.010425291085445432,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 342,
+      "reward": 0.00882985786715218,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 343,
+      "reward": 0.007101001953514707,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 344,
+      "reward": 0.00578364512256746,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 345,
+      "reward": 0.00548442809114813,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 346,
+      "reward": 0.006531209221827705,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 347,
+      "reward": 0.006772552874214188,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 348,
+      "reward": 0.0050893437530017405,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 349,
+      "reward": 0.004011168431514722,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 350,
+      "reward": 0.0026836096164586376,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 351,
+      "reward": 0.0012081373777186322,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 352,
+      "reward": 0.0014330384584575473,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 353,
+      "reward": 0.0030983169456453297,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 354,
+      "reward": 0.0033210695753762565,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 355,
+      "reward": 0.003370646671891686,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 356,
+      "reward": 0.0033944972684940566,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 357,
+      "reward": 0.0019472071932153945,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 358,
+      "reward": 0.0005044092674819645,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 359,
+      "reward": 0.0004067339067068687,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 360,
+      "reward": 0.0004255101969532493,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 361,
+      "reward": 0.0003859866683992852,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 362,
+      "reward": 0.0016808531197429755,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 363,
+      "reward": 0.002599280187249864,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 364,
+      "reward": 0.0023967629299535,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 365,
+      "reward": 0.001771225475387661,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 366,
+      "reward": 0.0029143940546851876,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 367,
+      "reward": 0.003295094700463963,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 368,
+      "reward": 0.0031772477076925654,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 369,
+      "reward": 0.003284109818165515,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 370,
+      "reward": 0.003821821433598993,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 371,
+      "reward": 0.005476761204751268,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 372,
+      "reward": 0.0040209239325783575,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 373,
+      "reward": 0.00247515975728696,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 374,
+      "reward": 0.0018125763780045823,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 375,
+      "reward": 0.0014529905475573202,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 376,
+      "reward": 0.0002717158606972969,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 377,
+      "reward": 0.00013428822369232485,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 378,
+      "reward": 0.00010190412256227965,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 379,
+      "reward": -0.0010199841965292666,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 380,
+      "reward": -0.000896026210651435,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 381,
+      "reward": -0.00027262430905872215,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 382,
+      "reward": -0.00011478793359587236,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 383,
+      "reward": -0.0011208406909979374,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 384,
+      "reward": -0.0017995213217256723,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 385,
+      "reward": -0.0022236813258857957,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 386,
+      "reward": -0.003531849293965772,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 387,
+      "reward": -0.004828411214245598,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 388,
+      "reward": -0.005071796520892402,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 389,
+      "reward": -0.0032763124817352107,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 390,
+      "reward": -0.0019172706107135618,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 391,
+      "reward": -0.0009512215278095759,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 392,
+      "reward": -0.0008125732082042703,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 393,
+      "reward": -0.0020067161759622643,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 394,
+      "reward": -0.0021390794230540244,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 395,
+      "reward": -0.0008159997849541689,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 396,
+      "reward": -0.000600653682932828,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 397,
+      "reward": -0.002029309872657148,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 398,
+      "reward": -0.0032100398651535578,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 399,
+      "reward": -0.004457455065790095,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 400,
+      "reward": -0.004411090287943509,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 401,
+      "reward": -0.003002864923008497,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 402,
+      "reward": -0.0017237655478761216,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 403,
+      "reward": -0.0008435089732421464,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 404,
+      "reward": 8.55930254510806e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 405,
+      "reward": 4.660109521181788e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 406,
+      "reward": -0.0008752717675613031,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 407,
+      "reward": -0.0016906750734437814,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 408,
+      "reward": -0.002278340164407533,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 409,
+      "reward": -0.0020314151367031297,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 410,
+      "reward": -0.002424679401720642,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 411,
+      "reward": -0.003126383554421297,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 412,
+      "reward": -0.0026766357557952425,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 413,
+      "reward": -0.0026035291923356407,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 414,
+      "reward": -0.002546612466115983,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 415,
+      "reward": -0.0014646684512276131,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 416,
+      "reward": -0.0014129682573735813,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 417,
+      "reward": -0.0022836344098853267,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 418,
+      "reward": -0.0032542684850001002,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 419,
+      "reward": -0.003244745866530563,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 420,
+      "reward": -0.001799821437781679,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 421,
+      "reward": -0.0014227239757098609,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 422,
+      "reward": -0.0025929109019950936,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 423,
+      "reward": -0.002328191706451488,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 424,
+      "reward": -0.0016718194551066379,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 425,
+      "reward": -0.0014183523375734808,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 426,
+      "reward": -0.0013671294333288397,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 427,
+      "reward": -0.0020390900245284005,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 428,
+      "reward": -0.0024281549346465425,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 429,
+      "reward": -0.0025732781314384834,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 430,
+      "reward": -0.0027597434726471803,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 431,
+      "reward": -0.0012826273438844016,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 432,
+      "reward": -0.0007381707697093898,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 433,
+      "reward": -0.0011227733709002763,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 434,
+      "reward": 3.27585413462117e-07,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 435,
+      "reward": 0.001045925736732567,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 436,
+      "reward": 0.0019865120820456994,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 437,
+      "reward": 0.002514612865230692,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 438,
+      "reward": 0.004124170842696007,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 439,
+      "reward": 0.005492513105195718,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 440,
+      "reward": 0.005978550750429079,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 441,
+      "reward": 0.00468998615412497,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 442,
+      "reward": 0.0037572066821651706,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 443,
+      "reward": 0.0023045722817904846,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 444,
+      "reward": 0.0022465843659089657,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 445,
+      "reward": 0.0022535310049325297,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 446,
+      "reward": 0.0010610738142646792,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 447,
+      "reward": 0.0005587406562121977,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 448,
+      "reward": 0.0003700707559917138,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 449,
+      "reward": 0.0003795371922541424,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 450,
+      "reward": 0.0013937147460072463,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 451,
+      "reward": 0.0014156831382390322,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 452,
+      "reward": 0.0007098598342494267,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 453,
+      "reward": 0.0009068307609303439,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 454,
+      "reward": 0.00090239614107257,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 455,
+      "reward": 0.0018587860334735584,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 456,
+      "reward": 0.0027828432998329156,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 457,
+      "reward": 0.003625854769955472,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 458,
+      "reward": 0.004353222776978916,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 459,
+      "reward": 0.0044152117469531404,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 460,
+      "reward": 0.004466743259770922,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 461,
+      "reward": 0.004670476797411949,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 462,
+      "reward": 0.004630637959663453,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 463,
+      "reward": 0.0032624033111392503,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 464,
+      "reward": 0.0019194739104932967,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 465,
+      "reward": 0.001508833917850172,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 466,
+      "reward": 0.0021471811464317536,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 467,
+      "reward": 0.0033061131838079127,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 468,
+      "reward": 0.003981629543996501,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 469,
+      "reward": 0.003981199678205316,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 470,
+      "reward": 0.0041107750543178945,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 471,
+      "reward": 0.002791821779698944,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 472,
+      "reward": 0.0015631359950858403,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 473,
+      "reward": 0.0007559124977483123,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 474,
+      "reward": 0.0007547033019346117,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 475,
+      "reward": 0.0003666994555555636,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 476,
+      "reward": 0.0005371354532981432,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 477,
+      "reward": 0.0007054110230770849,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 478,
+      "reward": 4.282847587466776e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 479,
+      "reward": -0.0009949920877267981,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 480,
+      "reward": -0.0009434620130241989,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 481,
+      "reward": 5.1261194316643e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 482,
+      "reward": 5.2086101243187244e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 483,
+      "reward": -8.732913041153978e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 484,
+      "reward": 0.0007951519003406293,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 485,
+      "reward": 0.0015080091164330067,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 486,
+      "reward": 0.002234740244580813,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 487,
+      "reward": 0.003231200005309409,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 488,
+      "reward": 0.0042400358762608725,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 489,
+      "reward": 0.004401484681793244,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 490,
+      "reward": 0.004496766040248845,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 491,
+      "reward": 0.0035748265093455966,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 492,
+      "reward": 0.002124658858346784,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 493,
+      "reward": 0.0016927098847381306,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 494,
+      "reward": 0.002120558798875072,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 495,
+      "reward": 0.0033681293516656385,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 496,
+      "reward": 0.004609790544365611,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 497,
+      "reward": 0.004433212974719325,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 498,
+      "reward": 0.004044182442772382,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 499,
+      "reward": 0.00394963368700374,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 500,
+      "reward": 0.002336723185865308,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 501,
+      "reward": 0.001197658866973761,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 502,
+      "reward": 0.0013766399806838248,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 503,
+      "reward": 0.0034510654100434746,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 504,
+      "reward": 0.005122881678557567,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 505,
+      "reward": 0.0063552837085179,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 506,
+      "reward": 0.006587213979975748,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 507,
+      "reward": 0.005421282144317807,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 508,
+      "reward": 0.005092525524528546,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 509,
+      "reward": 0.004606803131699033,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 510,
+      "reward": 0.003678270561928265,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 511,
+      "reward": 0.002091634450043234,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 512,
+      "reward": 0.0010814247157002743,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 513,
+      "reward": 0.0011503484266774944,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 514,
+      "reward": 0.0013656834578767985,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 515,
+      "reward": 0.0022608092496151366,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 516,
+      "reward": 0.0023056517409386634,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 517,
+      "reward": 0.0011660246759620518,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 518,
+      "reward": 5.774388467627567e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 519,
+      "reward": -8.036586436077631e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 520,
+      "reward": -0.00011228109738192771,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 521,
+      "reward": -0.0009417437677951002,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 522,
+      "reward": -0.001865739626139562,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 523,
+      "reward": -0.0035163458952107707,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 524,
+      "reward": -0.003531007185790691,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 525,
+      "reward": -0.002209817077867382,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 526,
+      "reward": -0.002347200590824272,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 527,
+      "reward": -0.0024676475416252064,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 528,
+      "reward": -0.0012746431094091681,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 529,
+      "reward": -6.25985799901363e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 530,
+      "reward": 0.0009611770718366275,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 531,
+      "reward": 0.0010608572143403494,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 532,
+      "reward": 0.0009835457782776391,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 533,
+      "reward": 0.0010504182853426913,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 534,
+      "reward": -9.848574413906519e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 535,
+      "reward": -0.0012831537578932295,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 536,
+      "reward": -0.0020325584944385078,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 537,
+      "reward": -0.0033703411601413436,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 538,
+      "reward": -0.004797827524969822,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 539,
+      "reward": -0.004499829585379644,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 540,
+      "reward": -0.0031708370465572955,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 541,
+      "reward": -0.003243573850109094,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 542,
+      "reward": -0.0030012662369671705,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 543,
+      "reward": -0.0028095152104981036,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 544,
+      "reward": -0.0033855330353498303,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 545,
+      "reward": -0.004204927805309344,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 546,
+      "reward": -0.0030792912765433833,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 547,
+      "reward": -0.0017294501050384437,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 548,
+      "reward": -0.00044492909338256226,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 549,
+      "reward": 0.00047052168816374973,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 550,
+      "reward": 0.001604259826032406,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 551,
+      "reward": 0.0027199635661050436,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 552,
+      "reward": 0.0037015967994062926,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 553,
+      "reward": 0.004978782724972541,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 554,
+      "reward": 0.006211689841846724,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 555,
+      "reward": 0.007025538393019115,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 556,
+      "reward": 0.007149066170362706,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 557,
+      "reward": 0.005922938759817753,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 558,
+      "reward": 0.004894830758825464,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 559,
+      "reward": 0.006261429888695269,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 560,
+      "reward": 0.006619253500786404,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 561,
+      "reward": 0.006415013139383974,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 562,
+      "reward": 0.006507726725167529,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 563,
+      "reward": 0.006325713140762579,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 564,
+      "reward": 0.005913076782641857,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 565,
+      "reward": 0.00476642074902367,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 566,
+      "reward": 0.005394271829651909,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 567,
+      "reward": 0.004490288577632229,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 568,
+      "reward": 0.004027471974590857,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 569,
+      "reward": 0.004453248001988541,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 570,
+      "reward": 0.003388548552205606,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 571,
+      "reward": 0.0023192183472472427,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 572,
+      "reward": 0.002123632496884964,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 573,
+      "reward": 0.0020923889329956813,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 574,
+      "reward": 0.0022878369098703333,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 575,
+      "reward": 0.0022513569665241207,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 576,
+      "reward": 0.0017006029066992667,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 577,
+      "reward": 0.0016715054242560923,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 578,
+      "reward": 0.0008915804252180859,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 579,
+      "reward": 0.0008728681536001037,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 580,
+      "reward": 0.002122293637768946,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 581,
+      "reward": 0.0021294523991065573,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 582,
+      "reward": 0.0008956142593232741,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 583,
+      "reward": 0.000856443776360738,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 584,
+      "reward": 0.0008544778445238599,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 585,
+      "reward": 0.0008473848878153278,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 586,
+      "reward": 0.0018146791929837258,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 587,
+      "reward": 0.0019704886145367473,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 588,
+      "reward": 0.001553661529935857,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 589,
+      "reward": 0.0021095755494054957,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 590,
+      "reward": 0.0018700029578321287,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 591,
+      "reward": 0.0013942546676501966,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 592,
+      "reward": 0.0004909753655738536,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 593,
+      "reward": -0.00010366374366843623,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 594,
+      "reward": -0.0002023529105047439,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 595,
+      "reward": -0.0009167263169428397,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 596,
+      "reward": -0.002085512316541971,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 597,
+      "reward": -0.002548228715647416,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 598,
+      "reward": -0.0015737116468681478,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 599,
+      "reward": -0.0017826485276555282,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 600,
+      "reward": -0.002936855173601538,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 601,
+      "reward": -0.004429422556304519,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 602,
+      "reward": -0.00414962613944081,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 603,
+      "reward": -0.004403720762947372,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 604,
+      "reward": -0.005491052135459307,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 605,
+      "reward": -0.00679345806094156,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 606,
+      "reward": -0.006906824189503502,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 607,
+      "reward": -0.006627500777531492,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 608,
+      "reward": -0.007704801737308475,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 609,
+      "reward": -0.008926128040652626,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 610,
+      "reward": -0.009152770861267423,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 611,
+      "reward": -0.009684457356908815,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 612,
+      "reward": -0.009978508487199722,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 613,
+      "reward": -0.010940396504379946,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 614,
+      "reward": -0.011927542945296077,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 615,
+      "reward": -0.010521909643799177,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 616,
+      "reward": -0.010728387384023375,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 617,
+      "reward": -0.011924140695480867,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 618,
+      "reward": -0.011592159977862337,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 619,
+      "reward": -0.010941855128286493,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 620,
+      "reward": -0.010608233044674842,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 621,
+      "reward": -0.01070198508551723,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 622,
+      "reward": -0.01000438225216116,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 623,
+      "reward": -0.00985957151944894,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 624,
+      "reward": -0.009571253891064835,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 625,
+      "reward": -0.00845704370282152,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 626,
+      "reward": -0.007954645286254225,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 627,
+      "reward": -0.008245286835431243,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 628,
+      "reward": -0.009350128796979051,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 629,
+      "reward": -0.009213751970784667,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 630,
+      "reward": -0.007768326852852336,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 631,
+      "reward": -0.007907269711380005,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 632,
+      "reward": -0.008604550695659796,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 633,
+      "reward": -0.008915979810257824,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 634,
+      "reward": -0.009066572065509426,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 635,
+      "reward": -0.009740454878996552,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 636,
+      "reward": -0.009124565902056236,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 637,
+      "reward": -0.008184371056709772,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 638,
+      "reward": -0.006436527134688008,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 639,
+      "reward": -0.0059155993851522926,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 640,
+      "reward": -0.006038236662219143,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 641,
+      "reward": -0.003577597654881526,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 642,
+      "reward": -0.0027782282742812026,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 643,
+      "reward": -0.002198670272336889,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 644,
+      "reward": -0.0018711846041290503,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 645,
+      "reward": -0.0009739522372953502,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 646,
+      "reward": -0.0005832669680077007,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 647,
+      "reward": -0.0016517021399360399,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 648,
+      "reward": -0.0019550138647390636,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 649,
+      "reward": -0.0011232341405857937,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 650,
+      "reward": 0.00031083129314946056,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 651,
+      "reward": 0.00034396256582303053,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 652,
+      "reward": -0.0007535836534453555,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 653,
+      "reward": -0.002064433345831951,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 654,
+      "reward": -0.003185876515969799,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 655,
+      "reward": -0.004390007765073589,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 656,
+      "reward": -0.0048097715624739745,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 657,
+      "reward": -0.004390419994880768,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 658,
+      "reward": -0.005268637988250946,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 659,
+      "reward": -0.005828431403334555,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 660,
+      "reward": -0.004419079696849959,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 661,
+      "reward": -0.003833495398991138,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 662,
+      "reward": -0.004258621524951156,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 663,
+      "reward": -0.0034033340389070244,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 664,
+      "reward": -0.0016555370520821011,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 665,
+      "reward": -0.0001646451281458461,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 666,
+      "reward": -8.544955517431063e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 667,
+      "reward": -0.00015249120427163199,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 668,
+      "reward": -0.00016010358151752335,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 669,
+      "reward": -1.5862000505295626e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 670,
+      "reward": 0.001273027586848663,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 671,
+      "reward": 0.0012575153506779735,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 672,
+      "reward": 0.0009206763574003407,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 673,
+      "reward": 0.0011328020789338478,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 674,
+      "reward": 4.132671654066833e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 675,
+      "reward": -0.001250099723218323,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 676,
+      "reward": -0.00215824972075751,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 677,
+      "reward": -0.0028053296095691405,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 678,
+      "reward": -0.0027990675143303445,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 679,
+      "reward": -0.0017936792222998932,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 680,
+      "reward": -0.0009732142430991519,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 681,
+      "reward": -0.0003804741930724109,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 682,
+      "reward": -0.00046404237152963823,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 683,
+      "reward": -0.0006230875516117784,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 684,
+      "reward": 0.0004987711229573755,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 685,
+      "reward": 0.0003715164620912148,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 686,
+      "reward": -0.00018845853461835205,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 687,
+      "reward": 0.00016412263622567203,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 688,
+      "reward": 0.00013808751148558507,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 689,
+      "reward": 0.00030179682087605464,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 690,
+      "reward": -0.0006685940929473944,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 691,
+      "reward": -0.0009152055703485207,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 692,
+      "reward": -0.0009993275125672607,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 693,
+      "reward": -0.0011906882255270368,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 694,
+      "reward": 0.0004397249004464143,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 695,
+      "reward": 0.0018121500921890465,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 696,
+      "reward": 0.0018655978468014034,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 697,
+      "reward": 0.0015080384816930081,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 698,
+      "reward": 0.002573655263295116,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 699,
+      "reward": 0.0030248367100695894,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 700,
+      "reward": 0.0012301883323333485,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 701,
+      "reward": -0.00014704488447114805,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 702,
+      "reward": -0.00022974285241095238,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 703,
+      "reward": 0.0005657485670760298,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 704,
+      "reward": 0.0010233193312458866,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 705,
+      "reward": 0.00061040035976756,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 706,
+      "reward": 0.0004371054245506656,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 707,
+      "reward": 0.001065036262771546,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 708,
+      "reward": 0.0005331756911464147,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 709,
+      "reward": 4.240877080086136e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 710,
+      "reward": 0.0004665026195262989,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 711,
+      "reward": 0.0007058743733279194,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 712,
+      "reward": 0.001943281757549764,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 713,
+      "reward": 0.00304710439978062,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 714,
+      "reward": 0.0020706313119451814,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 715,
+      "reward": 0.0007965822765083619,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 716,
+      "reward": -0.0004108731196723614,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 717,
+      "reward": -0.00044050775625148475,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 718,
+      "reward": -0.0006444421324716121,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 719,
+      "reward": -0.0006196458391050097,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 720,
+      "reward": 0.000666476547852568,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 721,
+      "reward": 0.0007081791852565633,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 722,
+      "reward": -0.0005241004242144687,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 723,
+      "reward": -0.0005670974935656492,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 724,
+      "reward": -0.0002885198919670984,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 725,
+      "reward": -0.0010898479434613417,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 726,
+      "reward": -0.0019555190564339853,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 727,
+      "reward": -0.003315503438120704,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 728,
+      "reward": -0.005026169985426376,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 729,
+      "reward": -0.006278424291391582,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 730,
+      "reward": -0.006198622634580708,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 731,
+      "reward": -0.005257461516962492,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 732,
+      "reward": -0.004945329983772506,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 733,
+      "reward": -0.005775785816244383,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 734,
+      "reward": -0.00691499077685509,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 735,
+      "reward": -0.006919265419458975,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 736,
+      "reward": -0.006121017677155782,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 737,
+      "reward": -0.004605734348791968,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 738,
+      "reward": -0.002923747173027902,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 739,
+      "reward": -0.0028688431001324677,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 740,
+      "reward": -0.004019439043837725,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 741,
+      "reward": -0.0025412697007425322,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 742,
+      "reward": -0.0013377449292124588,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 743,
+      "reward": -0.0010016115803084258,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 744,
+      "reward": -0.0010738791152580252,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 745,
+      "reward": -0.0014083255077195211,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 746,
+      "reward": -0.000336209527465936,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 747,
+      "reward": 0.00026825777697814246,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 748,
+      "reward": -0.0004754261248145486,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 749,
+      "reward": -0.0011214327972006721,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 750,
+      "reward": -0.001678539951409208,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 751,
+      "reward": -0.0029830690412355754,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 752,
+      "reward": -0.002787070436321537,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 753,
+      "reward": -0.0028954835696208825,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 754,
+      "reward": -0.003008183571497014,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 755,
+      "reward": -0.0017013314805376378,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 756,
+      "reward": -0.0002912115271995752,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 757,
+      "reward": -0.00021826181436024328,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 758,
+      "reward": -0.0013606993244554833,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 759,
+      "reward": -0.0008345751043701277,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 760,
+      "reward": -0.0009660707360681364,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 761,
+      "reward": -0.0012111568239177029,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 762,
+      "reward": -0.00023534864710139658,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 763,
+      "reward": 0.000295409789135892,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 764,
+      "reward": 0.000778710373271041,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 765,
+      "reward": 0.0005833461083921687,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 766,
+      "reward": 0.0004218710220458277,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 767,
+      "reward": 0.0012306393164813745,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 768,
+      "reward": 0.0030135323803066605,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 769,
+      "reward": 0.003989806264948159,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 770,
+      "reward": 0.0029906333481446445,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 771,
+      "reward": 0.0024643000030604156,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 772,
+      "reward": 0.0033958352144503046,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 773,
+      "reward": 0.0036523355193645024,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 774,
+      "reward": 0.0023254320883876467,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 775,
+      "reward": 0.0019289015937375975,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 776,
+      "reward": 0.0020363748859790753,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 777,
+      "reward": 0.0009224406985661737,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 778,
+      "reward": 0.0008642391732918142,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 779,
+      "reward": 0.00201862274558251,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 780,
+      "reward": 0.0023546453978755544,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 781,
+      "reward": 0.0014470996796207558,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 782,
+      "reward": 0.0006733175803737002,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 783,
+      "reward": 0.0004982037457299526,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 784,
+      "reward": 0.0017166145514624365,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 785,
+      "reward": 0.003148442316026401,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 786,
+      "reward": 0.0032204352213918153,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 787,
+      "reward": 0.002546601518197633,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 788,
+      "reward": 0.0028749281738060795,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 789,
+      "reward": 0.0023129623215787376,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 790,
+      "reward": 0.0028528422931872743,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 791,
+      "reward": 0.0027034884421992533,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 792,
+      "reward": 0.002215951542111849,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 793,
+      "reward": 0.003633640429959728,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 794,
+      "reward": 0.0050752245697689435,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 795,
+      "reward": 0.0052315005374330426,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 796,
+      "reward": 0.003707308999439496,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 797,
+      "reward": 0.003067248927847821,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 798,
+      "reward": 0.0023633845207899906,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 799,
+      "reward": 0.0023012188531701394,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 800,
+      "reward": 0.002193965480589366,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 801,
+      "reward": 0.0009395153787232768,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 802,
+      "reward": -0.0003085601379890779,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 803,
+      "reward": -0.0012222422558894053,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 804,
+      "reward": -0.0023969290021434997,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 805,
+      "reward": -0.004322866754365551,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 806,
+      "reward": -0.0043694770000897165,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 807,
+      "reward": -0.0042810112476585616,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 808,
+      "reward": -0.004056247009372349,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 809,
+      "reward": -0.0028285854767973184,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 810,
+      "reward": -0.0014494757466707586,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 811,
+      "reward": -0.001382771338160893,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 812,
+      "reward": -0.0024230134911429335,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 813,
+      "reward": -0.0022932415034206954,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 814,
+      "reward": -0.0013940241103560513,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 815,
+      "reward": -0.0003577380248920292,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 816,
+      "reward": -0.00011568033066011729,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 817,
+      "reward": -0.0015846721239329842,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 818,
+      "reward": -0.0019238824478597927,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 819,
+      "reward": -0.0004764968218062826,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 820,
+      "reward": -0.0002810642281307896,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 821,
+      "reward": -0.0003340909280853399,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 822,
+      "reward": -0.0002878731246351851,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 823,
+      "reward": -0.0015479283786838938,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 824,
+      "reward": -0.0027794995756114105,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 825,
+      "reward": -0.003760352996280636,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 826,
+      "reward": -0.005232776932649008,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 827,
+      "reward": -0.005685553044896707,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 828,
+      "reward": -0.0054525957085700405,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 829,
+      "reward": -0.006436076342853259,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 830,
+      "reward": -0.006718311890323125,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 831,
+      "reward": -0.006645018571087347,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 832,
+      "reward": -0.006902708425154058,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 833,
+      "reward": -0.00722392456895582,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 834,
+      "reward": -0.005870242405770387,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 835,
+      "reward": -0.004984396903860766,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 836,
+      "reward": -0.0051717316801223046,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 837,
+      "reward": -0.004537951601029322,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 838,
+      "reward": -0.003960169808797431,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 839,
+      "reward": -0.003977837676432783,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 840,
+      "reward": -0.002998895830411241,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 841,
+      "reward": -0.0013988501954889099,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 842,
+      "reward": -0.0003245903431088326,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 843,
+      "reward": -0.0007257720780975419,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 844,
+      "reward": -0.0019431188030598623,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 845,
+      "reward": -0.003369862396244816,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 846,
+      "reward": -0.0032423293616961057,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 847,
+      "reward": -0.001950461248140467,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 848,
+      "reward": -0.002160183894372336,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 849,
+      "reward": -0.003311494218718014,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 850,
+      "reward": -0.0031964475982113605,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 851,
+      "reward": -0.0020652094847197766,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 852,
+      "reward": -0.0018957002016233293,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 853,
+      "reward": -0.002267697494011456,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 854,
+      "reward": -0.0015897676720892928,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 855,
+      "reward": -0.0014538966478718773,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 856,
+      "reward": -0.002583042226901533,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 857,
+      "reward": -0.0037892481809809198,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 858,
+      "reward": -0.004240099889762927,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 859,
+      "reward": -0.004155106207017756,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 860,
+      "reward": -0.004298307199417151,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 861,
+      "reward": -0.0035135751696364625,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 862,
+      "reward": -0.003705331873191442,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 863,
+      "reward": -0.004987469100143915,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 864,
+      "reward": -0.005325868885606377,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 865,
+      "reward": -0.0037859363166223847,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 866,
+      "reward": -0.0029892727422062837,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 867,
+      "reward": -0.0031978802689198726,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 868,
+      "reward": -0.0025060340053393304,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 869,
+      "reward": -0.0013256979965750038,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 870,
+      "reward": -0.001471212022442936,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 871,
+      "reward": -0.0015537112875723125,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 872,
+      "reward": -0.0014304789232522097,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 873,
+      "reward": -0.002388954858723702,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 874,
+      "reward": -0.0024042970751221304,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 875,
+      "reward": -0.00249216976624278,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 876,
+      "reward": -0.00367521726651332,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 877,
+      "reward": -0.003820185512500851,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 878,
+      "reward": -0.0036057502437356614,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 879,
+      "reward": -0.004590308012961897,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 880,
+      "reward": -0.0049697766080896155,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 881,
+      "reward": -0.003530654152091195,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 882,
+      "reward": -0.0022034188430088975,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 883,
+      "reward": -0.0006462692025597239,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 884,
+      "reward": 0.000816738054066457,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 885,
+      "reward": 0.0021844837682962748,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 886,
+      "reward": 0.0035582524972255225,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 887,
+      "reward": 0.004810260063760063,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 888,
+      "reward": 0.00491245651583383,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 889,
+      "reward": 0.0035318244389377362,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 890,
+      "reward": 0.002085931984249001,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 891,
+      "reward": 0.001204705303136988,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 892,
+      "reward": 9.207118440079931e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 893,
+      "reward": -0.000362565377591606,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 894,
+      "reward": -5.816289790572249e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 895,
+      "reward": -0.0007391246859853595,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 896,
+      "reward": -0.0019144861222930576,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 897,
+      "reward": -0.0022465292341224963,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 898,
+      "reward": -0.0011887841178470637,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 899,
+      "reward": -0.0008151265404148234,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 900,
+      "reward": -0.0020598774497351258,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 901,
+      "reward": -0.0021448586216987753,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 902,
+      "reward": -0.001715759008554807,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 903,
+      "reward": -0.0012053637903821635,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 904,
+      "reward": 0.00014610315839247434,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 905,
+      "reward": 0.0014133626099526175,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 906,
+      "reward": 0.0015078330742299695,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 907,
+      "reward": 0.00045178636468579114,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 908,
+      "reward": 0.00022189443010667276,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 909,
+      "reward": 0.0012445593555272527,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 910,
+      "reward": 0.001902870220964914,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 911,
+      "reward": 0.00239798833302185,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 912,
+      "reward": 0.003819365272252462,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 913,
+      "reward": 0.00402339602028845,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 914,
+      "reward": 0.003294611935712899,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 915,
+      "reward": 0.0035134006999884004,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 916,
+      "reward": 0.004407656894125367,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 917,
+      "reward": 0.006218518022782726,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 918,
+      "reward": 0.0084065323709539,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 919,
+      "reward": 0.008518156228807472,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 920,
+      "reward": 0.007192926163661406,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 921,
+      "reward": 0.006992148286484756,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 922,
+      "reward": 0.007771603955371242,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 923,
+      "reward": 0.007537437895146271,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 924,
+      "reward": 0.006515430822776835,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 925,
+      "reward": 0.007900802171481036,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 926,
+      "reward": 0.008528193709022913,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 927,
+      "reward": 0.007171922320571955,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 928,
+      "reward": 0.005854241326473719,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 929,
+      "reward": 0.0054490415259669245,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 930,
+      "reward": 0.006545255701748909,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 931,
+      "reward": 0.007589640849650081,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 932,
+      "reward": 0.008051375195911037,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 933,
+      "reward": 0.007602385873846762,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 934,
+      "reward": 0.007704525118249705,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 935,
+      "reward": 0.006292034362976651,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 936,
+      "reward": 0.004123127289324291,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 937,
+      "reward": 0.004449452771144946,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 938,
+      "reward": 0.006224891076777261,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 939,
+      "reward": 0.005502656476640944,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 940,
+      "reward": 0.004147377358625137,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 941,
+      "reward": 0.004018323375779342,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 942,
+      "reward": 0.005033208420813784,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 943,
+      "reward": 0.005495685952588092,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 944,
+      "reward": 0.0060515890615713275,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 945,
+      "reward": 0.004965427703385483,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 946,
+      "reward": 0.0038396684090296063,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 947,
+      "reward": 0.003924721654702923,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 948,
+      "reward": 0.004112692558547959,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 949,
+      "reward": 0.0025986592229774175,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 950,
+      "reward": 0.0018086127093515092,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 951,
+      "reward": 0.0023022695373629,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 952,
+      "reward": 0.003192951602556837,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 953,
+      "reward": 0.003416489010103829,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 954,
+      "reward": 0.002708628423380155,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 955,
+      "reward": 0.003210541071372308,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 956,
+      "reward": 0.001990533563153818,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 957,
+      "reward": 0.0011505142486472053,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 958,
+      "reward": 0.0014993808159955435,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 959,
+      "reward": 0.001572300003300331,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 960,
+      "reward": 0.0004317762479653098,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 961,
+      "reward": -0.0009484433590438712,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 962,
+      "reward": -0.002355364408086258,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 963,
+      "reward": -0.0037411367502386828,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 964,
+      "reward": -0.004958665473379531,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 965,
+      "reward": -0.005049573703477694,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 966,
+      "reward": -0.0038694124128617613,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 967,
+      "reward": -0.003722886389374125,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 968,
+      "reward": -0.004881611646663897,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 969,
+      "reward": -0.004117006166603154,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 970,
+      "reward": -0.002946695011115885,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 971,
+      "reward": -0.002133677446939597,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 972,
+      "reward": -0.00203970907279194,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 973,
+      "reward": -0.0031791883268263987,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 974,
+      "reward": -0.0034056350270281754,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 975,
+      "reward": -0.0020766340245448323,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 976,
+      "reward": -0.0008011233445650578,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 977,
+      "reward": 0.0003676077798788757,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 978,
+      "reward": 0.0005560821442536223,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 979,
+      "reward": -0.0006383598383865596,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 980,
+      "reward": -0.0007742278088689325,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 981,
+      "reward": 3.407302227564912e-05,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 982,
+      "reward": 0.00017106263238075847,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 983,
+      "reward": 0.00016422541022853565,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 984,
+      "reward": 0.001307488724660022,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 985,
+      "reward": 0.0012819761740290314,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 986,
+      "reward": 0.0011972713713550576,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 987,
+      "reward": 0.00223309013523032,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 988,
+      "reward": 0.0032705618744470755,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 989,
+      "reward": 0.003629887294499312,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 990,
+      "reward": 0.0026323760397777285,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 991,
+      "reward": 0.0018573900394553977,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 992,
+      "reward": 0.001703288939545855,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 993,
+      "reward": 0.0018240408016800824,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 994,
+      "reward": 0.002708596860735879,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 995,
+      "reward": 0.004386480873133536,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 996,
+      "reward": 0.0033803710580406765,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 997,
+      "reward": 0.0032545460289195027,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 998,
+      "reward": 0.004445145932865158,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 999,
+      "reward": 0.004618133185140927,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "episode": 1,
+      "step": 1000,
+      "reward": 0.0034645331527960455,
+      "cost": 0.0,
+      "terminated": false,
+      "truncated": true
+    }
+  ]
+}
