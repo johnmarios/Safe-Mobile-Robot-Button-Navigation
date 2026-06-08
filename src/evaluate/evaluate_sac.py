@@ -3,6 +3,7 @@ import gymnasium_robotics
 import numpy as np
 
 from stable_baselines3 import SAC
+import safety_gymnasium
 
 from config import ENV_ID, SAC_MODEL_PATH, SAC_EVAL_EPISODES, MAX_STEPS, SEED
 
@@ -12,10 +13,7 @@ def evaluate_sac(render=False):
 
     render_mode = "human" if render else None
 
-    env = gym.make(
-        ENV_ID,
-        render_mode=render_mode,
-    )
+    env = safety_gymnasium.make(ENV_ID, render_mode)
 
     model = SAC.load(SAC_MODEL_PATH, env=env)
 

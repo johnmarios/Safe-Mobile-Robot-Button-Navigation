@@ -11,17 +11,16 @@ SEED = 42
 
 #SAC
 
-# # ENV_ID = "AdroitHandDoor-v1"
 
-# MAX_STEPS = 1000
-# NUM_EPISODES = 5
-# SEED = 42
+MAX_STEPS = 1000
+NUM_EPISODES = 5
+SEED = 42
 
-# # SAC settings
-# SAC_TOTAL_TIMESTEPS = 100_000
+# SAC settings
+SAC_TOTAL_TIMESTEPS = 100_000
 
-# SAC_MODEL_PATH = "models/sac_adroit"
-# SAC_LOG_DIR = "logs/sac_adroit"
+SAC_MODEL_PATH = "models/sac_safety_racecar_button2"
+SAC_LOG_DIR = "logs/sac_safety_racecar_button2"
 
-# # Evaluation
-# SAC_EVAL_EPISODES = 5
+# Evaluation
+SAC_EVAL_EPISODES = 5

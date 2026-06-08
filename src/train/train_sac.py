@@ -3,20 +3,23 @@ import os
 import gymnasium as gym
 import gymnasium_robotics
 
+import safety_gymnasium
 from stable_baselines3 import SAC
 from stable_baselines3.common.monitor import Monitor
 
 from config import ENV_ID, SEED, SAC_TOTAL_TIMESTEPS, SAC_MODEL_PATH, SAC_LOG_DIR
 
+def step(env, action):
+    obs, reward, cost, terminated, truncated, info = env.step(action)
+    return obs, float(reward), terminated, truncated, info
 
 def train_sac():
-    gymnasium_robotics.register_robotics_envs()
 
-    os.makedirs("models", exist_ok=True)
-    os.makedirs(SAC_LOG_DIR, exist_ok=True)
-
-    env = gym.make(ENV_ID)
-    env = Monitor(env)
+    env = safety_gymnasium.make(ENV_ID, render_mode=None)
+    # i don't want the cost
+    env = step(env, action) 
+    # Wrap the environment with Monitor to log episode rewards and lengths
+    env = Monitor(env) 
 
     model = SAC(
         policy="MlpPolicy",
@@ -25,7 +28,7 @@ def train_sac():
         seed=SEED,
         tensorboard_log=SAC_LOG_DIR,
         learning_rate=3e-4,
-        buffer_size=1_000_000,
+        buffer_size=100_000,
         learning_starts=10_000,
         batch_size=256,
         tau=0.005,
