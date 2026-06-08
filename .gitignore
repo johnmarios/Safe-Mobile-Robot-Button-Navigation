@@ -14,5 +14,6 @@ logs/
 *.mp4
 *.log
 *.zip
+*.pkl
 
 #!trainmodel6000.zip
