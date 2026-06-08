@@ -1,0 +1,11 @@
+safety-gymnasium
+stable-baselines3[extra]
+numpy
+pandas
+matplotlib
+tensorboard
+
+# gymnasium
+# gymnasium-robotics
+# mujoco
+# numpy
