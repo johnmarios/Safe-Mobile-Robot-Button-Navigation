@@ -16,4 +16,5 @@ logs/
 *.zip
 *.pkl
 
-#!trainmodel6000.zip
+!ppo_670000_Lrate1e-5.zip
+!vec_normalize_670000_Lrate1e-5.pkl
