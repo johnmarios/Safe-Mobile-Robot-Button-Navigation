@@ -168,6 +168,9 @@ np.save(
     np.array(eval_costs)
 )
 
+agent.save(SAC_MODEL_PATH + "_final")
+
+print("Final model saved.")
 
 # Reward curve
 plt.figure(figsize=(8,5))

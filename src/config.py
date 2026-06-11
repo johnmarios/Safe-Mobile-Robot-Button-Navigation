@@ -1,7 +1,7 @@
 #ENV_NAME = "Pendulum-v1"
 ENV_NAME = "SafetyRacecarButton2-v0"
 
-MAX_TIMESTEPS = int(1e5)
+MAX_TIMESTEPS = int(1e6)
 START_TIMESTEPS = 20000
 MAX_STEPS = 1000
 
@@ -16,7 +16,7 @@ TAU = 0.001
 ACTOR_LR = 1e-4
 CRITIC_LR = 1e-4
 
-COST_WEIGHT = 0.01
+COST_WEIGHT = 0.05
 SEED = 0
 
 SAC_MODEL_PATH = "models/sac"
