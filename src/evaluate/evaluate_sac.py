@@ -1,69 +1,73 @@
-import gymnasium as gym
-import gymnasium_robotics
+import safety_gymnasium
 import numpy as np
 
-from stable_baselines3 import SAC
-
-from config import ENV_ID, SAC_MODEL_PATH, SAC_EVAL_EPISODES, MAX_STEPS, SEED
+from config import ENV_NAME, SAC_EVAL_EPISODES, MAX_STEPS, SEED
 
 
-def evaluate_sac(render=False):
-    gymnasium_robotics.register_robotics_envs()
+def evaluate_policy(
+    agent,
+    env_name=ENV_NAME,
+    eval_episodes=SAC_EVAL_EPISODES,
+    render=False
+):
 
     render_mode = "human" if render else None
 
-    env = gym.make(
-        ENV_ID,
-        render_mode=render_mode,
+    env = safety_gymnasium.make(
+        env_name,
+        render_mode=render_mode
     )
 
-    model = SAC.load(SAC_MODEL_PATH, env=env)
-
     episode_rewards = []
-    episode_lengths = []
+    episode_costs = []
 
-    print("\n==============================")
-    print("Evaluating SAC")
-    print("==============================")
-    print(f"Environment: {ENV_ID}")
-    print(f"Episodes: {SAC_EVAL_EPISODES}")
+    for episode in range(eval_episodes):
 
-    for episode in range(SAC_EVAL_EPISODES):
-        obs, info = env.reset(seed=SEED + episode)
+        state, info = env.reset(seed=SEED + episode)
 
         total_reward = 0.0
+        total_cost = 0.0
         steps = 0
+        done = False
 
-        for step in range(MAX_STEPS):
-            action, _states = model.predict(obs, deterministic=True)
+        while not done and steps < MAX_STEPS:
 
-            obs, reward, terminated, truncated, info = env.step(action)
+            action = agent.select_action(state)
+
+            next_state, reward, cost, terminated, truncated, info = env.step(
+                action
+            )
+
+            done = terminated or truncated
 
             total_reward += reward
+            total_cost += cost
+
             steps += 1
 
-            if render:
-                env.render()
-
-            if terminated or truncated:
-                break
+            state = next_state
 
         episode_rewards.append(total_reward)
-        episode_lengths.append(steps)
+        episode_costs.append(total_cost)
 
-        print(f"Episode {episode + 1}: reward={total_reward:.2f}, length={steps}")
+        print(
+            f"Episode {episode+1}: "
+            f"Reward = {total_reward:.2f}, "
+            f"Cost = {total_cost:.2f}, "
+            f"Steps = {steps}"
+        )
+
+    # print("Evaluation rewards:")
+    # print(episode_rewards)
+
+    # print("Evaluation costs:")
+    # print(episode_costs)
+
+    print(
+        f"Mean reward = {np.mean(episode_rewards):.2f}, "
+        f"Mean cost = {np.mean(episode_costs):.2f}"
+    )
 
     env.close()
 
-    print("\n==============================")
-    print("SAC Evaluation Results")
-    print("==============================")
-    print(f"Mean reward: {np.mean(episode_rewards):.2f}")
-    print(f"Std reward: {np.std(episode_rewards):.2f}")
-    print(f"Min reward: {np.min(episode_rewards):.2f}")
-    print(f"Max reward: {np.max(episode_rewards):.2f}")
-    print(f"Mean episode length: {np.mean(episode_lengths):.2f}")
-
-
-if __name__ == "__main__":
-    evaluate_sac(render=False)
+    return np.mean(episode_rewards), np.mean(episode_costs)

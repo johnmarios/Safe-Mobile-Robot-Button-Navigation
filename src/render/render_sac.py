@@ -1,47 +1,46 @@
-import gymnasium as gym
-import gymnasium_robotics
-
-from stable_baselines3 import SAC
 import safety_gymnasium
 
-from config import ENV_ID, SAC_MODEL_PATH, MAX_STEPS, NUM_EPISODES, SEED
+from config import MAX_STEPS
 
-from evaluate.evaluate_sac import evaluate_sac
-from pathlib import Path
 
-RESULTS_PATH = Path(__file__).resolve().parents[2] / "results" / "sac_results.json"
+def render_policy(agent, env_name, episodes=5):
 
-def render_sac():
-    env = safety_gymnasium.make(ENV_ID, render_mode="human")
+    env = safety_gymnasium.make(
+        env_name,
+        render_mode="human"
+    )
 
-    model = SAC.load(SAC_MODEL_PATH, env=env)
+    for episode in range(episodes):
 
-    print("\n==============================")
-    print("Rendering SAC Agent")
-    print("==============================")
-    print(f"Environment: {ENV_ID}")
-
-    for episode in range(NUM_EPISODES):
-        obs, info = env.reset(seed=SEED + episode)
+        state, info = env.reset()
 
         total_reward = 0.0
-
-        print(f"\nEpisode {episode + 1}/{NUM_EPISODES}")
+        total_cost = 0.0
+        done = False
 
         for step in range(MAX_STEPS):
-            action, _states = model.predict(obs, deterministic=True)
 
-            obs, reward, terminated, truncated, info = env.step(action)
+            action = agent.select_action(state)
+
+            next_state, reward, cost, terminated, truncated, info = env.step(
+                action
+            )
 
             total_reward += reward
+            total_cost += cost
 
-            env.render()
+            done = terminated or truncated
 
-            if terminated or truncated:
-                print(f"Episode finished at step {step + 1}")
+            state = next_state
+
+            if done:
                 break
 
-        print(f"Total reward: {total_reward:.2f}")
+        print(
+            f"Episode {episode+1}: "
+            f"Reward = {total_reward:.2f}, "
+            f"Cost = {total_cost:.2f}, "
+            f"Steps = {step+1}"
+        )
 
     env.close()
-    evaluate_sac(render=True)

@@ -1,27 +1,22 @@
-ENV_ID = "SafetyRacecarButton2-v0"
+#ENV_NAME = "Pendulum-v1"
+ENV_NAME = "SafetyRacecarButton2-v0"
 
-# per episode 
+MAX_TIMESTEPS = int(1e5)
+START_TIMESTEPS = 20000
 MAX_STEPS = 1000
 
-NUM_EPISODES = 2
+BATCH_SIZE = 256
 
-# random seed for reproducibility
-SEED = 42
+EVAL_FREQ = 50000
+SAC_EVAL_EPISODES = 10
 
+GAMMA = 0.99
+TAU = 0.001
 
-#SAC
+ACTOR_LR = 1e-4
+CRITIC_LR = 1e-4
 
-# # ENV_ID = "AdroitHandDoor-v1"
+COST_WEIGHT = 0.01
+SEED = 0
 
-# MAX_STEPS = 1000
-# NUM_EPISODES = 5
-# SEED = 42
-
-# # SAC settings
-# SAC_TOTAL_TIMESTEPS = 100_000
-
-# SAC_MODEL_PATH = "models/sac_adroit"
-# SAC_LOG_DIR = "logs/sac_adroit"
-
-# # Evaluation
-# SAC_EVAL_EPISODES = 5
+SAC_MODEL_PATH = "models/sac"
