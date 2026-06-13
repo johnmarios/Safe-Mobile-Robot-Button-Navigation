@@ -1,3 +1,4 @@
+from Project.src.train.normalize import NormalizeActionWrapper, sample_warmup_action
 import safety_gymnasium
 import numpy as np
 from replayBuffer import ReplayBuffer
@@ -13,9 +14,11 @@ BUFFER_SIZE = int(1e6)
 SEED = 42
 
 
+
 def main():
     env = safety_gymnasium.make(ENV_ID,render_mode=None,)
-
+    env = NormalizeActionWrapper(env)
+    
     state, info = env.reset(seed=SEED)
 
     state_dim = env.observation_space.shape[0]
@@ -33,7 +36,7 @@ def main():
 
     for t in range(MAX_TIMESTEPS):
         if t < START_TIMESTEPS:
-            action = env.action_space.sample()
+            action = sample_warmup_action(env, action_dim)
         else:
             action = agent.select_action(state)
 

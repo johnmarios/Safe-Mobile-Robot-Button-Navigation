@@ -4,6 +4,7 @@ import os
 import sys
 
 import numpy as np
+from Project.src.train.normalize import NormalizeActionWrapper
 import safety_gymnasium
 
 
@@ -12,6 +13,7 @@ if src_dir not in sys.path:
     sys.path.append(src_dir)
 
 from train.td3 import TD3
+from train.normalize import NormalizeActionWrapper
 
 
 ENV_ID = "SafetyRacecarButton2-v0"
@@ -23,10 +25,8 @@ SEED = 42
 
 
 def evaluate_td3():
-    env = safety_gymnasium.make(
-        ENV_ID,
-        render_mode=None
-    )
+    env = safety_gymnasium.make(ENV_ID,render_mode=None)
+    env = NormalizeActionWrapper(env)
 
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]

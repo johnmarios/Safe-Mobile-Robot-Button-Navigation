@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 import numpy as np
+from normalize import NormalizeActionWrapper, sample_warmup_action
 import safety_gymnasium
 import torch
 from torch.utils.tensorboard import SummaryWriter
@@ -38,6 +39,7 @@ def parse_args():
     parser.add_argument("--policy-noise", type=float, default=None, help="Noise added to target policy during critic update.")# noise added to target policy during critic update
     parser.add_argument("--noise-clip", type=float, default=None, help="Clip the noise added to the target policy.")
     parser.add_argument("--policy-freq", type=int, default=None, help="Frequency of policy updates.")
+    parser.add_argument("--train-cost-penalty", type=float, default=0.0)
 
     # Saving / loading
     parser.add_argument("--models-dir", type=str, default="models")
@@ -73,7 +75,7 @@ def make_agent(args, state_dim, action_dim, max_action):
         "noise_clip": args.noise_clip,
         "policy_freq": args.policy_freq,
     }
-    
+
     # Only include optional args that are not None (i.e. were set by the user)
     # to use TD3 defaults for any that were left as None
 
@@ -86,7 +88,8 @@ def make_agent(args, state_dim, action_dim, max_action):
 
 def evaluate_policy(agent, env_id, seed, eval_episodes=5):
     eval_env = safety_gymnasium.make(env_id, render_mode=None)
-
+    eval_env = NormalizeActionWrapper(eval_env)
+    
     total_reward = 0.0
     total_cost = 0.0
     total_steps = 0
@@ -160,6 +163,8 @@ def main():
     torch.manual_seed(args.seed)
 
     env = safety_gymnasium.make(args.env_id, render_mode=args.render_mode)
+    env = NormalizeActionWrapper(env)
+    
     state, info = env.reset(seed=args.seed)
     env.action_space.seed(args.seed)
 
@@ -198,7 +203,7 @@ def main():
         global_step = t + 1
 
         if t < args.start_timesteps:
-            action = env.action_space.sample()
+            action = sample_warmup_action(env, action_dim)
         else:
             action = agent.select_action(np.array(state))
 
@@ -209,11 +214,13 @@ def main():
         next_state, reward, cost, terminated, truncated, info = env.step(action)
         done = terminated or truncated
 
+        train_reward = reward - args.train_cost_penalty * cost
+
         replay_buffer.add(
             state=state,
             action=action,
             next_state=next_state,
-            reward=reward,
+            reward=train_reward,
             cost=cost,
             done=done,
         )
