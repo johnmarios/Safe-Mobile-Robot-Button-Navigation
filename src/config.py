@@ -17,11 +17,12 @@ TAU_0 = 0.005
 
 ACTOR_LR_0 = 3e-4
 CRITIC_LR_0 = 3e-4
+entropy_multiplier_0 = 2.0
 
 COST_WEIGHT_0 = 0.0
 SEED = 0
 
-SAC_MODEL_PATH = "models/sac"
+SAC_MODEL_PATH = "models/"
 
 AGENT_ID_0 = "sac_phase_0"
 
@@ -31,7 +32,7 @@ AGENT_ID_0 = "sac_phase_0"
 ENV_NAME = "SafetyRacecarButton2-v0"
 
 MAX_TIMESTEPS_1 = int(1e6)
-START_TIMESTEPS_1 = 20000
+START_TIMESTEPS_1 = 0
 MAX_STEPS = 1000
 
 BATCH_SIZE = 256
@@ -44,11 +45,12 @@ TAU_1 = 0.005
 
 ACTOR_LR_1 = 3e-4
 CRITIC_LR_1 = 3e-4
+entropy_multiplier_1 = 2.0
 
 COST_WEIGHT_1 = 0.001
 SEED = 0
 
-SAC_MODEL_PATH = "models/sac"
+SAC_MODEL_PATH = "models/"
 
 AGENT_ID_1 = "sac_phase_1"
 
@@ -60,7 +62,7 @@ AGENT_ID_1 = "sac_phase_1"
 ENV_NAME = "SafetyRacecarButton2-v0"
 
 MAX_TIMESTEPS_2 = int(1e6)
-START_TIMESTEPS_2 = 20000
+START_TIMESTEPS_2 = 0
 MAX_STEPS = 1000
 
 BATCH_SIZE = 256
@@ -73,10 +75,11 @@ TAU_2 = 0.005
 
 ACTOR_LR_2 = 3e-4
 CRITIC_LR_2 = 3e-4
+entropy_multiplier_2 = 2.0
 
 COST_WEIGHT_2 = 0.01
 SEED = 0
 
-SAC_MODEL_PATH = "models/sac"
+SAC_MODEL_PATH = "models/"
 
 AGENT_ID_2 = "sac_phase_2"

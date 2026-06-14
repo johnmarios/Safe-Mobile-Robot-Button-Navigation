@@ -31,7 +31,8 @@ agent = SAC(
     discount=GAMMA_0,
     tau=TAU_0,
     actor_lr=ACTOR_LR_0,
-    critic_lr=CRITIC_LR_0
+    critic_lr=CRITIC_LR_0,
+    entropy_multiplier=entropy_multiplier_0
 )
 
 # Initial state
@@ -133,7 +134,7 @@ for t in range(MAX_TIMESTEPS_0):
 
             best_reward = avg_reward
 
-            agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0}_best")
+            agent.save(SAC_MODEL_PATH + AGENT_ID_0 + "_best")
 
     # Episode finished
     if done:
@@ -156,19 +157,21 @@ for t in range(MAX_TIMESTEPS_0):
 
 
 # Save results
-os.makedirs("results", exist_ok=True)
+RESULTS_PATH = f"results/{AGENT_ID_0}"
+
+os.makedirs(RESULTS_PATH, exist_ok=True)
 
 np.save(
-    "results/rewards.npy",
+    f"{RESULTS_PATH}/rewards.npy",
     np.array(eval_rewards)
 )
 
 np.save(
-    "results/costs.npy",
+    f"{RESULTS_PATH}/costs.npy",
     np.array(eval_costs)
 )
 
-agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0}_final")
+agent.save(SAC_MODEL_PATH + AGENT_ID_0 + "_final")
 
 print("Final model saved.")
 
@@ -180,7 +183,7 @@ plt.ylabel("Average Reward")
 plt.title("Reward Curve")
 plt.grid()
 plt.tight_layout()
-plt.savefig("results/reward_curve.png")
+plt.savefig(f"{RESULTS_PATH}/reward_curve.png")
 
 
 # Cost curve
@@ -191,7 +194,7 @@ plt.ylabel("Average Cost")
 plt.title("Cost Curve")
 plt.grid()
 plt.tight_layout()
-plt.savefig("results/cost_curve.png")
+plt.savefig(f"{RESULTS_PATH}/cost_curve.png")
 
 env.close()
 

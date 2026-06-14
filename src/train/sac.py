@@ -24,6 +24,7 @@ class SAC(object):
         tau=0.005,
         actor_lr=3e-4,
         critic_lr=3e-4,
+        entropy_multiplier=1.0,
     ):
 
         self.device = device
@@ -40,7 +41,7 @@ class SAC(object):
         self.replay_buffer = ReplayBuffer(state_dim, action_dim)
 
 
-        self.target_entropy = -2 * action_dim
+        self.target_entropy = -entropy_multiplier * action_dim
         self.gamma = discount
         self.tau = tau
         self.total_it = 0
