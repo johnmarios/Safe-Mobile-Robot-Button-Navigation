@@ -9,198 +9,200 @@ from evaluate.evaluate_sac import evaluate_policy
 from render.render_sac import render_policy
 from config import *
 
-# Device
-device = torch.device(
-    "cuda" if torch.cuda.is_available() else "cpu"
-)
 
-# Environment
-env = safety_gymnasium.make(ENV_NAME)
-
-# Dimensions
-state_dim = env.observation_space.shape[0]
-action_dim = env.action_space.shape[0]
-max_action = float(env.action_space.high[0])
-
-# Agent
-agent = SAC(
-    state_dim=state_dim,
-    action_dim=action_dim,
-    max_action=max_action,
-    device=device,
-    discount=GAMMA_2,
-    tau=TAU_2,
-    actor_lr=ACTOR_LR_2,
-    critic_lr=CRITIC_LR_2,
-    entropy_multiplier=entropy_multiplier_2
-)
-
-# Load the best model from phase 1
-agent.load(
-    "models/sac_phase_1_best"
-)
-
-# Initial state
-state, info = env.reset(seed=SEED)
-
-episode_reward = 0
-episode_cost = 0
-episode_shaped_reward = 0
-episode_num = 0
-episode_timesteps = 0
-
-eval_rewards = []
-eval_costs = []
-
-best_reward = -np.inf
-
-for t in range(MAX_TIMESTEPS_2):
-
-    episode_timesteps += 1
-
-    # Action selection
-    if t < START_TIMESTEPS_2 :
-        action = env.action_space.sample()
-    else:
-        action = agent.select_action(state)
-
-    # Environment step
-    next_state, reward, cost, terminated, truncated, info = env.step(
-        action
+def main_2():
+    # Device
+    device = torch.device(
+        "cuda" if torch.cuda.is_available() else "cpu"
     )
 
-    done = terminated or truncated
+    # Environment
+    env = safety_gymnasium.make(ENV_NAME)
 
-    # Reward shaping
-    modified_reward = reward - COST_WEIGHT_2 * cost
+    # Dimensions
+    state_dim = env.observation_space.shape[0]
+    action_dim = env.action_space.shape[0]
+    max_action = float(env.action_space.high[0])
 
-
-    # Store transition
-    agent.replay_buffer.add(
-        state,
-        action,
-        next_state,
-        modified_reward,
-        done
+    # Agent
+    agent = SAC(
+        state_dim=state_dim,
+        action_dim=action_dim,
+        max_action=max_action,
+        device=device,
+        discount=GAMMA_2,
+        tau=TAU_2,
+        actor_lr=ACTOR_LR_2,
+        critic_lr=CRITIC_LR_2,
+        entropy_multiplier=entropy_multiplier_2
     )
 
-    state = next_state
+    # Load the best model from phase 1
+    agent.load(
+        "models/sac_phase_1_best"
+    )
 
-    episode_reward += reward
-    episode_cost += cost
-    episode_shaped_reward += modified_reward
+    # Initial state
+    state, info = env.reset(seed=SEED)
 
-    # Train
-    if (
-        t >= START_TIMESTEPS_2
-        and agent.replay_buffer.size >= BATCH_SIZE
-    ):
+    episode_reward = 0
+    episode_cost = 0
+    episode_shaped_reward = 0
+    episode_num = 0
+    episode_timesteps = 0
 
-        critic_loss, actor_loss, alpha_loss, alpha = \
-            agent.train(BATCH_SIZE)
+    eval_rewards = []
+    eval_costs = []
 
-        if t % 1000 == 0:
+    best_reward = -np.inf
 
-            print(
-                f"Step {t} | "
-                f"Critic loss: {critic_loss:.4f} | "
-                f"Actor loss: {actor_loss:.4f} | "
-                f"Alpha: {alpha:.4f}"
+    for t in range(MAX_TIMESTEPS_2):
+
+        episode_timesteps += 1
+
+        # Action selection
+        if t < START_TIMESTEPS_2 :
+            action = env.action_space.sample()
+        else:
+            action = agent.select_action(state)
+
+        # Environment step
+        next_state, reward, cost, terminated, truncated, info = env.step(
+            action
+        )
+
+        done = terminated or truncated
+
+        # Reward shaping
+        modified_reward = reward - COST_WEIGHT_2 * cost
+
+
+        # Store transition
+        agent.replay_buffer.add(
+            state,
+            action,
+            next_state,
+            modified_reward,
+            done
+        )
+
+        state = next_state
+
+        episode_reward += reward
+        episode_cost += cost
+        episode_shaped_reward += modified_reward
+
+        # Train
+        if (
+            t >= START_TIMESTEPS_2
+            and agent.replay_buffer.size >= BATCH_SIZE
+        ):
+
+            critic_loss, actor_loss, alpha_loss, alpha = \
+                agent.train(BATCH_SIZE)
+
+            if t % 1000 == 0:
+
+                print(
+                    f"Step {t} | "
+                    f"Critic loss: {critic_loss:.4f} | "
+                    f"Actor loss: {actor_loss:.4f} | "
+                    f"Alpha: {alpha:.4f}"
+                )
+
+        # Evaluation
+        if (t + 1) % EVAL_FREQ == 0:
+
+            avg_reward, avg_cost = evaluate_policy(
+                agent,
+                env_name=ENV_NAME,
+                eval_episodes=SAC_EVAL_EPISODES
             )
 
-    # Evaluation
-    if (t + 1) % EVAL_FREQ == 0:
+            eval_rewards.append(avg_reward)
+            eval_costs.append(avg_cost)
 
-        avg_reward, avg_cost = evaluate_policy(
-            agent,
-            env_name=ENV_NAME,
-            eval_episodes=SAC_EVAL_EPISODES
-        )
+            print(
+                "======================================"
+            )
 
-        eval_rewards.append(avg_reward)
-        eval_costs.append(avg_cost)
+            print(
+                f"Step {t+1} | "
+                f"Average reward: {avg_reward:.2f} | "
+                f"Average cost: {avg_cost:.2f}"
+            )
 
-        print(
-            "======================================"
-        )
+            print(
+                "======================================"
+            )
 
-        print(
-            f"Step {t+1} | "
-            f"Average reward: {avg_reward:.2f} | "
-            f"Average cost: {avg_cost:.2f}"
-        )
+            # Save best model
+            if avg_reward > best_reward:
 
-        print(
-            "======================================"
-        )
+                best_reward = avg_reward
 
-        # Save best model
-        if avg_reward > best_reward:
+                agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_best")
 
-            best_reward = avg_reward
+        # Episode finished
+        if done:
 
-            agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_best")
+            print(
+                f"Episode {episode_num} | "
+                f"Steps {episode_timesteps} | "
+                f"Reward {episode_reward:.2f} | "
+                f"Cost {episode_cost:.2f} | "
+                f"Shaped Reward {episode_shaped_reward:.2f}"
+            )
 
-    # Episode finished
-    if done:
+            state, info = env.reset()
 
-        print(
-            f"Episode {episode_num} | "
-            f"Steps {episode_timesteps} | "
-            f"Reward {episode_reward:.2f} | "
-            f"Cost {episode_cost:.2f} | "
-            f"Shaped Reward {episode_shaped_reward:.2f}"
-        )
-
-        state, info = env.reset()
-
-        episode_reward = 0
-        episode_cost = 0
-        episode_shaped_reward = 0
-        episode_timesteps = 0
-        episode_num += 1
+            episode_reward = 0
+            episode_cost = 0
+            episode_shaped_reward = 0
+            episode_timesteps = 0
+            episode_num += 1
 
 
-# Save results
-RESULTS_PATH = f"results/{AGENT_ID_2}"
+    # Save results
+    RESULTS_PATH = f"results/{AGENT_ID_2}"
 
-os.makedirs(RESULTS_PATH, exist_ok=True)
+    os.makedirs(RESULTS_PATH, exist_ok=True)
 
-np.save(
-    f"{RESULTS_PATH}/rewards.npy",
-    np.array(eval_rewards)
-)
+    np.save(
+        f"{RESULTS_PATH}/rewards.npy",
+        np.array(eval_rewards)
+    )
 
-np.save(
-    f"{RESULTS_PATH}/costs.npy",
-    np.array(eval_costs)
-)
+    np.save(
+        f"{RESULTS_PATH}/costs.npy",
+        np.array(eval_costs)
+    )
 
-agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_final")
+    agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_final")
 
-print("Final model saved.")
+    print("Final model saved.")
 
-# Reward curve
-plt.figure(figsize=(8,5))
-plt.plot(eval_rewards)
-plt.xlabel("Evaluation")
-plt.ylabel("Average Reward")
-plt.title("Reward Curve")
-plt.grid()
-plt.tight_layout()
-plt.savefig(f"{RESULTS_PATH}/reward_curve.png")
+    # Reward curve
+    plt.figure(figsize=(8,5))
+    plt.plot(eval_rewards)
+    plt.xlabel("Evaluation")
+    plt.ylabel("Average Reward")
+    plt.title("Reward Curve")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/reward_curve.png")
 
 
-# Cost curve
-plt.figure(figsize=(8,5))
-plt.plot(eval_costs)
-plt.xlabel("Evaluation")
-plt.ylabel("Average Cost")
-plt.title("Cost Curve")
-plt.grid()
-plt.tight_layout()
-plt.savefig(f"{RESULTS_PATH}/cost_curve.png")
+    # Cost curve
+    plt.figure(figsize=(8,5))
+    plt.plot(eval_costs)
+    plt.xlabel("Evaluation")
+    plt.ylabel("Average Cost")
+    plt.title("Cost Curve")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/cost_curve.png")
 
-env.close()
+    env.close()
 
-render_policy(agent, ENV_NAME, episodes=5)
+    render_policy(agent, ENV_NAME, episodes=5)
