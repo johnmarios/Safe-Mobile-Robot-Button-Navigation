@@ -28,10 +28,10 @@ agent = SAC(
     action_dim=action_dim,
     max_action=max_action,
     device=device,
-    discount=GAMMA,
-    tau=TAU,
-    actor_lr=ACTOR_LR,
-    critic_lr=CRITIC_LR
+    discount=GAMMA_1,
+    tau=TAU_1,
+    actor_lr=ACTOR_LR_1,
+    critic_lr=CRITIC_LR_1
 )
 
 # Initial state
@@ -48,12 +48,12 @@ eval_costs = []
 
 best_reward = -np.inf
 
-for t in range(MAX_TIMESTEPS):
+for t in range(MAX_TIMESTEPS_1):
 
     episode_timesteps += 1
 
     # Action selection
-    if t < START_TIMESTEPS:
+    if t < START_TIMESTEPS_1:
         action = env.action_space.sample()
     else:
         action = agent.select_action(state)
@@ -66,8 +66,8 @@ for t in range(MAX_TIMESTEPS):
     done = terminated or truncated
 
     # Reward shaping
-    modified_reward = reward - COST_WEIGHT * cost
-    
+    modified_reward = reward - COST_WEIGHT_1 * cost
+
 
     # Store transition
     agent.replay_buffer.add(
@@ -86,7 +86,7 @@ for t in range(MAX_TIMESTEPS):
 
     # Train
     if (
-        t >= START_TIMESTEPS
+        t >= START_TIMESTEPS_1
         and agent.replay_buffer.size >= BATCH_SIZE
     ):
 
@@ -133,7 +133,7 @@ for t in range(MAX_TIMESTEPS):
 
             best_reward = avg_reward
 
-            agent.save(SAC_MODEL_PATH)
+            agent.save(SAC_MODEL_PATH + f"{AGENT_ID_1}_best")
 
     # Episode finished
     if done:
@@ -168,7 +168,7 @@ np.save(
     np.array(eval_costs)
 )
 
-agent.save(SAC_MODEL_PATH + "_final")
+agent.save(SAC_MODEL_PATH + f"{AGENT_ID_1}_final")
 
 print("Final model saved.")
 
