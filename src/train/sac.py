@@ -40,7 +40,7 @@ class SAC(object):
         self.replay_buffer = ReplayBuffer(state_dim, action_dim)
 
 
-        self.target_entropy = -0.5 * action_dim
+        self.target_entropy = -2 * action_dim
         self.gamma = discount
         self.tau = tau
         self.total_it = 0
