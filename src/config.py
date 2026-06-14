@@ -25,9 +25,36 @@ SEED = 0
 SAC_MODEL_PATH = "models/"
 
 AGENT_ID_0 = "sac_phase_0"
+#-------------------------------------------
+# Phase 0.5 : fixed a
+#-------------------------------------------
+ENV_NAME = "SafetyRacecarButton2-v0"
+
+MAX_TIMESTEPS_0_PLUS = int(1e6)
+START_TIMESTEPS_0_PLUS = 0
+MAX_STEPS = 1000
+
+BATCH_SIZE = 256
+
+EVAL_FREQ = 50000
+SAC_EVAL_EPISODES = 10
+
+GAMMA_0_PLUS = 0.99
+TAU_0_PLUS = 0.005
+
+ACTOR_LR_0_PLUS = 3e-4
+CRITIC_LR_0_PLUS = 3e-4
+entropy_multiplier_0_PLUS = 2.0
+
+COST_WEIGHT_0_PLUS = 0.0
+SEED = 0
+
+SAC_MODEL_PATH = "models/"
+
+AGENT_ID_0_PLUS = "sac_phase_0_plus"
 
 #-------------------------------------------
-# Phase 1 : hazard avoidance
+# Phase 0 : hazard avoidance
 #-------------------------------------------
 ENV_NAME = "SafetyRacecarButton2-v0"
 

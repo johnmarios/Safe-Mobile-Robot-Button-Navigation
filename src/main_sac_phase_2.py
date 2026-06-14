@@ -54,7 +54,7 @@ def main_2():
     eval_rewards = []
     eval_costs = []
 
-    best_reward = -np.inf
+    best_score = -np.inf
 
     for t in range(MAX_TIMESTEPS_2):
 
@@ -122,26 +122,32 @@ def main_2():
             eval_rewards.append(avg_reward)
             eval_costs.append(avg_cost)
 
-            print(
-                "======================================"
-            )
+            score = avg_reward - COST_WEIGHT_2 * avg_cost
+
+            print("======================================")
 
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f}"
+                f"Average cost: {avg_cost:.2f} | "
+                f"Score: {score:.2f}"
             )
 
-            print(
-                "======================================"
-            )
+            print("======================================")
 
             # Save best model
-            if avg_reward > best_reward:
+            if score > best_score:
 
-                best_reward = avg_reward
+                best_score = score
 
-                agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_best")
+                agent.save(
+                    SAC_MODEL_PATH + f"{AGENT_ID_2}_best"
+                )
+
+                print(
+                    f"New best model saved "
+                    f"(score={score:.2f})"
+                )
 
         # Episode finished
         if done:

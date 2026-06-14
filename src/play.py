@@ -25,15 +25,18 @@ agent = SAC(
     action_dim=action_dim,
     max_action=max_action,
     device=device,
-    discount=GAMMA,
-    tau=TAU,
-    actor_lr=ACTOR_LR,
-    critic_lr=CRITIC_LR
+    discount=GAMMA_0,
+    tau=TAU_0,
+    actor_lr=ACTOR_LR_0,
+    critic_lr=CRITIC_LR_0
 )
 
 # Load model
-agent.load(SAC_MODEL_PATH)
+agent.load(
+    SAC_MODEL_PATH + AGENT_ID_0 + "_best"
+)
 
+print("Phase 0 model loaded successfully.")
 print("Model loaded successfully.")
 
 # Watch policy

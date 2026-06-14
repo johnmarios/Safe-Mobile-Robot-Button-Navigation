@@ -4,12 +4,12 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 
-from train.sac import SAC
+from train.sac_fixed_alpha import SAC_FA
 from evaluate.evaluate_sac import evaluate_policy
 from render.render_sac import render_policy
 from config import *
 
-def main_1():
+def main_0_plus():
     # Device
     device = torch.device(
         "cuda" if torch.cuda.is_available() else "cpu"
@@ -24,23 +24,24 @@ def main_1():
     max_action = float(env.action_space.high[0])
 
     # Agent
-    agent = SAC(
+    agent = SAC_FA(
         state_dim=state_dim,
         action_dim=action_dim,
         max_action=max_action,
         device=device,
-        discount=GAMMA_1,
-        tau=TAU_1,
-        actor_lr=ACTOR_LR_1,
-        critic_lr=CRITIC_LR_1,
-        entropy_multiplier=entropy_multiplier_1
+        discount=GAMMA_0_PLUS,
+        tau=TAU_0_PLUS,
+        actor_lr=ACTOR_LR_0_PLUS,
+        critic_lr=CRITIC_LR_0_PLUS,
+        entropy_multiplier=entropy_multiplier_0_PLUS
     )
 
     # Load the best model from phase 0
     agent.load(
-        "models/sac_phase_0_plus_best"
+        "models/sac_phase_0_best"
     )
 
+    print("Loaded phase 0 checkpoint.")
     # Initial state
     state, info = env.reset(seed=SEED)
 
@@ -53,17 +54,13 @@ def main_1():
     eval_rewards = []
     eval_costs = []
 
-    best_score = -np.inf
+    best_reward = -np.inf
 
-    for t in range(MAX_TIMESTEPS_1):
+    for t in range(MAX_TIMESTEPS_0_PLUS):
 
         episode_timesteps += 1
 
-        # Action selection
-        if t < START_TIMESTEPS_1:
-            action = env.action_space.sample()
-        else:
-            action = agent.select_action(state)
+        action = agent.select_action(state)
 
         # Environment step
         next_state, reward, cost, terminated, truncated, info = env.step(
@@ -73,7 +70,7 @@ def main_1():
         done = terminated or truncated
 
         # Reward shaping
-        modified_reward = reward - COST_WEIGHT_1 * cost
+        modified_reward = reward - COST_WEIGHT_0_PLUS * cost
 
 
         # Store transition
@@ -92,12 +89,9 @@ def main_1():
         episode_shaped_reward += modified_reward
 
         # Train
-        if (
-            t >= START_TIMESTEPS_1
-            and agent.replay_buffer.size >= BATCH_SIZE
-        ):
+        if (agent.replay_buffer.size >= BATCH_SIZE):
 
-            critic_loss, actor_loss, alpha_loss, alpha = \
+            critic_loss, actor_loss, _, alpha = \
                 agent.train(BATCH_SIZE)
 
             if t % 1000 == 0:
@@ -121,32 +115,26 @@ def main_1():
             eval_rewards.append(avg_reward)
             eval_costs.append(avg_cost)
 
-            score = avg_reward - COST_WEIGHT_1 * avg_cost
-
-            print("======================================")
+            print(
+                "======================================"
+            )
 
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f} | "
-                f"Score: {score:.2f}"
+                f"Average cost: {avg_cost:.2f}"
             )
 
-            print("======================================")
+            print(
+                "======================================"
+            )
 
             # Save best model
-            if score > best_score:
+            if avg_reward > best_reward:
 
-                best_score = score
+                best_reward = avg_reward
 
-                agent.save(
-                    SAC_MODEL_PATH + f"{AGENT_ID_1}_best"
-                )
-
-                print(
-                    f"New best model saved "
-                    f"(score={score:.2f})"
-                )
+                agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0_PLUS}_best")
 
         # Episode finished
         if done:
@@ -169,7 +157,7 @@ def main_1():
 
 
     # Save results
-    RESULTS_PATH = f"results/{AGENT_ID_1}"
+    RESULTS_PATH = f"results/{AGENT_ID_0_PLUS}"
 
     os.makedirs(RESULTS_PATH, exist_ok=True)
 
@@ -183,7 +171,7 @@ def main_1():
         np.array(eval_costs)
     )
 
-    agent.save(SAC_MODEL_PATH + f"{AGENT_ID_1}_final")
+    agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0_PLUS}_final")
 
     print("Final model saved.")
 
