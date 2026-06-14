@@ -23,7 +23,7 @@ SEED = 0
 
 SAC_MODEL_PATH = "models/sac"
 
-AGENT_ID = "sac_agent_0"
+AGENT_ID_0 = "sac_phase_0"
 
 #-------------------------------------------
 # Phase 1 : hazard avoidance
@@ -50,7 +50,7 @@ SEED = 0
 
 SAC_MODEL_PATH = "models/sac"
 
-AGENT_ID = "sac_agent_1"
+AGENT_ID_1 = "sac_phase_1"
 
 
 
@@ -79,4 +79,4 @@ SEED = 0
 
 SAC_MODEL_PATH = "models/sac"
 
-AGENT_ID = "sac_agent_2"
+AGENT_ID_2 = "sac_phase_2"
