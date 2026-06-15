@@ -23,8 +23,8 @@ class ReplayBuffer(object):
             max_size (int): Maximum number of transitions to store in the buffer.
         '''
         self.max_size = max_size
-        self.ptr = 0
-        self.size = 0
+        self.ptr = 0 # current index of the buffer 
+        self.size = 0 # current size of the buffer
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

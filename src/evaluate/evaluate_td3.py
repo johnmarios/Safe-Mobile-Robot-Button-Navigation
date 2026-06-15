@@ -26,7 +26,7 @@ SEED = 42
 
 def evaluate_td3():
     env = safety_gymnasium.make(ENV_ID,render_mode=None)
-    env = NormalizeActionWrapper(env)
+    # env = NormalizeActionWrapper(env)
 
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]

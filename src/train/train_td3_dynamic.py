@@ -1,23 +1,24 @@
 import argparse
-import os
 import time
 from pathlib import Path
 
 import numpy as np
-from normalize import NormalizeActionWrapper, sample_warmup_action
 import safety_gymnasium
 import torch
 from torch.utils.tensorboard import SummaryWriter
 
+from normalize import NormalizeActionWrapper
 from replayBuffer import ReplayBuffer
 from td3 import TD3
 
 
-DEFAULT_ENV_ID = "SafetyRacecarButton2-v0"
+DEFAULT_ENV_ID = "SafetyRacecarButton0-v0"
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="Train TD3 on Safety-Gymnasium Racecar Button.")
+    parser = argparse.ArgumentParser(
+        description="Train TD3 on Safety-Gymnasium Racecar Button."
+    )
 
     # Environment / run setup
     parser.add_argument("--env-id", type=str, default=DEFAULT_ENV_ID)
@@ -26,92 +27,129 @@ def parse_args():
     parser.add_argument("--render-mode", type=str, default=None)
 
     # Training duration
-    parser.add_argument("--max-timesteps", type=int, default=100_000, help="Maximum number of timesteps to train for.") 
-    parser.add_argument("--start-timesteps", type=int, default=50_000, help="Number of timesteps to run random actions (explore) before using policy actions.")
+    parser.add_argument("--max-timesteps", type=int, default=100_000)
+    parser.add_argument("--start-timesteps", type=int, default=5_000)
     parser.add_argument("--batch-size", type=int, default=256)
     parser.add_argument("--buffer-size", type=int, default=int(1e6))
 
-    # TD3 / exploration hyperparameters
+    # TD3 hyperparameters
     parser.add_argument("--learning-rate", type=float, default=3e-4)
-    parser.add_argument("--expl-noise", type=float, default=0.10, help="Exploration noise as fraction of max_action.")
-    parser.add_argument("--discount", type=float, default=None, help="Discount factor for future rewards.")
-    parser.add_argument("--tau", type=float, default=None, help="Target network update rate.") # target network update rate
-    parser.add_argument("--policy-noise", type=float, default=None, help="Noise added to target policy during critic update.")# noise added to target policy during critic update
-    parser.add_argument("--noise-clip", type=float, default=None, help="Clip the noise added to the target policy.")
-    parser.add_argument("--policy-freq", type=int, default=None, help="Frequency of policy updates.")
+    parser.add_argument("--discount", type=float, default=0.99)
+    parser.add_argument("--tau", type=float, default=0.005)
+    parser.add_argument("--policy-noise", type=float, default=0.08)
+    parser.add_argument("--noise-clip", type=float, default=0.15)
+    parser.add_argument("--policy-freq", type=int, default=2)
+
+    # Exploration / cost
+    parser.add_argument("--expl-noise", type=float, default=0.05)
     parser.add_argument("--train-cost-penalty", type=float, default=0.0)
+    parser.add_argument("--cost-weight", type=float, default=1.0)
 
     # Saving / loading
     parser.add_argument("--models-dir", type=str, default="models")
     parser.add_argument("--logs-dir", type=str, default="logs/td3")
-    parser.add_argument("--save-freq", type=int, default=10_000, help="Save checkpoint every N timesteps. Use 0 to disable.")
-    parser.add_argument("--eval-freq", type=int, default=5_000, help="Evaluate every N timesteps. Use 0 to disable.")
-    parser.add_argument("--eval-episodes", type=int, default=5, help="Number of episodes for each evaluation.")
-    parser.add_argument("--load-model", type=str, default=None, help="Path prefix of model to load/resume, e.g. models/run/best")
-    parser.add_argument("--save-best", action="store_true", help="Save best model according to eval reward - cost_weight * cost.")
-    parser.add_argument("--cost-weight", type=float, default=1.0, help="Penalty weight for eval cost when choosing best model.")
+    parser.add_argument("--save-freq", type=int, default=10_000)
+    parser.add_argument("--eval-freq", type=int, default=5_000)
+    parser.add_argument("--eval-episodes", type=int, default=5)
+    parser.add_argument("--save-best", action="store_true")
+
+    # Resume / pretrained loading
+    parser.add_argument(
+        "--resume-checkpoint",
+        type=str,
+        default=None,
+        help="Path to checkpoint .pth file for full resume.",
+    )
+    parser.add_argument(
+        "--load-model",
+        type=str,
+        default=None,
+        help="Path prefix for old TD3 model format, e.g. models/run/best",
+    )
 
     return parser.parse_args()
 
 
-def make_agent(args, state_dim, action_dim, max_action):
-    """
-    Create TD3 agent with hyperparameters from args. 
-    Only the required ones are passed as explicit parameters, 
-    the rest are passed via kwargs if they are not None.
+def set_seed(seed):
+    np.random.seed(seed)
+    torch.manual_seed(seed)
 
-    """
-    td3_kwargs = {
-        "state_dim": state_dim,
-        "action_dim": action_dim,
-        "max_action": max_action,
-        "learning_rate": args.learning_rate,
-    }
-
-    optional_args = {
-        "discount": args.discount,
-        "tau": args.tau,
-        "policy_noise": args.policy_noise,
-        "noise_clip": args.noise_clip,
-        "policy_freq": args.policy_freq,
-    }
-
-    # Only include optional args that are not None (i.e. were set by the user)
-    # to use TD3 defaults for any that were left as None
-
-    for key, value in optional_args.items():
-        if value is not None:
-            td3_kwargs[key] = value
-
-    return TD3(**td3_kwargs)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
 
 
-def evaluate_policy(agent, env_id, seed, eval_episodes=5):
-    eval_env = safety_gymnasium.make(env_id, render_mode=None)
-    eval_env = NormalizeActionWrapper(eval_env)
-    
+def make_env(env_id, seed=None, render_mode=None):
+    env = safety_gymnasium.make(env_id, render_mode=render_mode)
+    env = NormalizeActionWrapper(env)
+
+    if seed is not None:
+        state, info = env.reset(seed=seed)
+        env.action_space.seed(seed)
+    else:
+        state, info = env.reset()
+
+    assert np.allclose(env.action_space.low, -1.0), env.action_space
+    assert np.allclose(env.action_space.high, 1.0), env.action_space
+
+    return env, state, info
+
+
+def make_agent(args, state_dim, action_dim):
+    return TD3(
+        state_dim=state_dim,
+        action_dim=action_dim,
+        max_action=1.0,
+        discount=args.discount,
+        tau=args.tau,
+        policy_noise=args.policy_noise,
+        noise_clip=args.noise_clip,
+        policy_freq=args.policy_freq,
+        learning_rate=args.learning_rate,
+    )
+
+
+def select_training_action(agent, env, state, t, args, action_dim):
+    if t < args.start_timesteps:
+        action = env.action_space.sample()
+    else:
+        action = agent.select_action(np.array(state))
+
+        noise = args.expl_noise * np.random.randn(action_dim)
+        action = action + noise
+        action = np.clip(action, env.action_space.low, env.action_space.high)
+        action = action.astype(np.float32)
+
+    return action
+
+
+def evaluate_policy(agent, env_id, seed, eval_episodes=5, max_episode_steps=1000):
+    eval_env, _, _ = make_env(env_id, seed=None, render_mode=None)
+
     total_reward = 0.0
     total_cost = 0.0
     total_steps = 0
 
     for ep in range(eval_episodes):
-
-        # 10000 offset to avoid overlap with training seeds,
-        # so that evaluation is deterministic but different from training
-
         state, info = eval_env.reset(seed=seed + 10_000 + ep)
-        done = False
 
-        while not done:
+        done = False
+        ep_steps = 0
+
+        while not done and ep_steps < max_episode_steps:
             action = agent.select_action(np.array(state))
+            action = np.asarray(action, dtype=np.float32)
+            action = np.clip(action, eval_env.action_space.low, eval_env.action_space.high)
+
             next_state, reward, cost, terminated, truncated, info = eval_env.step(action)
 
             done = terminated or truncated
+            done_for_buffer = terminated 
             state = next_state
 
-            total_reward += reward
-            total_cost += cost
+            total_reward += float(reward)
+            total_cost += float(cost)
             total_steps += 1
+            ep_steps += 1
 
     eval_env.close()
 
@@ -123,31 +161,91 @@ def evaluate_policy(agent, env_id, seed, eval_episodes=5):
 
 
 def log_losses(writer, losses, timestep):
-    """
-    Supports either:
-    - dict, e.g. {"critic_loss": ..., "actor_loss": ...}
-    - tuple/list, e.g. (critic_loss, actor_loss)
-    If your TD3.train returns None, nothing is logged here.
-    """
     if losses is None:
         return
 
-    if isinstance(losses, dict):
-        for key, value in losses.items():
-            if value is not None:
-                writer.add_scalar(f"loss/{key}", float(value), timestep)
+    for key, value in losses.items():
+        if value is not None:
+            writer.add_scalar(f"loss/{key}", float(value), timestep)
+
+
+def save_checkpoint(
+    path,
+    agent,
+    replay_buffer,
+    global_step,
+    episode_num,
+    best_score,
+    args,
+):
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    checkpoint = {
+        "global_step": global_step,
+        "episode_num": episode_num,
+        "best_score": best_score,
+        "args": vars(args),
+
+        "actor": agent.actor.state_dict(),
+        "actor_target": agent.actor_target.state_dict(),
+        "critic": agent.critic.state_dict(),
+        "critic_target": agent.critic_target.state_dict(),
+
+        "actor_optimizer": agent.actor_optimizer.state_dict(),
+        "critic_optimizer": agent.critic_optimizer.state_dict(),
+
+        "total_it": agent.total_it,
+        "replay_buffer": replay_buffer,
+    }
+
+    torch.save(checkpoint, path)
+    print(f"[CHECKPOINT] Saved: {path}")
+
+
+def load_checkpoint(path, agent):
+    checkpoint = torch.load(path, map_location="cpu", weights_only=False)
+
+    agent.actor.load_state_dict(checkpoint["actor"])
+    agent.actor_target.load_state_dict(checkpoint["actor_target"])
+    agent.critic.load_state_dict(checkpoint["critic"])
+    agent.critic_target.load_state_dict(checkpoint["critic_target"])
+
+    agent.actor_optimizer.load_state_dict(checkpoint["actor_optimizer"])
+    agent.critic_optimizer.load_state_dict(checkpoint["critic_optimizer"])
+
+    agent.total_it = checkpoint.get("total_it", 0)
+
+    replay_buffer = checkpoint["replay_buffer"]
+    global_step = checkpoint.get("global_step", 0)
+    episode_num = checkpoint.get("episode_num", 1)
+    best_score = checkpoint.get("best_score", -float("inf"))
+
+    print(f"[CHECKPOINT] Loaded: {path}")
+    print(f"[CHECKPOINT] global_step={global_step}")
+    print(f"[CHECKPOINT] episode_num={episode_num}")
+    print(f"[CHECKPOINT] best_score={best_score}")
+
+    return replay_buffer, global_step, episode_num, best_score
+
+
+def print_action_debug(env, action, global_step):
+    if global_step % 1000 != 0:
         return
 
-    if isinstance(losses, (tuple, list)):
-        names = ["critic_loss", "actor_loss"]
-        for idx, value in enumerate(losses):
-            if value is not None:
-                name = names[idx] if idx < len(names) else f"loss_{idx}"
-                writer.add_scalar(f"loss/{name}", float(value), timestep)
+    try:
+        real_action = env.denormalize(action)
+        print(
+            f"[ACTION DEBUG] step={global_step} | "
+            f"normalized={action} | real={real_action}"
+        )
+    except AttributeError:
+        print(f"[ACTION DEBUG] step={global_step} | normalized={action}")
 
 
 def main():
     args = parse_args()
+    set_seed(args.seed)
 
     run_name = args.run_name
     if run_name is None:
@@ -159,18 +257,14 @@ def main():
     run_model_dir.mkdir(parents=True, exist_ok=True)
     run_log_dir.mkdir(parents=True, exist_ok=True)
 
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-
-    env = safety_gymnasium.make(args.env_id, render_mode=args.render_mode)
-    env = NormalizeActionWrapper(env)
-    
-    state, info = env.reset(seed=args.seed)
-    env.action_space.seed(args.seed)
+    env, state, info = make_env(
+        env_id=args.env_id,
+        seed=args.seed,
+        render_mode=args.render_mode,
+    )
 
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]
-    max_action = float(env.action_space.high[0])
 
     replay_buffer = ReplayBuffer(
         state_dim=state_dim,
@@ -178,128 +272,212 @@ def main():
         max_size=args.buffer_size,
     )
 
-    agent = make_agent(args, state_dim, action_dim, max_action)
+    agent = make_agent(args, state_dim, action_dim)
 
-    if args.load_model is not None:
+    global_step_start = 0
+    episode_num = 1
+    best_score = -float("inf")
+
+    if args.resume_checkpoint is not None:
+        replay_buffer, global_step_start, episode_num, best_score = load_checkpoint(
+            args.resume_checkpoint,
+            agent,
+        )
+
+        state, info = env.reset(seed=args.seed + global_step_start)
+
+    elif args.load_model is not None:
         agent.load(args.load_model)
-        print(f"Loaded model from: {args.load_model}")
+        print(f"[MODEL] Loaded old-format model from prefix: {args.load_model}")
 
     writer = SummaryWriter(log_dir=str(run_log_dir))
 
-    # Store hyperparameters in TensorBoard text tab
     writer.add_text(
         "config",
         "\n".join(f"{key}: {value}" for key, value in vars(args).items()),
-        0,
+        global_step_start,
     )
 
     episode_reward = 0.0
     episode_cost = 0.0
     episode_steps = 0
-    episode_num = 1
-    best_score = -float("inf")
 
-    for t in range(args.max_timesteps):
-        global_step = t + 1
+    latest_checkpoint_path = run_model_dir / "checkpoint_latest.pth"
 
-        if t < args.start_timesteps:
-            action = sample_warmup_action(env, action_dim)
-        else:
-            action = agent.select_action(np.array(state))
+    try:
+        for t in range(global_step_start, args.max_timesteps):
+            global_step = t + 1
 
-            noise = args.expl_noise * max_action * np.random.randn(action_dim)
-            action = action + noise
-            action = action.clip(env.action_space.low, env.action_space.high)
+            action = select_training_action(
+                agent=agent,
+                env=env,
+                state=state,
+                t=t,
+                args=args,
+                action_dim=action_dim,
+            )
 
-        next_state, reward, cost, terminated, truncated, info = env.step(action)
-        done = terminated or truncated
+            next_state, reward, cost, terminated, truncated, info = env.step(action)
+            done = terminated or truncated
+            done_for_buffer = terminated
 
-        train_reward = reward - args.train_cost_penalty * cost
+            print_action_debug(env, action, global_step)
 
-        replay_buffer.add(
-            state=state,
-            action=action,
-            next_state=next_state,
-            reward=train_reward,
-            cost=cost,
-            done=done,
+            train_reward = float(reward) - args.train_cost_penalty * float(cost)
+
+            replay_buffer.add(
+                state=state,
+                action=action,
+                next_state=next_state,
+                reward=train_reward,
+                cost=cost,
+                done=done_for_buffer,
+            )
+
+            state = next_state
+            episode_reward += float(reward)
+            episode_cost += float(cost)
+            episode_steps += 1
+
+            if t >= args.start_timesteps and replay_buffer.size >= args.batch_size:
+                losses = agent.train(
+                    replay_buffer=replay_buffer,
+                    batch_size=args.batch_size,
+                )
+                log_losses(writer, losses, global_step)
+
+            writer.add_scalar("train/reward_step", float(reward), global_step)
+            writer.add_scalar("train/cost_step", float(cost), global_step)
+
+            if done:
+                print(
+                    f"Episode {episode_num} | "
+                    f"timestep={global_step} | "
+                    f"steps={episode_steps} | "
+                    f"reward={episode_reward:.3f} | "
+                    f"cost={episode_cost:.3f}"
+                )
+
+                writer.add_scalar("episode/reward", episode_reward, global_step)
+                writer.add_scalar("episode/cost", episode_cost, global_step)
+                writer.add_scalar("episode/steps", episode_steps, global_step)
+
+                state, info = env.reset()
+
+                episode_reward = 0.0
+                episode_cost = 0.0
+                episode_steps = 0
+                episode_num += 1
+
+            if args.save_freq > 0 and global_step % args.save_freq == 0:
+                checkpoint_path = run_model_dir / f"checkpoint_{global_step}.pth"
+
+                save_checkpoint(
+                    path=checkpoint_path,
+                    agent=agent,
+                    replay_buffer=replay_buffer,
+                    global_step=global_step,
+                    episode_num=episode_num,
+                    best_score=best_score,
+                    args=args,
+                )
+
+                save_checkpoint(
+                    path=latest_checkpoint_path,
+                    agent=agent,
+                    replay_buffer=replay_buffer,
+                    global_step=global_step,
+                    episode_num=episode_num,
+                    best_score=best_score,
+                    args=args,
+                )
+
+                # Old-format save για render scripts που φορτώνουν prefix_actor.pth
+                agent.save(str(run_model_dir / "latest"))
+
+            if args.eval_freq > 0 and global_step % args.eval_freq == 0:
+                eval_stats = evaluate_policy(
+                    agent=agent,
+                    env_id=args.env_id,
+                    seed=args.seed,
+                    eval_episodes=args.eval_episodes,
+                )
+
+                eval_score = (
+                    eval_stats["avg_reward"]
+                    - args.cost_weight * eval_stats["avg_cost"]
+                )
+
+                writer.add_scalar("eval/avg_reward", eval_stats["avg_reward"], global_step)
+                writer.add_scalar("eval/avg_cost", eval_stats["avg_cost"], global_step)
+                writer.add_scalar("eval/avg_steps", eval_stats["avg_steps"], global_step)
+                writer.add_scalar("eval/score_reward_minus_cost", eval_score, global_step)
+
+                print(
+                    f"Evaluation @ {global_step} | "
+                    f"avg_reward={eval_stats['avg_reward']:.3f} | "
+                    f"avg_cost={eval_stats['avg_cost']:.3f} | "
+                    f"avg_steps={eval_stats['avg_steps']:.1f} | "
+                    f"score={eval_score:.3f}"
+                )
+
+                if args.save_best and eval_score > best_score:
+                    best_score = eval_score
+
+                    agent.save(str(run_model_dir / "best"))
+
+                    save_checkpoint(
+                        path=run_model_dir / "checkpoint_best.pth",
+                        agent=agent,
+                        replay_buffer=replay_buffer,
+                        global_step=global_step,
+                        episode_num=episode_num,
+                        best_score=best_score,
+                        args=args,
+                    )
+
+                    print(f"[BEST] New best model saved. score={best_score:.3f}")
+
+    except KeyboardInterrupt:
+        print("\n[INTERRUPTED] Training interrupted by user.")
+        print("[INTERRUPTED] Saving latest checkpoint...")
+
+        save_checkpoint(
+            path=latest_checkpoint_path,
+            agent=agent,
+            replay_buffer=replay_buffer,
+            global_step=global_step,
+            episode_num=episode_num,
+            best_score=best_score,
+            args=args,
         )
 
-        state = next_state
-        episode_reward += reward
-        episode_cost += cost
-        episode_steps += 1
+        agent.save(str(run_model_dir / "latest"))
 
-        if t >= args.start_timesteps:
-            losses = agent.train(
-                replay_buffer=replay_buffer,
-                batch_size=args.batch_size,
-            )
-            log_losses(writer, losses, global_step)
+        print("[INTERRUPTED] Checkpoint saved successfully.")
 
-        writer.add_scalar("train/reward_step", reward, global_step)
-        writer.add_scalar("train/cost_step", cost, global_step)
+    finally:
+        final_path = run_model_dir / "final"
 
-        if done:
-            print(
-                f"Episode {episode_num} | "
-                f"timestep={global_step} | "
-                f"steps={episode_steps} | "
-                f"reward={episode_reward:.2f} | "
-                f"cost={episode_cost:.2f}"
-            )
+        agent.save(str(final_path))
 
-            writer.add_scalar("episode/reward", episode_reward, global_step)
-            writer.add_scalar("episode/cost", episode_cost, global_step)
-            writer.add_scalar("episode/steps", episode_steps, global_step)
+        save_checkpoint(
+            path=run_model_dir / "checkpoint_final.pth",
+            agent=agent,
+            replay_buffer=replay_buffer,
+            global_step=min(args.max_timesteps, locals().get("global_step", global_step_start)),
+            episode_num=episode_num,
+            best_score=best_score,
+            args=args,
+        )
 
-            state, info = env.reset()
-            episode_reward = 0.0
-            episode_cost = 0.0
-            episode_steps = 0
-            episode_num += 1
+        env.close()
+        writer.close()
 
-        if args.save_freq > 0 and global_step % args.save_freq == 0:
-            checkpoint_path = run_model_dir / f"checkpoint_{global_step}"
-            agent.save(str(checkpoint_path))
-            agent.save(str(run_model_dir / "latest"))
-            print(f"Saved checkpoint: {checkpoint_path}")
-
-        if args.eval_freq > 0 and global_step % args.eval_freq == 0:
-            eval_stats = evaluate_policy(
-                agent=agent,
-                env_id=args.env_id,
-                seed=args.seed,
-                eval_episodes=args.eval_episodes,
-            )
-
-            eval_score = eval_stats["avg_reward"] - args.cost_weight * eval_stats["avg_cost"]
-
-            writer.add_scalar("eval/avg_reward", eval_stats["avg_reward"], global_step)
-            writer.add_scalar("eval/avg_cost", eval_stats["avg_cost"], global_step)
-            writer.add_scalar("eval/avg_steps", eval_stats["avg_steps"], global_step)
-            writer.add_scalar("eval/score_reward_minus_cost", eval_score, global_step)
-
-            print(
-                f"Evaluation @ {global_step} | "
-                f"avg_reward={eval_stats['avg_reward']:.2f} | "
-                f"avg_cost={eval_stats['avg_cost']:.2f} | "
-                f"score={eval_score:.2f}"
-            )
-
-            if args.save_best and eval_score > best_score:
-                best_score = eval_score
-                best_path = run_model_dir / "best"
-                agent.save(str(best_path))
-                print(f"New best model saved: {best_path}")
-
-    final_path = run_model_dir / "final"
-    agent.save(str(final_path))
-    env.close()
-    writer.close()
-
-    print(f"Training finished. Final model saved to: {final_path}")
-    print(f"TensorBoard logs saved to: {run_log_dir}")
+        print(f"Training finished or stopped.")
+        print(f"Final model prefix saved to: {final_path}")
+        print(f"Latest checkpoint saved to: {latest_checkpoint_path}")
+        print(f"TensorBoard logs saved to: {run_log_dir}")
 
 
 if __name__ == "__main__":
