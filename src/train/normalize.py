@@ -13,9 +13,6 @@ class NormalizeActionWrapper(gym.ActionWrapper):
     def __init__(
         self,
         env,
-        min_speed=-3.0,
-        max_speed=14.0,
-        max_steering=0.45,
     ):
         super().__init__(env)
 
@@ -23,9 +20,9 @@ class NormalizeActionWrapper(gym.ActionWrapper):
         self.real_high = env.action_space.high.astype(np.float32)
 
 
-        self.min_speed = float(min_speed)
-        self.max_speed = float(max_speed)
-        self.max_steering = float(max_steering)
+        # self.min_speed = float(min_speed)
+        # self.max_speed = float(max_speed)
+        # self.max_steering = float(max_steering)
 
         # regulate what agent sees as action space, normalized to [-1, 1]
 
@@ -50,36 +47,36 @@ class NormalizeActionWrapper(gym.ActionWrapper):
         real_action = np.zeros_like(action, dtype=np.float32)
 
         # BEFORE
-        # # action[0] = speed
-        # # -1 -> min_speed
-        # #  0 -> average speed
-        # #  1 -> max_speed
-
-        # # action[1] = steering
-
-        # real_action = self.denormalize(action)
-
-        # # for safety reasons : 
-
-        # real_action = np.clip(real_action, self.real_low, self.real_high)
-
-        # AFTER
-            # action[0] = speed
-
+        # action[0] = speed
         # -1 -> min_speed
         #  0 -> average speed
         #  1 -> max_speed
-        real_action[0] = self.min_speed + (action[0] + 1.0) * 0.5 * (self.max_speed - self.min_speed)
 
         # action[1] = steering
-        # -1 -> -max_steering
-        #  0 -> 0
-        #  1 -> max_steering
-        if len(action) > 1:
-            real_action[1] = self.max_steering * action[1]
 
-        # final safety clip to real env limits
+        real_action = self.denormalize(action)
+
+        # for safety reasons : 
+
         real_action = np.clip(real_action, self.real_low, self.real_high)
+
+        # AFTER
+        #     # action[0] = speed
+
+        # # -1 -> min_speed
+        # #  0 -> average speed
+        # #  1 -> max_speed
+        # real_action[0] = self.min_speed + (action[0] + 1.0) * 0.5 * (self.max_speed - self.min_speed)
+
+        # # action[1] = steering
+        # # -1 -> -max_steering
+        # #  0 -> 0
+        # #  1 -> max_steering
+        # if len(action) > 1:
+        #     real_action[1] = self.max_steering * action[1]
+
+        # # final safety clip to real env limits
+        # real_action = np.clip(real_action, self.real_low, self.real_high)
 
         return real_action
 

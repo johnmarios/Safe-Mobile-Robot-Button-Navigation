@@ -22,12 +22,12 @@ ENV_ID = "SafetyRacecarButton0-v0"
 # MODEL_PATH = "models/td3_button0_exp6/checkpoint_400000.pth"
 
 # Για old-format latest:
-MODEL_PATH = "models/td3_button0_exp7/latest"
+MODEL_PATH = "models/td3_button0_exp9/latest"
 
 NUM_EPISODES = 5
 MAX_STEPS = 1000
 # SEED = 42
-SEED = 12 
+SEED = 20 
 
 
 def load_from_checkpoint(agent, checkpoint_path):
