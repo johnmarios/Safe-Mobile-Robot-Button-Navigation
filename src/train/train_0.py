@@ -85,7 +85,7 @@ def train_0(MAX_TIMESTEPS,
     modified_reward_history = []
 
 
-    best_reward = -np.inf
+    best_score = -np.inf
 
     for t in range(MAX_TIMESTEPS):
 
@@ -132,6 +132,11 @@ def train_0(MAX_TIMESTEPS,
             critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
 
             if t % 1000 == 0:
+                
+                alpha_history.append(alpha)
+                training_steps.append(t)
+                critic_loss_history.append(critic_loss)
+                actor_loss_history.append(actor_loss)
 
                 print(
                     f"Step {t} | "
@@ -142,13 +147,7 @@ def train_0(MAX_TIMESTEPS,
 
 
 
-                rewards_history.append(episode_reward)
-                costs_history.append(episode_cost)
-                alpha_history.append(alpha)
-                training_steps.append(t)
-                critic_loss_history.append(critic_loss)
-                actor_loss_history.append(actor_loss)
-                modified_reward_history.append(episode_shaped_reward)
+                
 
         # Evaluation
         if (t + 1) % EVAL_FREQ == 0:
@@ -161,6 +160,8 @@ def train_0(MAX_TIMESTEPS,
 
             eval_rewards.append(avg_reward)
             eval_costs.append(avg_cost)
+
+            score = avg_reward - COST_WEIGHT * avg_cost
 
             print(
                 "======================================"
@@ -177,9 +178,9 @@ def train_0(MAX_TIMESTEPS,
             )
 
             # Save best model
-            if avg_reward > best_reward:
+            if score > best_score:
 
-                best_reward = avg_reward
+                best_score = score
 
                 agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
 
@@ -203,6 +204,9 @@ def train_0(MAX_TIMESTEPS,
 
         # Episode finished
         if done:
+            rewards_history.append(episode_reward)
+            costs_history.append(episode_cost)
+            modified_reward_history.append(episode_shaped_reward)
 
             print(
                 f"Episode {episode_num} | "
@@ -317,7 +321,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_reward_curve.png")
-
+    plt.close
 
     # Cost curve eval
     plt.figure(figsize=(8,5))
@@ -328,7 +332,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_cost_curve.png")
-
+    plt.close
 
     # Alpha curve
     plt.figure(figsize=(8,5))
@@ -339,6 +343,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/alpha_curve.png")
+    plt.close
 
     # Critic loss curve
     plt.figure(figsize=(8,5))
@@ -349,6 +354,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/critic_loss_curve.png")
+    plt.close
 
     # Actor loss curve
     plt.figure(figsize=(8,5))
@@ -359,6 +365,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/actor_loss_curve.png")
+    plt.close
 
     # Reward curve
     plt.figure(figsize=(8,5))
@@ -369,7 +376,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/reward.png")
-
+    plt.close
 
     # Cost curve
     plt.figure(figsize=(8,5))
@@ -380,6 +387,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/cost.png")
+    plt.close
 
     # Modified reward curve
     plt.figure(figsize=(8,5))
@@ -390,4 +398,5 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/modified_reward.png")
+    plt.close
 
