@@ -170,13 +170,15 @@ def train_0(MAX_TIMESTEPS,
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f}"|
+                f"Average cost: {avg_cost:.2f}|"
                 f"Score: {score:.2f}"
             )
 
             print(
                 "======================================"
             )
+
+            agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_latest")
 
             # Save best model
             if score > best_score:
@@ -226,11 +228,7 @@ def train_0(MAX_TIMESTEPS,
             episode_num += 1
 
 
-    # Save final agent
-
-    agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_final")
-
-    print("Final model saved.")
+    # final backup save
 
     save_results(
                 RESULTS_PATH,
@@ -322,6 +320,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_reward_curve.png")
+    plt.close()
 
     # Cost curve eval
     plt.figure(figsize=(8,5))
@@ -332,7 +331,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_cost_curve.png")
-    
+    plt.close()
 
     # Alpha curve
     plt.figure(figsize=(8,5))
@@ -343,6 +342,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/alpha_curve.png")
+    plt.close()
 
     # Critic loss curve
     plt.figure(figsize=(8,5))
@@ -353,6 +353,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/critic_loss_curve.png")
+    plt.close()
 
     # Actor loss curve
     plt.figure(figsize=(8,5))
@@ -363,7 +364,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/actor_loss_curve.png")
-    
+    plt.close()
 
     # Reward curve
     plt.figure(figsize=(8,5))
@@ -374,7 +375,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/reward.png")
-    
+    plt.close()
 
     # Cost curve
     plt.figure(figsize=(8,5))
@@ -385,7 +386,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/cost.png")
-    
+    plt.close()
 
     # Modified reward curve
     plt.figure(figsize=(8,5))
@@ -396,5 +397,5 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/modified_reward.png")
-    plt.close(all)
+    plt.close()
 
