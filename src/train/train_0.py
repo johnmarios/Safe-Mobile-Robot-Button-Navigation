@@ -170,7 +170,7 @@ def train_0(MAX_TIMESTEPS,
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f} |"
+                f"Average cost: {avg_cost:.2f} | "
                 f"Score: {score:.2f}"
             )
 
@@ -201,7 +201,8 @@ def train_0(MAX_TIMESTEPS,
                  training_steps,
                  critic_loss_history,
                  actor_loss_history,
-                 modified_reward_history
+                 modified_reward_history,
+                 COST_WEIGHT
                  )
 
 
@@ -242,7 +243,8 @@ def train_0(MAX_TIMESTEPS,
                  training_steps,
                  critic_loss_history,
                  actor_loss_history,
-                 modified_reward_history
+                 modified_reward_history,
+                 COST_WEIGHT
                  )
 
     env.close()
