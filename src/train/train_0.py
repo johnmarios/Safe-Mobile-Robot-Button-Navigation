@@ -162,7 +162,7 @@ def train_0(MAX_TIMESTEPS,
             eval_costs.append(avg_cost)
 
             score = avg_reward - COST_WEIGHT * avg_cost
-
+            
             print(
                 "======================================"
             )
@@ -170,7 +170,7 @@ def train_0(MAX_TIMESTEPS,
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f}|"
+                f"Average cost: {avg_cost:.2f} |"
                 f"Score: {score:.2f}"
             )
 
@@ -179,14 +179,16 @@ def train_0(MAX_TIMESTEPS,
             )
 
             agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_latest")
-
+            print("The latest model was saved")
             # Save best model
             if score > best_score:
 
                 best_score = score
 
                 agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
-
+                print(f"New best model saved"
+                      f"(score = {score:.2f})")
+                
 
             # plots and results save
             save_results(
@@ -262,8 +264,11 @@ def save_results(RESULTS_PATH,
                  training_steps,
                  critic_loss_history,
                  actor_loss_history,
-                 modified_reward_history
+                 modified_reward_history,
+                 COST_WEIGHT
                 ):
+    
+    score_history = np.array(eval_rewards) - COST_WEIGHT*np.array(eval_costs)
     
     np.save(
         f"{RESULTS_PATH}/eval_rewards.npy",
@@ -397,5 +402,16 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/modified_reward.png")
+    plt.close()
+
+    # Score curve
+    plt.figure(figsize=(8,5))
+    plt.plot(score_history)
+    plt.xlabel("Evaluation")
+    plt.ylabel("Score")
+    plt.title("Evaluation score")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/score_curve.png")
     plt.close()
 
