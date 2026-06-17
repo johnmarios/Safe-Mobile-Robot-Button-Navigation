@@ -53,6 +53,11 @@ def main_2():
 
     eval_rewards = []
     eval_costs = []
+    alpha_history = []
+    alpha_steps = []
+    critic_loss_history = []
+    actor_loss_history = []
+
 
     best_score = -np.inf
 
@@ -98,8 +103,13 @@ def main_2():
             and agent.replay_buffer.size >= BATCH_SIZE
         ):
 
-            critic_loss, actor_loss, alpha_loss, alpha = \
-                agent.train(BATCH_SIZE)
+            critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
+
+            critic_loss_history.append(critic_loss)
+            actor_loss_history.append(actor_loss)
+
+            alpha_history.append(alpha)
+            alpha_steps.append(t)
 
             if t % 1000 == 0:
 
@@ -184,6 +194,26 @@ def main_2():
         np.array(eval_costs)
     )
 
+    np.save(
+        f"{RESULTS_PATH}/alpha.npy",
+        np.array(alpha_history)
+    )
+
+    np.save(
+        f"{RESULTS_PATH}/alpha_steps.npy",
+        np.array(alpha_steps)
+    )
+    
+    np.save(
+        f"{RESULTS_PATH}/critic_loss.npy",
+        np.array(critic_loss_history)
+    )
+
+    np.save(
+        f"{RESULTS_PATH}/actor_loss.npy",
+        np.array(actor_loss_history)
+    )
+
     agent.save(SAC_MODEL_PATH + f"{AGENT_ID_2}_final")
 
     print("Final model saved.")
@@ -208,6 +238,38 @@ def main_2():
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/cost_curve.png")
+
+    # alpha curve
+    plt.figure(figsize=(8,5))
+    plt.plot(alpha_steps, alpha_history)
+    plt.xlabel("Training step")
+    plt.ylabel("Alpha")
+    plt.title("Alpha evolution")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/alpha_curve.png")
+
+    # Critic loss curve
+
+    plt.figure(figsize=(8,5))
+    plt.plot(critic_loss_history)
+    plt.xlabel("Training Updates")
+    plt.ylabel("Critic Loss")
+    plt.title("Critic Loss Curve")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/critic_loss_curve.png")
+
+    # Actor loss curve
+
+    plt.figure(figsize=(8,5))
+    plt.plot(actor_loss_history)
+    plt.xlabel("Training Updates")
+    plt.ylabel("Actor Loss")
+    plt.title("Actor Loss Curve")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/actor_loss_curve.png")
 
     env.close()
 
