@@ -150,8 +150,12 @@ def train_0(MAX_TIMESTEPS,
                 
 
         # Evaluation
-        if (t + 1) % EVAL_FREQ == 0:
-
+        if (
+            (t + 1) % EVAL_FREQ == 0 and
+            t >= START_TIMESTEPS and
+            agent.replay_buffer.size >= BATCH_SIZE
+        ):
+            
             avg_reward, avg_cost = evaluate_policy(
                 agent,
                 env_name=ENV_NAME,
