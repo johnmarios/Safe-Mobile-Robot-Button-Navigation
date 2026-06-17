@@ -22,7 +22,7 @@ ENV_ID = "SafetyRacecarButton0-v0"
 # MODEL_PATH = "models/td3_button0_exp6/checkpoint_400000.pth"
 
 # Για old-format latest:
-MODEL_PATH = "models/td3_button0_exp9/latest"
+MODEL_PATH = "models/td3_button0_exp11/best"
 
 NUM_EPISODES = 5
 MAX_STEPS = 1000

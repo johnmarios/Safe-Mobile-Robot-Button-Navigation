@@ -8,6 +8,8 @@ import torch
 from torch.utils.tensorboard import SummaryWriter
 
 from normalize import NormalizeActionWrapper
+from obs_normalize import RunningMeanStd
+
 from replayBuffer import ReplayBuffer
 from td3 import TD3
 
@@ -122,7 +124,7 @@ def select_training_action(agent, env, state, t, args, action_dim):
     return action
 
 
-def evaluate_policy(agent, env_id, seed, eval_episodes=5, max_episode_steps=1000):
+def evaluate_policy(agent, env_id, seed, eval_episodes=5, max_episode_steps=1000, obs_rms=None):
     eval_env, _, _ = make_env(env_id, seed=None, render_mode=None)
 
     total_reward = 0.0
@@ -132,11 +134,16 @@ def evaluate_policy(agent, env_id, seed, eval_episodes=5, max_episode_steps=1000
     for ep in range(eval_episodes):
         state, info = eval_env.reset(seed=seed + 10_000 + ep)
 
+        if obs_rms is not None:
+            state_input = obs_rms.normalize(state)
+        else:
+            state_input = state
+
         done = False
         ep_steps = 0
 
         while not done and ep_steps < max_episode_steps:
-            action = agent.select_action(np.array(state))
+            action = agent.select_action(np.array(state_input))
             action = np.asarray(action, dtype=np.float32)
             action = np.clip(action, eval_env.action_space.low, eval_env.action_space.high)
 
@@ -145,6 +152,10 @@ def evaluate_policy(agent, env_id, seed, eval_episodes=5, max_episode_steps=1000
             done = terminated or truncated
             done_for_buffer = terminated 
             state = next_state
+            if obs_rms is not None:
+                state_input = obs_rms.normalize(state)
+            else:
+                state_input = state
 
             total_reward += float(reward)
             total_cost += float(cost)
@@ -177,6 +188,7 @@ def save_checkpoint(
     episode_num,
     best_score,
     args,
+    obs_rms=None,
 ):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -197,13 +209,15 @@ def save_checkpoint(
 
         "total_it": agent.total_it,
         "replay_buffer": replay_buffer,
+
+        "obs_rms": obs_rms.state_dict() if obs_rms is not None else None,
     }
 
     torch.save(checkpoint, path)
     print(f"[CHECKPOINT] Saved: {path}")
 
 
-def load_checkpoint(path, agent):
+def load_checkpoint(path, agent, obs_rms=None):
     checkpoint = torch.load(path, map_location="cpu", weights_only=False)
 
     agent.actor.load_state_dict(checkpoint["actor"])
@@ -225,6 +239,11 @@ def load_checkpoint(path, agent):
     print(f"[CHECKPOINT] global_step={global_step}")
     print(f"[CHECKPOINT] episode_num={episode_num}")
     print(f"[CHECKPOINT] best_score={best_score}")
+
+    obs_rms_state = checkpoint.get("obs_rms", None)
+    if obs_rms is not None and obs_rms_state is not None:
+        obs_rms.load_state_dict(obs_rms_state)
+        print("[CHECKPOINT] Loaded obs_rms")
 
     return replay_buffer, global_step, episode_num, best_score
 
@@ -266,6 +285,11 @@ def main():
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]
 
+    obs_rms = RunningMeanStd(shape=(state_dim,))
+    obs_rms.update(state)
+    state_norm = obs_rms.normalize(state) # normalized state dimension
+    state_dim = state_norm.shape[0]
+
     replay_buffer = ReplayBuffer(
         state_dim=state_dim,
         action_dim=action_dim,
@@ -282,9 +306,12 @@ def main():
         replay_buffer, global_step_start, episode_num, best_score = load_checkpoint(
             args.resume_checkpoint,
             agent,
+            obs_rms=obs_rms
         )
 
         state, info = env.reset(seed=args.seed + global_step_start)
+        obs_rms.update(state)
+        state_norm = obs_rms.normalize(state)
 
     elif args.load_model is not None:
         agent.load(args.load_model)
@@ -311,30 +338,43 @@ def main():
             action = select_training_action(
                 agent=agent,
                 env=env,
-                state=state,
+                state=state_norm,
                 t=t,
                 args=args,
                 action_dim=action_dim,
             )
 
-            next_state, reward, cost, terminated, truncated, info = env.step(action)
+            next_state_raw, reward, cost, terminated, truncated, info = env.step(action)
+            
+            obs_rms.update(next_state_raw)
+            next_state_norm = obs_rms.normalize(next_state_raw) # normalized next state 
+            
             done = terminated or truncated
             done_for_buffer = terminated
 
             print_action_debug(env, action, global_step)
 
+
+            writer.add_scalar("train/action_speed", float(action[0]), global_step)
+            writer.add_scalar("train/action_speed_abs", abs(float(action[0])), global_step)
+            writer.add_scalar("train/action_steer", float(action[1]), global_step)
+            writer.add_scalar("train/action_steer_abs", abs(float(action[1])), global_step)
+
+
             train_reward = float(reward) - args.train_cost_penalty * float(cost)
 
             replay_buffer.add(
-                state=state,
+                state=state_norm,
                 action=action,
-                next_state=next_state,
+                next_state=next_state_norm,
                 reward=train_reward,
                 cost=cost,
                 done=done_for_buffer,
             )
 
-            state = next_state
+            state = next_state_raw
+            state_norm = next_state_norm
+
             episode_reward += float(reward)
             episode_cost += float(cost)
             episode_steps += 1
@@ -357,12 +397,14 @@ def main():
                     f"reward={episode_reward:.3f} | "
                     f"cost={episode_cost:.3f}"
                 )
-
                 writer.add_scalar("episode/reward", episode_reward, global_step)
                 writer.add_scalar("episode/cost", episode_cost, global_step)
                 writer.add_scalar("episode/steps", episode_steps, global_step)
 
                 state, info = env.reset()
+
+                obs_rms.update(state)
+                state_norm = obs_rms.normalize(state)
 
                 episode_reward = 0.0
                 episode_cost = 0.0
@@ -380,6 +422,7 @@ def main():
                     episode_num=episode_num,
                     best_score=best_score,
                     args=args,
+                    obs_rms=obs_rms,
                 )
 
                 save_checkpoint(
@@ -390,10 +433,17 @@ def main():
                     episode_num=episode_num,
                     best_score=best_score,
                     args=args,
+                    obs_rms=obs_rms,
                 )
 
                 # Old-format save για render scripts που φορτώνουν prefix_actor.pth
                 agent.save(str(run_model_dir / "latest"))
+                np.savez(
+                    run_model_dir / "latest_obs_rms.npz",
+                    mean=obs_rms.mean,
+                    var=obs_rms.var,
+                    count=obs_rms.count,
+                )
 
             if args.eval_freq > 0 and global_step % args.eval_freq == 0:
                 eval_stats = evaluate_policy(
@@ -401,6 +451,7 @@ def main():
                     env_id=args.env_id,
                     seed=args.seed,
                     eval_episodes=args.eval_episodes,
+                    obs_rms=obs_rms,
                 )
 
                 eval_score = (
@@ -426,6 +477,13 @@ def main():
 
                     agent.save(str(run_model_dir / "best"))
 
+                    np.savez(
+                        run_model_dir / "best_obs_rms.npz",
+                        mean=obs_rms.mean,
+                        var=obs_rms.var,
+                        count=obs_rms.count,
+                    )
+
                     save_checkpoint(
                         path=run_model_dir / "checkpoint_best.pth",
                         agent=agent,
@@ -434,6 +492,7 @@ def main():
                         episode_num=episode_num,
                         best_score=best_score,
                         args=args,
+                        obs_rms=obs_rms,
                     )
 
                     print(f"[BEST] New best model saved. score={best_score:.3f}")
@@ -450,9 +509,17 @@ def main():
             episode_num=episode_num,
             best_score=best_score,
             args=args,
+            obs_rms=obs_rms,
         )
 
         agent.save(str(run_model_dir / "latest"))
+
+        np.savez(
+            run_model_dir / "latest_obs_rms.npz",
+            mean=obs_rms.mean,
+            var=obs_rms.var,
+            count=obs_rms.count,
+        )
 
         print("[INTERRUPTED] Checkpoint saved successfully.")
 
@@ -460,6 +527,13 @@ def main():
         final_path = run_model_dir / "final"
 
         agent.save(str(final_path))
+
+        np.savez(
+            run_model_dir / "final_obs_rms.npz",
+            mean=obs_rms.mean,
+            var=obs_rms.var,
+            count=obs_rms.count,
+        )
 
         save_checkpoint(
             path=run_model_dir / "checkpoint_final.pth",
@@ -469,6 +543,7 @@ def main():
             episode_num=episode_num,
             best_score=best_score,
             args=args,
+            obs_rms=obs_rms,
         )
 
         env.close()

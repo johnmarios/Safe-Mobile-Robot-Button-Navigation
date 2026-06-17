@@ -38,18 +38,18 @@ class Button0Controller:
         min_speed=2.0,
         max_steer=0.785,
         steer_gain=1.0,
-        reverse_speed=-2.0,
+        reverse_speed=-8.0,
         reverse_steps=30,
-        reverse_cooldown_steps=40,
+        reverse_cooldown_steps=10,
         avoid_threshold=0.35,
         recover_threshold=0.85,
         avoid_gain=0.5,
         search_steer=0.25,
-        reverse_to_goal_threshold=2.2, 
-        reverse_to_goal_speed=-5.0,
+        reverse_to_goal_threshold=2.0, 
+        reverse_to_goal_speed=-10.0,
         reverse_to_goal_steer_gain=1.0,
 
-        recovery_safe_threshold=0.45,
+        recovery_safe_threshold=0.85,
         recovery_min_steps=30,
         recovery_max_steps=1000,
         ):
@@ -317,7 +317,7 @@ class Button0Controller:
         else:
             rear_error = self.wrap_angle(goal_angle + np.pi)
 
-        steer = self.reverse_to_goal_steer_gain * rear_error
+        steer = -self.reverse_to_goal_steer_gain * rear_error
         steer = np.clip(steer, -self.max_steer, self.max_steer)
 
         return np.array([self.reverse_to_goal_speed, steer],dtype=np.float32)
