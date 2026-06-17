@@ -131,7 +131,7 @@ def train_0(MAX_TIMESTEPS,
 
             critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
 
-            if t % 1000 == 0:
+            if t % MAX_STEPS == 0:
                 
                 alpha_history.append(alpha)
                 training_steps.append(t)
@@ -170,7 +170,8 @@ def train_0(MAX_TIMESTEPS,
             print(
                 f"Step {t+1} | "
                 f"Average reward: {avg_reward:.2f} | "
-                f"Average cost: {avg_cost:.2f}"
+                f"Average cost: {avg_cost:.2f}"|
+                f"Score: {score:.2f}"
             )
 
             print(
@@ -321,7 +322,6 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_reward_curve.png")
-    plt.close
 
     # Cost curve eval
     plt.figure(figsize=(8,5))
@@ -332,7 +332,7 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_cost_curve.png")
-    plt.close
+    
 
     # Alpha curve
     plt.figure(figsize=(8,5))
@@ -343,7 +343,6 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/alpha_curve.png")
-    plt.close
 
     # Critic loss curve
     plt.figure(figsize=(8,5))
@@ -354,7 +353,6 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/critic_loss_curve.png")
-    plt.close
 
     # Actor loss curve
     plt.figure(figsize=(8,5))
@@ -365,38 +363,38 @@ def save_results(RESULTS_PATH,
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/actor_loss_curve.png")
-    plt.close
+    
 
     # Reward curve
     plt.figure(figsize=(8,5))
-    plt.plot(training_steps,rewards_history)
-    plt.xlabel("Training step")
+    plt.plot(rewards_history)
+    plt.xlabel("Episode")
     plt.ylabel("Reward")
     plt.title("Reward curve")
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/reward.png")
-    plt.close
+    
 
     # Cost curve
     plt.figure(figsize=(8,5))
-    plt.plot(training_steps,costs_history)
-    plt.xlabel("Training step")
+    plt.plot(costs_history)
+    plt.xlabel("Episode")
     plt.ylabel("Cost")
     plt.title("Cost curve")
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/cost.png")
-    plt.close
+    
 
     # Modified reward curve
     plt.figure(figsize=(8,5))
-    plt.plot(training_steps,modified_reward_history)
-    plt.xlabel("Training step")
+    plt.plot(modified_reward_history)
+    plt.xlabel("Episode")
     plt.ylabel("Modified reward")
     plt.title("Modified reward curve")
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/modified_reward.png")
-    plt.close
+    plt.close(all)
 
