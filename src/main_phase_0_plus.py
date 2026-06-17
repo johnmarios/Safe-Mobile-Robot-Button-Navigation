@@ -1,97 +1,15 @@
-# import safety_gymnasium
-
-# env = safety_gymnasium.make("SafetyRacecarButton2-v0")
-
-# obs, info = env.reset(seed=0)
-# terminated, truncated = False, False
-
-# total_reward = 0.0
-# total_cost = 0.0
-
-# print(type(obs))
-# print(obs.shape)
-# print(obs)
-
-# while not (terminated or truncated):
-
-#     # Replace this with the team’s controller.
-#     action = env.action_space.sample()
-#     obs, reward, cost, terminated, truncated, info = env.step(
-#     action)
-#     total_reward += reward
-#     total_cost += cost
-#     print(obs)
-#     print(info)
-#     print(info.keys())
-# print("Episode reward:", total_reward)
-# print("Episode cost:", total_cost)
-
-
-# env.close()
-
-# import safety_gymnasium
-# from config import ENV_NAME, SEED
-
-# env = safety_gymnasium.make("SafetyRacecarButton2-v0")
-# obs, info = env.reset()
-
-
-# print(env.unwrapped)
-# print(dir(env.unwrapped.task))
-
-# print(env.unwrapped.task.__dict__.keys())
-
-# print(env.unwrapped.task.goal)
-# print(env.unwrapped.task.buttons)
-
-# print("==============================")
-# print(env.unwrapped.task.buttons.goal_button)
-# print(env.unwrapped.task.goal)
-# print(env.unwrapped.task.dist_goal)
-# print(env.unwrapped.task.goal_achieved)
-
-
-# env = safety_gymnasium.make(ENV_NAME)
-
-# builder = env.unwrapped
-
-# print()
-# print(builder.obs_space_dict)
-
-# print()
-# print(builder.obs_space_dict.spaces.keys())
-
-
-
-# print(type(env))
-# print()
-
-# current = env
-# i = 0
-
-# while hasattr(current, "env"):
-#     print(f"Level {i}: {type(current)}")
-#     current = current.env
-#     i += 1
-
-# print(f"Final level: {type(current)}")
-
-# print()
-# print(dir(current))
-
-
 import os
 import safety_gymnasium
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
 
-from train.sac import SAC
+from train.sac_fixed_alpha import SAC_FA
 from evaluate.evaluate_sac import evaluate_policy
 from render.render_sac import render_policy
 from config import *
 
-def main_TEST():
+def main_0_plus():
     # Device
     device = torch.device(
         "cuda" if torch.cuda.is_available() else "cpu"
@@ -106,19 +24,24 @@ def main_TEST():
     max_action = float(env.action_space.high[0])
 
     # Agent
-    agent = SAC(
+    agent = SAC_FA(
         state_dim=state_dim,
         action_dim=action_dim,
         max_action=max_action,
         device=device,
-        discount=GAMMA_0,
-        tau=TAU_0,
-        actor_lr=ACTOR_LR_0,
-        critic_lr=CRITIC_LR_0,
-        entropy_multiplier=entropy_multiplier_0
+        discount=GAMMA_0_PLUS,
+        tau=TAU_0_PLUS,
+        actor_lr=ACTOR_LR_0_PLUS,
+        critic_lr=CRITIC_LR_0_PLUS,
+        entropy_multiplier=entropy_multiplier_0_PLUS
     )
-   
 
+    # Load the best model from phase 0
+    agent.load(
+        "models/sac_phase_0_best"
+    )
+
+    print("Loaded phase 0 checkpoint.")
     # Initial state
     state, info = env.reset(seed=SEED)
 
@@ -130,7 +53,6 @@ def main_TEST():
 
     eval_rewards = []
     eval_costs = []
-
     alpha_history = []
     alpha_steps = []
     critic_loss_history = []
@@ -139,15 +61,11 @@ def main_TEST():
 
     best_reward = -np.inf
 
-    for t in range(MAX_TIMESTEPS_TEST):
+    for t in range(MAX_TIMESTEPS_0_PLUS):
 
         episode_timesteps += 1
 
-        # Action selection
-        if t < START_TIMESTEPS_TEST:
-            action = env.action_space.sample()
-        else:
-            action = agent.select_action(state)
+        action = agent.select_action(state)
 
         # Environment step
         next_state, reward, cost, terminated, truncated, info = env.step(
@@ -157,8 +75,8 @@ def main_TEST():
         done = terminated or truncated
 
         # Reward shaping
-        modified_reward = reward - COST_WEIGHT_0 * cost
-        
+        modified_reward = reward - COST_WEIGHT_0_PLUS * cost
+
 
         # Store transition
         agent.replay_buffer.add(
@@ -176,12 +94,9 @@ def main_TEST():
         episode_shaped_reward += modified_reward
 
         # Train
-        if (
-            t >= START_TIMESTEPS_TEST
-            and agent.replay_buffer.size >= BATCH_SIZE
-        ):
+        if (agent.replay_buffer.size >= BATCH_SIZE):
 
-            critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
+            critic_loss, actor_loss, _, alpha = agent.train(BATCH_SIZE)
             
             critic_loss_history.append(critic_loss)
             actor_loss_history.append(actor_loss)
@@ -199,12 +114,12 @@ def main_TEST():
                 )
 
         # Evaluation
-        if (t + 1) % EVAL_FREQ_TEST == 0:
+        if (t + 1) % EVAL_FREQ == 0:
 
             avg_reward, avg_cost = evaluate_policy(
                 agent,
                 env_name=ENV_NAME,
-                eval_episodes=SAC_EVAL_EPISODES_TEST
+                eval_episodes=SAC_EVAL_EPISODES
             )
 
             eval_rewards.append(avg_reward)
@@ -229,7 +144,7 @@ def main_TEST():
 
                 best_reward = avg_reward
 
-                agent.save(SAC_MODEL_PATH + AGENT_ID_TEST + "_best")
+                agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0_PLUS}_best")
 
         # Episode finished
         if done:
@@ -252,7 +167,7 @@ def main_TEST():
 
 
     # Save results
-    RESULTS_PATH = f"results/{AGENT_ID_TEST}"
+    RESULTS_PATH = f"results/{AGENT_ID_0_PLUS}"
 
     os.makedirs(RESULTS_PATH, exist_ok=True)
 
@@ -265,6 +180,7 @@ def main_TEST():
         f"{RESULTS_PATH}/costs.npy",
         np.array(eval_costs)
     )
+
     np.save(
         f"{RESULTS_PATH}/alpha.npy",
         np.array(alpha_history)
@@ -273,19 +189,20 @@ def main_TEST():
     np.save(
         f"{RESULTS_PATH}/alpha_steps.npy",
         np.array(alpha_steps)
-    )
+)
     
     np.save(
         f"{RESULTS_PATH}/critic_loss.npy",
         np.array(critic_loss_history)
-    )
+        )
 
     np.save(
         f"{RESULTS_PATH}/actor_loss.npy",
         np.array(actor_loss_history)
-    )
+        )
 
-    agent.save(SAC_MODEL_PATH + AGENT_ID_TEST + "_final")
+
+    agent.save(SAC_MODEL_PATH + f"{AGENT_ID_0_PLUS}_final")
 
     print("Final model saved.")
 
@@ -310,8 +227,6 @@ def main_TEST():
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/cost_curve.png")
 
-
-
     # alpha curve
     plt.figure(figsize=(8,5))
     plt.plot(alpha_steps, alpha_history)
@@ -332,6 +247,7 @@ def main_TEST():
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/critic_loss_curve.png")
+    plt.close()
 
     # Actor loss curve
 
@@ -343,10 +259,10 @@ def main_TEST():
     plt.grid()
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/actor_loss_curve.png")
-    
+    plt.close()
+
+
+
     env.close()
 
     render_policy(agent, ENV_NAME, episodes=5)
-
-if __name__ == "__main__":
-    main_TEST()
