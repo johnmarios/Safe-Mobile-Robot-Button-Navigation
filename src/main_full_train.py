@@ -1,7 +1,7 @@
 from train.train_0 import train_0
 
 def main():
-    # Phase 0: Basic navigation
+    # Course 0 : Phase 0: Basic navigation
     train_0(MAX_TIMESTEPS = int(5e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
@@ -22,10 +22,166 @@ def main():
             )
 
 
-    # Phase 1: Hazard avoidance
-    #main_sac_phase_1.main_1()
+    # Course 1 : Phase 0: Hazard avoidance
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = int(1e5),
+            LOAD_MODEL = None,
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.001,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_cost_001_phase_0",
+            )
 
-    # Phase 2: Hazard avoidance advanced
+    # Course 2 : Phase 0: Hazard avoidance advanced
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = int(1e5),
+            LOAD_MODEL = None,
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.005,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_cost_003_phase_0",
+            )
+    
+    # Course 0 : Phase 1: cost 0.0 --> 0.001
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_0",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.001,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_1",
+            )
+    
+    # Course 0 : Phase 2: cost 0.001 --> 0.002
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_1",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.002,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_2",
+            )
+    
+    # Course 0 : Phase 3: cost 0.002 --> 0.003
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_2",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.003,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_3",
+            )
+    
+    # Course 0 : Phase 4: cost 0.003 --> 0.004
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_3",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.004,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_4",
+            )
+    
+    # Course 0 : Phase 5: cost 0.004 --> 0.005
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_4",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.005,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_5",
+            )
+    
+    # Course 0 : Phase 6: cost 0.005 --> 0.007
+    train_0(MAX_TIMESTEPS = int(5e5),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_phase_5",
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 50000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 3e-4,
+            CRITIC_LR = 3e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.007,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_phase_6",
+            )
+
 
 
 if __name__ == "__main__":

@@ -62,7 +62,11 @@ def train_0(MAX_TIMESTEPS,
 
     if LOAD_MODEL is not None:
         agent.load(
-            f"models/{LOAD_MODEL}"
+            os.path.join(
+                SAC_MODEL_PATH,
+                LOAD_MODEL,
+                f"{LOAD_MODEL}"
+            )
         )
 
     # Initial state
@@ -182,14 +186,28 @@ def train_0(MAX_TIMESTEPS,
                 "======================================"
             )
 
-            agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_latest")
+            agent.save(
+                os.path.join(
+                    SAC_MODEL_PATH,
+                    AGENT_ID,
+                    f"{AGENT_ID}_latest"
+                )
+            )
             print("The latest model was saved")
             # Save best model
             if score > best_score:
 
                 best_score = score
 
-                agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
+                agent.save(
+                    os.path.join(
+                        SAC_MODEL_PATH,
+                        AGENT_ID,
+                        f"{AGENT_ID}_best"
+                    )
+                )
+
+                
                 print(f"New best model saved "
                       f"(score = {score:.2f})")
                 
@@ -253,7 +271,7 @@ def train_0(MAX_TIMESTEPS,
 
     env.close()
 
-    render_policy(agent, ENV_NAME, episodes=5)
+    #render_policy(agent, ENV_NAME, episodes=5)
 
 
 
