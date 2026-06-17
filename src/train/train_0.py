@@ -186,7 +186,7 @@ def train_0(MAX_TIMESTEPS,
                 best_score = score
 
                 agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
-                print(f"New best model saved"
+                print(f"New best model saved "
                       f"(score = {score:.2f})")
                 
 
@@ -317,6 +317,10 @@ def save_results(RESULTS_PATH,
         np.array(modified_reward_history)
     )
 
+    np.save(
+        f"{RESULTS_PATH}/score_history.npy",
+        np.array(score_history)
+    )
 
     # Reward curve eval
     plt.figure(figsize=(8,5))
