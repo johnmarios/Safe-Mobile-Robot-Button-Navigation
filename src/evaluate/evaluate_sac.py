@@ -70,4 +70,4 @@ def evaluate_policy(
 
     env.close()
 
-    return np.mean(episode_rewards), np.mean(episode_costs)
+    return np.mean(episode_rewards), np.mean(episode_costs), episode_rewards, episode_costs

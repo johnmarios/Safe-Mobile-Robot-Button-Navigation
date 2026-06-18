@@ -12,6 +12,7 @@ from config import *
 def train_0(MAX_TIMESTEPS,
             START_TIMESTEPS,
             LOAD_MODEL,
+            LOAD_RESULTS_PATH,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
@@ -65,6 +66,20 @@ def train_0(MAX_TIMESTEPS,
             f"models/{LOAD_MODEL}"
         )
 
+    (
+        eval_rewards,
+        eval_costs,
+        eval_rewards_history,
+        eval_costs_history,
+        rewards_history,
+        costs_history,
+        modified_reward_history,
+        alpha_history,
+        training_steps,
+        critic_loss_history,
+        actor_loss_history
+    ) = load_data(LOAD_RESULTS_PATH)
+
     # Initial state
     state, info = env.reset(seed=SEED)
 
@@ -74,18 +89,12 @@ def train_0(MAX_TIMESTEPS,
     episode_num = 0
     episode_timesteps = 0
 
-    eval_rewards = []
-    eval_costs = []
-    rewards_history = []
-    costs_history = []
-    alpha_history = []
-    training_steps = []
-    critic_loss_history = []
-    actor_loss_history = []
-    modified_reward_history = []
 
-
-    best_score = -np.inf
+    if len(eval_rewards)>0:
+        score_history = np.array(eval_rewards)-COST_WEIGHT*np.array(eval_costs)
+        best_score = np.max(score_history)
+    else:
+        best_score = -np.inf
 
     for t in range(MAX_TIMESTEPS):
 
@@ -134,7 +143,14 @@ def train_0(MAX_TIMESTEPS,
             if t % MAX_STEPS == 0:
                 
                 alpha_history.append(alpha)
-                training_steps.append(t)
+
+                if len(training_steps) == 0:
+                    training_steps.append(0)
+                else:
+                    training_steps.append(
+                        training_steps[-1] + MAX_STEPS
+                    )
+
                 critic_loss_history.append(critic_loss)
                 actor_loss_history.append(actor_loss)
 
@@ -156,7 +172,7 @@ def train_0(MAX_TIMESTEPS,
             agent.replay_buffer.size >= BATCH_SIZE
         ):
             
-            avg_reward, avg_cost = evaluate_policy(
+            avg_reward, avg_cost, eval_rewards_history_r, eval_costs_history_r = evaluate_policy(
                 agent,
                 env_name=ENV_NAME,
                 eval_episodes=SAC_EVAL_EPISODES
@@ -164,6 +180,8 @@ def train_0(MAX_TIMESTEPS,
 
             eval_rewards.append(avg_reward)
             eval_costs.append(avg_cost)
+            eval_rewards_history.append(eval_rewards_history_r)
+            eval_costs_history.append(eval_costs_history_r)
 
             score = avg_reward - COST_WEIGHT * avg_cost
             
@@ -199,6 +217,8 @@ def train_0(MAX_TIMESTEPS,
                 RESULTS_PATH,
                  eval_rewards,
                  eval_costs,
+                 eval_rewards_history,
+                 eval_costs_history,
                  rewards_history,
                  costs_history,
                  alpha_history,
@@ -241,6 +261,8 @@ def train_0(MAX_TIMESTEPS,
                 RESULTS_PATH,
                  eval_rewards,
                  eval_costs,
+                 eval_rewards_history,
+                 eval_costs_history,
                  rewards_history,
                  costs_history,
                  alpha_history,
@@ -253,7 +275,7 @@ def train_0(MAX_TIMESTEPS,
 
     env.close()
 
-    render_policy(agent, ENV_NAME, episodes=5)
+    #render_policy(agent, ENV_NAME, episodes=5)
 
 
 
@@ -264,6 +286,8 @@ def train_0(MAX_TIMESTEPS,
 def save_results(RESULTS_PATH,
                  eval_rewards,
                  eval_costs,
+                 eval_rewards_history,
+                 eval_costs_history,
                  rewards_history,
                  costs_history,
                  alpha_history,
@@ -287,7 +311,17 @@ def save_results(RESULTS_PATH,
     )
 
     np.save(
-        f"{RESULTS_PATH}/alpha.npy",
+        f"{RESULTS_PATH}/eval_rewards_history.npy",
+        np.array(eval_rewards_history)
+    )
+
+    np.save(
+        f"{RESULTS_PATH}/eval_costs_history.npy",
+        np.array(eval_costs_history)
+    )
+
+    np.save(
+        f"{RESULTS_PATH}/alpha_history.npy",
         np.array(alpha_history)
     )
 
@@ -297,12 +331,12 @@ def save_results(RESULTS_PATH,
     )
 
     np.save(
-        f"{RESULTS_PATH}/critic_loss.npy",
+        f"{RESULTS_PATH}/critic_loss_history.npy",
         np.array(critic_loss_history)
     )
 
     np.save(
-        f"{RESULTS_PATH}/actor_loss.npy",
+        f"{RESULTS_PATH}/actor_loss_history.npy",
         np.array(actor_loss_history)
     )
 
@@ -317,7 +351,7 @@ def save_results(RESULTS_PATH,
     )
 
     np.save(
-        f"{RESULTS_PATH}/modified_reward.npy",
+        f"{RESULTS_PATH}/modified_reward_history.npy",
         np.array(modified_reward_history)
     )
 
@@ -326,9 +360,9 @@ def save_results(RESULTS_PATH,
         np.array(score_history)
     )
 
-    # Reward curve eval
+    # Reward avg curve eval
     plt.figure(figsize=(8,5))
-    plt.plot(eval_rewards)
+    plt.plot(eval_rewards, marker ='o')
     plt.xlabel("Evaluation")
     plt.ylabel("Average Reward")
     plt.title("Reward Curve")
@@ -337,9 +371,9 @@ def save_results(RESULTS_PATH,
     plt.savefig(f"{RESULTS_PATH}/eval_reward_curve.png")
     plt.close()
 
-    # Cost curve eval
+    # Cost avg curve eval
     plt.figure(figsize=(8,5))
-    plt.plot(eval_costs)
+    plt.plot(eval_costs, marker ='o')
     plt.xlabel("Evaluation")
     plt.ylabel("Average Cost")
     plt.title("Cost Curve")
@@ -347,6 +381,31 @@ def save_results(RESULTS_PATH,
     plt.tight_layout()
     plt.savefig(f"{RESULTS_PATH}/eval_cost_curve.png")
     plt.close()
+
+    # Reward std curve eval
+    reward_std = np.std(eval_rewards_history, axis=1)
+    plt.figure(figsize=(8,5))
+    plt.plot(reward_std)
+    plt.xlabel("Evaluation")
+    plt.ylabel("Reward std")
+    plt.title("Reward standard deviation")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/eval_reward_std_curve.png")
+    plt.close()
+
+    # Cost std curve eval
+    cost_std = np.std(eval_costs_history,axis = 1)
+    plt.figure(figsize=(8,5))
+    plt.plot(cost_std)
+    plt.xlabel("Evaluation")
+    plt.ylabel("Cost std")
+    plt.title("Cost standard deviation")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/eval_cost_std_curve.png")
+    plt.close()
+
 
     # Alpha curve
     plt.figure(figsize=(8,5))
@@ -416,7 +475,7 @@ def save_results(RESULTS_PATH,
 
     # Score curve
     plt.figure(figsize=(8,5))
-    plt.plot(score_history)
+    plt.plot(score_history, marker ='o')
     plt.xlabel("Evaluation")
     plt.ylabel("Score")
     plt.title("Evaluation score")
@@ -425,3 +484,75 @@ def save_results(RESULTS_PATH,
     plt.savefig(f"{RESULTS_PATH}/score_curve.png")
     plt.close()
 
+def load_data(LOAD_RESULTS_PATH):
+
+    if os.path.exists(f"{LOAD_RESULTS_PATH}/eval_rewards.npy"):
+        eval_rewards = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_rewards.npy"
+        ).tolist()
+
+        eval_costs = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_costs.npy"
+        ).tolist()
+
+        eval_rewards_history = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_rewards_history.npy"
+        ).tolist()
+
+        eval_costs_history = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_costs_history.npy"
+        ).tolist()
+
+        rewards_history = np.load(
+            f"{LOAD_RESULTS_PATH}/rewards_history.npy"
+        ).tolist()
+
+        costs_history = np.load(
+            f"{LOAD_RESULTS_PATH}/costs_history.npy"
+        ).tolist()
+
+        modified_reward_history = np.load(
+            f"{LOAD_RESULTS_PATH}/modified_reward_history.npy"
+        ).tolist()
+
+        alpha_history = np.load(
+            f"{LOAD_RESULTS_PATH}/alpha_history.npy"
+        ).tolist()
+
+        training_steps = np.load(
+            f"{LOAD_RESULTS_PATH}/training_steps.npy"
+        ).tolist()
+
+        critic_loss_history = np.load(
+            f"{LOAD_RESULTS_PATH}/critic_loss_history.npy"
+        ).tolist()
+
+        actor_loss_history = np.load(
+            f"{LOAD_RESULTS_PATH}/actor_loss_history.npy"
+        ).tolist()
+    else:
+        eval_rewards = []
+        eval_costs = []
+        eval_rewards_history =[]
+        eval_costs_history =[]
+        rewards_history = []
+        costs_history = []
+        modified_reward_history = []
+        alpha_history = []
+        training_steps = []
+        critic_loss_history = []
+        actor_loss_history = []
+
+    return (
+        eval_rewards,
+        eval_costs,
+        eval_rewards_history,
+        eval_costs_history,
+        rewards_history,
+        costs_history,
+        modified_reward_history,
+        alpha_history,
+        training_steps,
+        critic_loss_history,
+        actor_loss_history
+    )
