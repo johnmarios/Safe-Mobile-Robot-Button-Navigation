@@ -1,6 +1,6 @@
-import safety_gymnasium
+# import safety_gymnasium
 
-env = safety_gymnasium.make("SafetyRacecarButton2-v0")
+# env = safety_gymnasium.make("SafetyRacecarButton2-v0")
 
 # obs, info = env.reset(seed=0)
 # terminated, truncated = False, False
@@ -351,14 +351,155 @@ env = safety_gymnasium.make("SafetyRacecarButton2-v0")
 # if __name__ == "__main__":
 #     main_TEST()
 
-state, info = env.reset()
+# state, info = env.reset()
 
-print(env.unwrapped.task.__dict__.keys())
+# print(env.unwrapped.task.__dict__.keys())
 
-print(info)
+# print(info)
 
-next_state, reward, cost, terminated, truncated, info = env.step(
-    env.action_space.sample()
-)
+# next_state, reward, cost, terminated, truncated, info = env.step(
+#     env.action_space.sample()
+# )
 
-print(info.keys())
+# print(info.keys())
+
+
+# import safety_gymnasium
+
+# env = safety_gymnasium.make("SafetyRacecarButton2-v0")
+
+# state, info = env.reset(seed=0)
+
+# print("========== TASK ==========")
+# print(env.unwrapped.task.__dict__.keys())
+
+# print("\n========== BUTTONS ==========")
+# print(type(env.unwrapped.task.buttons))
+# print(dir(env.unwrapped.task.buttons))
+
+# if hasattr(env.unwrapped.task.buttons, "__dict__"):
+#     print(env.unwrapped.task.buttons.__dict__.keys())
+
+# print("\n========== INITIAL ==========")
+
+# try:
+#     print("goal =", env.unwrapped.task.goal)
+# except:
+#     pass
+
+# try:
+#     print("last_dist_goal =", env.unwrapped.task.last_dist_goal)
+# except:
+#     pass
+
+# try:
+#     print("goal_button =", env.unwrapped.task.buttons.goal_button)
+# except:
+#     pass
+
+# old_goal_button = None
+# if hasattr(env.unwrapped.task.buttons, "goal_button"):
+#     old_goal_button = env.unwrapped.task.buttons.goal_button
+
+# terminated = False
+# truncated = False
+
+# while not (terminated or truncated):
+
+#     action = env.action_space.sample()
+
+#     state, reward, cost, terminated, truncated, info = env.step(action)
+
+#     # Τύπωσε αν υπάρχει reward
+#     if reward != 0:
+#         print("\n==============================")
+#         print("REWARD =", reward)
+#         print("COST =", cost)
+#         print("INFO =", info)
+
+#         try:
+#             print("goal =", env.unwrapped.task.goal)
+#         except:
+#             pass
+
+#         try:
+#             print("last_dist_goal =", env.unwrapped.task.last_dist_goal)
+#         except:
+#             pass
+
+#         try:
+#             print("goal_button =", env.unwrapped.task.buttons.goal_button)
+#         except:
+#             pass
+
+#     # Έλεγχος αν άλλαξε το goal button
+#     try:
+
+#         current_goal_button = env.unwrapped.task.buttons.goal_button
+
+#         if old_goal_button is not None and current_goal_button != old_goal_button:
+
+#             print("\n#################################")
+#             print("GOAL BUTTON CHANGED!")
+#             print("old =", old_goal_button)
+#             print("new =", current_goal_button)
+
+#             print("reward =", reward)
+#             print("cost =", cost)
+#             print("info =", info)
+
+#             try:
+#                 print("goal =", env.unwrapped.task.goal)
+#             except:
+#                 pass
+
+#             try:
+#                 print("last_dist_goal =", env.unwrapped.task.last_dist_goal)
+#             except:
+#                 pass
+
+#             print("#################################")
+
+#         old_goal_button = current_goal_button
+
+#     except:
+#         pass
+
+# env.close()
+
+import safety_gymnasium
+
+env = safety_gymnasium.make("SafetyRacecarButton2-v0")
+
+state, info = env.reset(seed=0)
+
+old_goal_button = env.unwrapped.task.buttons.goal_button
+
+print("Initial goal button:", old_goal_button)
+
+terminated = False
+truncated = False
+
+while not (terminated or truncated):
+
+    action = env.action_space.sample()
+
+    state, reward, cost, terminated, truncated, info = env.step(action)
+
+    current_goal_button = env.unwrapped.task.buttons.goal_button
+
+    if current_goal_button != old_goal_button:
+
+        print()
+        print("############################")
+        print("BUTTON PRESSED SUCCESSFULLY")
+        print("old goal button =", old_goal_button)
+        print("new goal button =", current_goal_button)
+        print("reward =", reward)
+        print("cost =", cost)
+        print("info =", info)
+        print("############################")
+
+        old_goal_button = current_goal_button
+
+env.close()
