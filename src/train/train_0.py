@@ -3,6 +3,7 @@ import safety_gymnasium
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
+import json
 
 from train.sac import SAC
 from evaluate.evaluate_sac import evaluate_policy
@@ -30,10 +31,12 @@ def train_0(MAX_TIMESTEPS,
             ):
 
 
+
     # Results path
     RESULTS_PATH = f"results/{AGENT_ID}"
     os.makedirs(RESULTS_PATH, exist_ok=True)
 
+    LOG_PATH = f"{RESULTS_PATH}/step_info.jsonl"
 
     # Device
     device = torch.device(
@@ -110,6 +113,20 @@ def train_0(MAX_TIMESTEPS,
         next_state, reward, cost, terminated, truncated, info = env.step(
             action
         )
+
+        with open(LOG_PATH, "a") as f:
+            json.dump(
+                {
+                    "step": t,
+                    "episode": episode_num,
+                    "reward": reward,
+                    "cost": cost,
+                    **info
+                },
+                f
+            )
+            f.write("\n")
+
 
         done = terminated or truncated
 
