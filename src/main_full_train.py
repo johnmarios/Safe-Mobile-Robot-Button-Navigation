@@ -5,6 +5,7 @@ def main():
     train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
+            LOAD_RESULTS_PATH = None,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
