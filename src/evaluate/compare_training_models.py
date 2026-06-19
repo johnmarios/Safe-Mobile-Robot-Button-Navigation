@@ -5,18 +5,17 @@ from pathlib import Path
 
 
 MODELS = [
-    "sac_phase_0",
-    "sac_cost_001_phase_0",
-    "sac_cost_003_phase_0"
+    "sac_cost_002_entropy_01",
+    "sac_cost_002_entropy_1",
+    "sac_cost_002_entropy_10"
 ]
 
 ROOT = Path(__file__).resolve().parents[2]
 
 BASE_PATH = ROOT / "results"
-SAVE_PATH = BASE_PATH / "comparisons"
+SAVE_PATH = BASE_PATH / "training_comparisons"
 
 os.makedirs(SAVE_PATH, exist_ok=True)
-
 
 def plot_metric(filename,
                 ylabel,
@@ -74,7 +73,7 @@ def plot_metric(filename,
     plt.close()
 
 
-# ===== Evaluation metrics =====
+# ===== Training evaluation metrics =====
 
 plot_metric(
     "eval_rewards",

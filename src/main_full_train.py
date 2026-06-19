@@ -4,7 +4,7 @@ def main():
 
     # Entropy test:
     # multiplier 0.1 --> -0.1*action_dim
-    train_0(MAX_TIMESTEPS = int(5e5),
+    train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
             LOAD_RESULTS_PATH = None,
@@ -12,21 +12,21 @@ def main():
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
             EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 50,
+            SAC_EVAL_EPISODES = 30,
             GAMMA = 0.99,
             TAU = 0.005,
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
             entropy_multiplier = 0.1,
-            COST_WEIGHT = 0.001,
+            COST_WEIGHT = 0.002,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_001_entropy_01",
+            AGENT_ID = "sac_cost_002_entropy_01",
             )
 
 
     # default multiplier 1.0 --> -action_dim
-    train_0(MAX_TIMESTEPS = int(5e5),
+    train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
             LOAD_RESULTS_PATH = None,
@@ -34,20 +34,20 @@ def main():
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
             EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 50,
+            SAC_EVAL_EPISODES = 30,
             GAMMA = 0.99,
             TAU = 0.005,
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
             entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.001,
+            COST_WEIGHT = 0.002,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_001_entropy_1",
+            AGENT_ID = "sac_cost_002_entropy_1",
             )
     
     #lets make a big change so we can better understand results: multiplier =10 -->-10*action_dim
-    train_0(MAX_TIMESTEPS = int(5e5),
+    train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
             LOAD_RESULTS_PATH = None,
@@ -55,16 +55,16 @@ def main():
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
             EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 50,
+            SAC_EVAL_EPISODES = 30,
             GAMMA = 0.99,
             TAU = 0.005,
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
             entropy_multiplier = 10.0,
-            COST_WEIGHT = 0.001,
+            COST_WEIGHT = 0.002,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_001_entropy_10",
+            AGENT_ID = "sac_cost_002_entropy_10",
             )
 
 
