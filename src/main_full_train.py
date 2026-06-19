@@ -2,30 +2,8 @@ from train.train_0 import train_0
 
 def main():
 
-    # Entropy test:
-    # multiplier 0.1 --> -0.1*action_dim
-    train_0(MAX_TIMESTEPS = int(7e5),
-            START_TIMESTEPS = int(1e5),
-            LOAD_MODEL = None,
-            LOAD_RESULTS_PATH = None,
-            ENV_NAME = "SafetyRacecarButton2-v0",
-            MAX_STEPS = 1000,
-            BATCH_SIZE = 256,
-            EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 30,
-            GAMMA = 0.99,
-            TAU = 0.005,
-            ACTOR_LR = 1e-4,
-            CRITIC_LR = 1e-4,
-            entropy_multiplier = 0.1,
-            COST_WEIGHT = 0.002,
-            SEED = 0,
-            SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_002_entropy_01",
-            )
-
-
-    # default multiplier 1.0 --> -action_dim
+    # costs comparison with entropy multiplier 1.0 and 7e5 steps
+    # cost 0.001
     train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
@@ -40,13 +18,12 @@ def main():
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
             entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.002,
+            COST_WEIGHT = 0.001,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_002_entropy_1",
+            AGENT_ID = "sac_cost_001_step_7e5",
             )
-    
-    #lets make a big change so we can better understand results: multiplier =10 -->-10*action_dim
+    # cost 0.005 
     train_0(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
@@ -60,12 +37,100 @@ def main():
             TAU = 0.005,
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
-            entropy_multiplier = 10.0,
-            COST_WEIGHT = 0.002,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.005,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_002_entropy_10",
+            AGENT_ID = "sac_cost_005_step_7e5",
             )
+    # cost 0.009
+    train_0(MAX_TIMESTEPS = int(7e5),
+            START_TIMESTEPS = int(1e5),
+            LOAD_MODEL = None,
+            LOAD_RESULTS_PATH = None,
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 1000,
+            BATCH_SIZE = 256,
+            EVAL_FREQ = 25000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 1e-4,
+            CRITIC_LR = 1e-4,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.009,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_cost_009_step_7e5",
+            )
+    
+
+    
+
+    # # Entropy test:
+    # # multiplier 0.1 --> -0.1*action_dim
+    # train_0(MAX_TIMESTEPS = int(7e5),
+    #         START_TIMESTEPS = int(1e5),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-4,
+    #         CRITIC_LR = 1e-4,
+    #         entropy_multiplier = 0.1,
+    #         COST_WEIGHT = 0.002,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_cost_002_entropy_01",
+    #         )
+
+
+    # # default multiplier 1.0 --> -action_dim
+    # train_0(MAX_TIMESTEPS = int(7e5),
+    #         START_TIMESTEPS = int(1e5),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-4,
+    #         CRITIC_LR = 1e-4,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.002,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_cost_002_entropy_1",
+    #         )
+    
+    # #lets make a big change so we can better understand results: multiplier =10 -->-10*action_dim
+    # train_0(MAX_TIMESTEPS = int(7e5),
+    #         START_TIMESTEPS = int(1e5),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-4,
+    #         CRITIC_LR = 1e-4,
+    #         entropy_multiplier = 10.0,
+    #         COST_WEIGHT = 0.002,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_cost_002_entropy_10",
+    #         )
 
 
 

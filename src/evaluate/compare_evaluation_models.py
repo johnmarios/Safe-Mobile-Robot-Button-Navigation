@@ -74,20 +74,21 @@ def compare_eval_models(MODELS,
 
         results[model] = {
             "reward_mean": np.mean(reward_history),
-            "reward_std": np.std(reward_history),
+            "reward_error": 1.96*np.std(reward_history)/np.sqrt(EVAL_EPISODES),
 
             "cost_mean": np.mean(cost_history),
-            "cost_std": np.std(cost_history),
+            "cost_error": 1.96*np.std(cost_history)/np.sqrt(EVAL_EPISODES),
 
             "score_mean": np.mean(score_history),
-            "score_std": np.std(score_history)
+            "score_error": 1.96*np.std(score_history)/np.sqrt(EVAL_EPISODES)
         }
 
         print(
             f"{model} | "
             f"Reward {np.mean(reward_history):.2f} ± {np.std(reward_history):.2f} | "
             f"Cost {np.mean(cost_history):.2f} ± {np.std(cost_history):.2f} | "
-            f"Score {np.mean(score_history):.2f} ± {np.std(score_history):.2f}"
+            f"Score {np.mean(score_history):.2f} ± {np.std(score_history):.2f} | "
+            f"Score error {results[model]['score_error']:.2f} "
         )
     names = list(results.keys())
 
@@ -101,8 +102,8 @@ def compare_eval_models(MODELS,
             for m in names
         ]
 
-        std = [
-            results[m][f"{metric}_std"]
+        error = [
+            results[m][f"{metric}_error"]
             for m in names
         ]
 
@@ -111,7 +112,7 @@ def compare_eval_models(MODELS,
         plt.bar(
             names,
             mean,
-            yerr=std,
+            yerr=error,
             capsize=5
         )
 
@@ -140,7 +141,7 @@ if __name__ == "__main__":
 
     compare_eval_models(MODELS,
                         "SafetyRacecarButton2-v0",
-                        EVAL_EPISODES = 10,
+                        EVAL_EPISODES = 100,
                         COST_WEIGHT = 0.002,
                         FOLDER_NAME = "evaluations_comparison_cost_002_entropy_01_to_10"
     )           
