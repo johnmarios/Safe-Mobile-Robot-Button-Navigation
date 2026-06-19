@@ -468,10 +468,30 @@
 # env.close()
 
 import safety_gymnasium
+import torch
+
+device = torch.device(
+        "cuda" if torch.cuda.is_available() else "cpu"
+    )
 
 env = safety_gymnasium.make("SafetyRacecarButton2-v0")
 
+
+
+    
+    # Dimensions
+state_dim = env.observation_space.shape[0]
+action_dim = env.action_space.shape[0]
+max_action = float(env.action_space.high[0])
+
+
+
+
 state, info = env.reset(seed=0)
+
+print(state_dim)
+print(action_dim)
+print(max_action)
 
 old_goal_button = env.unwrapped.task.buttons.goal_button
 

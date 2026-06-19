@@ -204,61 +204,61 @@ plot_metric(
 )
 
 #==========one time plot score std without loaded score history eval=============
-plt.figure(figsize=(8,5))
-COST_WEIGHT = 0.002
-for model in MODELS:
+# plt.figure(figsize=(8,5))
+# COST_WEIGHT = 0.002
+# for model in MODELS:
 
-    model_path = BASE_PATH / model
+#     model_path = BASE_PATH / model
 
-    score_mean = np.load(
-        model_path / "score_history.npy"
-    )
+#     score_mean = np.load(
+#         model_path / "score_history.npy"
+#     )
 
-    reward_history = np.load(
-        model_path / "eval_rewards_history.npy"
-    )
+#     reward_history = np.load(
+#         model_path / "eval_rewards_history.npy"
+#     )
 
-    cost_history = np.load(
-        model_path / "eval_costs_history.npy"
-    )
+#     cost_history = np.load(
+#         model_path / "eval_costs_history.npy"
+#     )
 
-    score_history_eval = (
-        reward_history
-        - COST_WEIGHT * cost_history
-    )
+#     score_history_eval = (
+#         reward_history
+#         - COST_WEIGHT * cost_history
+#     )
 
-    score_std = np.std(
-        score_history_eval,
-        axis=1
-    )
+#     score_std = np.std(
+#         score_history_eval,
+#         axis=1
+#     )
 
-    x = np.arange(len(score_mean))
+#     x = np.arange(len(score_mean))
 
-    plt.plot(
-        x,
-        score_mean,
-        linewidth=2,
-        label=model
-    )
+#     plt.plot(
+#         x,
+#         score_mean,
+#         linewidth=2,
+#         label=model
+#     )
 
-    plt.fill_between(
-        x,
-        score_mean - score_std,
-        score_mean + score_std,
-        alpha=0.2
-    )
+#     plt.fill_between(
+#         x,
+#         score_mean - score_std,
+#         score_mean + score_std,
+#         alpha=0.2
+#     )
 
-plt.xlabel("Evaluation")
-plt.ylabel("Score")
-plt.title("Score comparison with std")
-plt.grid()
-plt.legend()
-plt.tight_layout()
+# plt.xlabel("Evaluation")
+# plt.ylabel("Score")
+# plt.title("Score comparison with std")
+# plt.grid()
+# plt.legend()
+# plt.tight_layout()
 
-plt.savefig(
-    SAVE_PATH / "score_std_comparison.png"
-)
+# plt.savefig(
+#     SAVE_PATH / "score_std_comparison.png"
+# )
 
-plt.close()
+# plt.close()
 
 print("Finished.")

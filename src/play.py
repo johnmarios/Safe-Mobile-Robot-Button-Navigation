@@ -33,7 +33,7 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_cost_002_entropy_10" + "_best"
+    SAC_MODEL_PATH + "sac_cost_001_step_7e5" + "_best"
 )
 
 print("Phase 0 model loaded successfully.")
@@ -43,5 +43,5 @@ print("Model loaded successfully.")
 render_policy(
     agent,
     ENV_NAME,
-    episodes=5
+    episodes=20
 )
