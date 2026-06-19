@@ -1,36 +1,38 @@
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.append(str(ROOT))
+
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from pathlib import Path
 from train.sac import SAC
 import torch
 import safety_gymnasium
 from evaluate.evaluate_sac import evaluate_policy
 
-#anyway tha trexeievaluation 100 fores gia kathe modelo kai th ata sugkrinei
 
-def comp_e_models(MODELS,
-                  ENV_NAME,
-                  SAC_EVAL_EPISODES,
-                  COST_WEIGHT
-                  ):
-    # MODELS = [
-    #     "sac_phase_0",
-    #     "sac_cost_001_phase_0",
-    #     "sac_cost_003_phase_0"
-    # ]
-
-    ROOT = Path(__file__).resolve().parents[2]
-
-    BASE_PATH = ROOT / "results"
-    SAVE_PATH = BASE_PATH / "evaluation_comparisons"
-
-    os.makedirs(SAVE_PATH, exist_ok=True)
+def compare_eval_models(MODELS,
+                        ENV_NAME,
+                        EVAL_EPISODES,
+                        COST_WEIGHT,
+                        FOLDER_NAME):
+    
 
     # Device
     device = torch.device(
         "cuda" if torch.cuda.is_available() else "cpu"
     )
+
+    # save path create
+    ROOT = Path(__file__).resolve().parents[2]
+
+
+    BASE_PATH = ROOT / "results"
+    SAVE_PATH = BASE_PATH / FOLDER_NAME
+
+    os.makedirs(SAVE_PATH, exist_ok=True)
 
     # Environment
     env = safety_gymnasium.make(ENV_NAME)
@@ -53,45 +55,92 @@ def comp_e_models(MODELS,
         entropy_multiplier=1.0
     )
 
+    results = {}
 
-
-    for model in MODELS :
+    for model in MODELS:
 
         agent.load(f"models/{model}")
 
-        # Initial state
-        state, info = env.reset(seed=0)
-
-        eval_rewards = []
-        eval_costs = []
-        eval_rewards_history = []
-        eval_costs_history = []
-
-        best_score = -np.inf
-
-            
-        avg_reward, avg_cost, eval_rewards_history_r, eval_costs_history_r = evaluate_policy(
-                    agent,
-                    env_name=ENV_NAME,
-                    eval_episodes=SAC_EVAL_EPISODES
-                )
-
-        eval_rewards.append(avg_reward)
-        eval_costs.append(avg_cost)
-        eval_rewards_history.append(eval_rewards_history_r)
-        eval_costs_history.append(eval_costs_history_r)
-
-        score = avg_reward - COST_WEIGHT * avg_cost
-                
-        print(
-            "======================================"
+        avg_reward, avg_cost, reward_history, cost_history = evaluate_policy(
+            agent,
+            env_name=ENV_NAME,
+            eval_episodes= EVAL_EPISODES
         )
 
-        print(
-            f"Average reward: {avg_reward:.2f} | "
-            f"Average cost: {avg_cost:.2f} | "
-            f"Score: {score:.2f}"
+        score_history = (
+            np.array(reward_history)
+            - COST_WEIGHT * np.array(cost_history)
         )
 
+        results[model] = {
+            "reward_mean": np.mean(reward_history),
+            "reward_std": np.std(reward_history),
 
-        
+            "cost_mean": np.mean(cost_history),
+            "cost_std": np.std(cost_history),
+
+            "score_mean": np.mean(score_history),
+            "score_std": np.std(score_history)
+        }
+
+        print(
+            f"{model} | "
+            f"Reward {np.mean(reward_history):.2f} ± {np.std(reward_history):.2f} | "
+            f"Cost {np.mean(cost_history):.2f} ± {np.std(cost_history):.2f} | "
+            f"Score {np.mean(score_history):.2f} ± {np.std(score_history):.2f}"
+        )
+    names = list(results.keys())
+
+
+    def plot_metric(metric,
+                    ylabel,
+                    output_name):
+
+        mean = [
+            results[m][f"{metric}_mean"]
+            for m in names
+        ]
+
+        std = [
+            results[m][f"{metric}_std"]
+            for m in names
+        ]
+
+        plt.figure(figsize=(8,5))
+
+        plt.bar(
+            names,
+            mean,
+            yerr=std,
+            capsize=5
+        )
+
+        plt.ylabel(ylabel)
+        plt.title(f"{ylabel} ({EVAL_EPISODES} episodes)")
+        plt.grid()
+        plt.tight_layout()
+
+        plt.savefig(
+            SAVE_PATH / output_name
+        )
+
+        plt.close()
+
+    plot_metric("reward", "Reward", "reward_comparison.png")
+    plot_metric("cost", "Cost", "cost_comparison.png")
+    plot_metric("score", "Score", "score_comparison.png")
+    env.close()
+
+if __name__ == "__main__":
+    MODELS = [
+        "sac_cost_002_entropy_01_best",
+        "sac_cost_002_entropy_1_best",
+        "sac_cost_002_entropy_10_best"
+    ]
+
+    compare_eval_models(MODELS,
+                        "SafetyRacecarButton2-v0",
+                        EVAL_EPISODES = 10,
+                        COST_WEIGHT = 0.002,
+                        FOLDER_NAME = "evaluations_comparison_cost_002_entropy_01_to_10"
+    )           

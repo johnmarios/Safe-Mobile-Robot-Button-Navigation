@@ -378,6 +378,13 @@ def save_results(RESULTS_PATH,
         np.array(score_history)
     )
 
+    score_history_eval = (np.array(eval_rewards_history)-COST_WEIGHT*np.array(eval_costs_history))
+
+    np.save(
+        f"{RESULTS_PATH}/score_history_eval.npy",
+        np.array(score_history_eval)
+    )
+
     # Reward avg curve eval
     plt.figure(figsize=(8,5))
     plt.plot(eval_rewards, marker ='o')
