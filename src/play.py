@@ -33,7 +33,7 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_cost_001_step_7e5" + "_best"
+    SAC_MODEL_PATH + "sac_phase_1" + "_best"
 )
 
 print("Phase 0 model loaded successfully.")
