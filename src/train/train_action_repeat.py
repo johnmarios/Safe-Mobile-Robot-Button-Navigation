@@ -26,13 +26,16 @@ def train_2(MAX_TIMESTEPS,
             entropy_multiplier = 1.0,
             COST_WEIGHT = 0.0,
             TURNING_WEIGHT = 0.01,
-            ACTION_REPEAT = 2,
+            ACTION_REPEAT = 1,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
             AGENT_ID = "sac_phase_0",
             ):
 
-
+    EVAL_FREQ = max(1,EVAL_FREQ // ACTION_REPEAT)
+    MAX_TIMESTEPS = MAX_TIMESTEPS // ACTION_REPEAT
+    START_TIMESTEPS = START_TIMESTEPS // ACTION_REPEAT
+    LOG_FREQ =  max(1,MAX_STEPS // ACTION_REPEAT)
 
     # Results path
     RESULTS_PATH = f"results/{AGENT_ID}"
@@ -51,7 +54,10 @@ def train_2(MAX_TIMESTEPS,
     # Dimensions
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]
-    max_action = float(env.action_space.high[0])
+    #max_action = float(env.action_space.high[0]) --> &kai tis duo times -->to steering paei crazy
+    max_action = torch.FloatTensor(
+        env.action_space.high
+    ).to(device)
 
     # Agent
     agent = SAC(
@@ -110,7 +116,7 @@ def train_2(MAX_TIMESTEPS,
 
     for t in range(MAX_TIMESTEPS):
 
-        
+        #episode_timesteps += 1
 
         # Action selection
         if t < START_TIMESTEPS:
@@ -118,7 +124,7 @@ def train_2(MAX_TIMESTEPS,
         else:
             action = agent.select_action(state)
 
-        if episode_timesteps == 1:
+        if episode_timesteps == 0:
             turn_penalty = 0
         else :
             steering_change = action[1] - prev_action[1]
@@ -139,10 +145,10 @@ def train_2(MAX_TIMESTEPS,
 
             episode_timesteps += 1
 
-            if terminated or truncated:
+            if terminated or truncated or episode_timesteps >= MAX_STEPS:
                 break
 
-        done = terminated or truncated
+        done = terminated or truncated or episode_timesteps >= MAX_STEPS
 
         # Reward shaping
         modified_reward = total_reward - COST_WEIGHT * total_cost - turn_penalty
@@ -173,7 +179,7 @@ def train_2(MAX_TIMESTEPS,
 
             critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
 
-            if t % MAX_STEPS == 0:
+            if t % (LOG_FREQ) == 0:
                 
                 alpha_history.append(alpha)
 
@@ -188,7 +194,7 @@ def train_2(MAX_TIMESTEPS,
                 actor_loss_history.append(actor_loss)
 
                 print(
-                    f"Step {t} | "
+                    f"Step {(t+1)*ACTION_REPEAT} | "
                     f"Critic loss: {critic_loss:.4f} | "
                     f"Actor loss: {actor_loss:.4f} | "
                     f"Alpha: {alpha:.4f}"
@@ -227,7 +233,7 @@ def train_2(MAX_TIMESTEPS,
             )
 
             print(
-                f"Step {t+1} | "
+                f"Step {(t+1)*ACTION_REPEAT} | "
                 f"Average reward: {avg_reward:.2f} | "
                 f"Average cost: {avg_cost:.2f} | "
                 f"Average turn penalty: {avg_turn_penalty:.2f} | "

@@ -1,10 +1,12 @@
 from train.train_0 import train_0
+from train.train_action_repeat import train_2
+from train.train_turning_penalty import train_1
+
 
 def main():
+    
 
-    # costs comparison with entropy multiplier 1.0 and 7e5 steps
-    # cost 0.001
-    train_0(MAX_TIMESTEPS = int(7e5),
+    train_2(MAX_TIMESTEPS = int(7e5),
             START_TIMESTEPS = int(1e5),
             LOAD_MODEL = None,
             LOAD_RESULTS_PATH = None,
@@ -18,51 +20,99 @@ def main():
             ACTOR_LR = 1e-4,
             CRITIC_LR = 1e-4,
             entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.001,
+            COST_WEIGHT = 0.0,
+            TURNING_WEIGHT = 0.05,
+            ACTION_REPEAT = 2,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_001_step_7e5",
+            AGENT_ID = "sac_baseline_tw05",
             )
-    # cost 0.005 
-    train_0(MAX_TIMESTEPS = int(7e5),
-            START_TIMESTEPS = int(1e5),
-            LOAD_MODEL = None,
-            LOAD_RESULTS_PATH = None,
-            ENV_NAME = "SafetyRacecarButton2-v0",
-            MAX_STEPS = 1000,
-            BATCH_SIZE = 256,
-            EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 30,
-            GAMMA = 0.99,
-            TAU = 0.005,
-            ACTOR_LR = 1e-4,
-            CRITIC_LR = 1e-4,
-            entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.005,
-            SEED = 0,
-            SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_005_step_7e5",
-            )
-    # cost 0.009
-    train_0(MAX_TIMESTEPS = int(7e5),
-            START_TIMESTEPS = int(1e5),
-            LOAD_MODEL = None,
-            LOAD_RESULTS_PATH = None,
-            ENV_NAME = "SafetyRacecarButton2-v0",
-            MAX_STEPS = 1000,
-            BATCH_SIZE = 256,
-            EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 30,
-            GAMMA = 0.99,
-            TAU = 0.005,
-            ACTOR_LR = 1e-4,
-            CRITIC_LR = 1e-4,
-            entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.009,
-            SEED = 0,
-            SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_cost_009_step_7e5",
-            )
+
+
+
+    # train_2(MAX_TIMESTEPS = int(7e5),
+    #         START_TIMESTEPS = int(1e5),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-4,
+    #         CRITIC_LR = 1e-4,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.0,
+    #         TURNING_WEIGHT = 0,
+    #         ACTION_REPEAT = 1,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_last_hope",
+    #         )
+
+#     # costs comparison with entropy multiplier 1.0 and 7e5 steps
+#     # cost 0.001
+#     train_0(MAX_TIMESTEPS = int(7e5),
+#             START_TIMESTEPS = int(1e5),
+#             LOAD_MODEL = None,
+#             LOAD_RESULTS_PATH = None,
+#             ENV_NAME = "SafetyRacecarButton2-v0",
+#             MAX_STEPS = 1000,
+#             BATCH_SIZE = 256,
+#             EVAL_FREQ = 25000,
+#             SAC_EVAL_EPISODES = 30,
+#             GAMMA = 0.99,
+#             TAU = 0.005,
+#             ACTOR_LR = 1e-4,
+#             CRITIC_LR = 1e-4,
+#             entropy_multiplier = 1.0,
+#             COST_WEIGHT = 0.001,
+#             SEED = 0,
+#             SAC_MODEL_PATH = "models/",
+#             AGENT_ID = "sac_cost_001_step_7e5",
+#             )
+#     # cost 0.005 
+#     train_0(MAX_TIMESTEPS = int(7e5),
+#             START_TIMESTEPS = int(1e5),
+#             LOAD_MODEL = None,
+#             LOAD_RESULTS_PATH = None,
+#             ENV_NAME = "SafetyRacecarButton2-v0",
+#             MAX_STEPS = 1000,
+#             BATCH_SIZE = 256,
+#             EVAL_FREQ = 25000,
+#             SAC_EVAL_EPISODES = 30,
+#             GAMMA = 0.99,
+#             TAU = 0.005,
+#             ACTOR_LR = 1e-4,
+#             CRITIC_LR = 1e-4,
+#             entropy_multiplier = 1.0,
+#             COST_WEIGHT = 0.005,
+#             SEED = 0,
+#             SAC_MODEL_PATH = "models/",
+#             AGENT_ID = "sac_cost_005_step_7e5",
+#             )
+#     # cost 0.009
+#     train_0(MAX_TIMESTEPS = int(7e5),
+#             START_TIMESTEPS = int(1e5),
+#             LOAD_MODEL = None,
+#             LOAD_RESULTS_PATH = None,
+#             ENV_NAME = "SafetyRacecarButton2-v0",
+#             MAX_STEPS = 1000,
+#             BATCH_SIZE = 256,
+#             EVAL_FREQ = 25000,
+#             SAC_EVAL_EPISODES = 30,
+#             GAMMA = 0.99,
+#             TAU = 0.005,
+#             ACTOR_LR = 1e-4,
+#             CRITIC_LR = 1e-4,
+#             entropy_multiplier = 1.0,
+#             COST_WEIGHT = 0.009,
+#             SEED = 0,
+#             SAC_MODEL_PATH = "models/",
+#             AGENT_ID = "sac_cost_009_step_7e5",
+#             )
     
 
     

@@ -13,9 +13,18 @@ device = torch.device(
 # Environment
 env = safety_gymnasium.make(ENV_NAME)
 
+#for debug
+print(env.action_space.low)
+print(env.action_space.high)
+#
+
+
 state_dim = env.observation_space.shape[0]
 action_dim = env.action_space.shape[0]
-max_action = float(env.action_space.high[0])
+max_action = torch.FloatTensor(
+        env.action_space.high
+    ).to(device)
+
 
 env.close()
 
@@ -33,7 +42,7 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_phase_1" + "_best"
+    SAC_MODEL_PATH + "sac_empire_strikes_back" + "_best"
 )
 
 print("Phase 0 model loaded successfully.")

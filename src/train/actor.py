@@ -105,5 +105,15 @@ class Actor(nn.Module):
             mu = self.mu_layer(x)
 
             action = self.max_action * torch.tanh(mu)
+             
+              # check for saturation due to tahn
+
+
+            # print(
+            #     "mu =", mu.cpu().numpy()[0],
+            #     "action =", action.cpu().numpy()[0]
+            # )
+
+            #telika ekana multiply me max action tis taxuthtas kai ti gonia dld gonia *20 kai gamiotan
 
         return action.cpu().numpy().flatten()
