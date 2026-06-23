@@ -6,10 +6,11 @@ from train.train_turning_penalty import train_1
 def main():
     
 
-    train_2(MAX_TIMESTEPS = int(7e5),
-            START_TIMESTEPS = int(1e5),
-            LOAD_MODEL = None,
-            LOAD_RESULTS_PATH = None,
+
+     train_2(MAX_TIMESTEPS = int(2e6),
+            START_TIMESTEPS = 0,
+            LOAD_MODEL = "sac_ms2000_ar2_c005_phase_3_c01_best",
+            LOAD_RESULTS_PATH = "",
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
@@ -17,16 +18,39 @@ def main():
             SAC_EVAL_EPISODES = 30,
             GAMMA = 0.99,
             TAU = 0.005,
-            ACTOR_LR = 1e-4,
-            CRITIC_LR = 1e-4,
-            entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.0,
-            TURNING_WEIGHT = 0.05,
+            ACTOR_LR = 5e-5,
+            CRITIC_LR = 5e-5,
+            entropy_multiplier = 1.5,
+            COST_WEIGHT = 0.01,
+            TURNING_WEIGHT = 0,
             ACTION_REPEAT = 2,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_baseline_tw05",
+            AGENT_ID = "sac_ms2000_ar2_c005_phase_4b_c01_em15e1",
             )
+     
+
+    # train_2(MAX_TIMESTEPS = int(7e5),
+    #         START_TIMESTEPS = int(1e5),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-4,
+    #         CRITIC_LR = 1e-4,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.0,
+    #         TURNING_WEIGHT = 0.05,
+    #         ACTION_REPEAT = 2,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_baseline_tw05",
+    #         )
 
 
 

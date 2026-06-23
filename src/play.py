@@ -42,9 +42,12 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_empire_strikes_back" + "_best"
+    SAC_MODEL_PATH + "sac_ms2000_ar2_c005_phase_4b_c01_em15e1" + "_latest"
 )
 
+# agent.load(
+#     SAC_MODEL_PATH + "sac_ms2000_ar2_c0_phase_2b_c001" + "_latest"
+# )
 print("Phase 0 model loaded successfully.")
 print("Model loaded successfully.")
 
