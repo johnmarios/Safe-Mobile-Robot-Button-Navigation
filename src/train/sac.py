@@ -25,6 +25,7 @@ class SAC(object):
         actor_lr=3e-4,
         critic_lr=3e-4,
         entropy_multiplier=1.0,
+        replay_buffer_size = int(1e6)
     ):
 
         self.device = device
@@ -38,7 +39,7 @@ class SAC(object):
         self.critic_target = Critic(state_dim, action_dim).to(self.device)
         self.critic_target.load_state_dict(self.critic.state_dict())
 
-        self.replay_buffer = ReplayBuffer(state_dim, action_dim)
+        self.replay_buffer = ReplayBuffer(state_dim, action_dim,replay_buffer_size)
 
 
         self.target_entropy = -entropy_multiplier * action_dim

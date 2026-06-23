@@ -1,5 +1,6 @@
 from train.train_turning_penalty import train_1
 from train.train_action_repeat import train_2
+from train.train_entropy_scheduler import train_4
 
 def main():
 
@@ -25,26 +26,49 @@ def main():
     #         AGENT_ID = "sac_ms2000_ar2_c005_phase_3b_c0075",
     #         )
     
-    train_2(MAX_TIMESTEPS = int(2e6),
+    # train_2(MAX_TIMESTEPS = int(2e6),
+    #         START_TIMESTEPS = 0,
+    #         LOAD_MODEL = "sac_ms2000_ar2_c005_phase_3b_c0075_best",
+    #         LOAD_RESULTS_PATH = "",
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 1e-5,
+    #         CRITIC_LR = 1e-5,
+    #         entropy_multiplier = 1.25,
+    #         COST_WEIGHT = 0.01,
+    #         TURNING_WEIGHT = 0,
+    #         ACTION_REPEAT = 2,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_ms2000_ar2_c0075_phase_4_c01_em1_25",
+    #         )
+    
+    train_4(MAX_TIMESTEPS = int(2e6),
             START_TIMESTEPS = 0,
-            LOAD_MODEL = "sac_ms2000_ar2_c005_phase_3b_c0075_best",
+            LOAD_MODEL = "sac_ms2000_ar2_c0_phase_2_c005_best",
             LOAD_RESULTS_PATH = "",
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
+            REPLAY_BUFFER_SIZE = int(3e5),
             EVAL_FREQ = 25000,
             SAC_EVAL_EPISODES = 30,
             GAMMA = 0.99,
             TAU = 0.005,
-            ACTOR_LR = 1e-5,
-            CRITIC_LR = 1e-5,
-            entropy_multiplier = 1.25,
+            ACTOR_LR = 5e-5,
+            CRITIC_LR = 5e-5,
+            entropy_multiplier = 1.0,
             COST_WEIGHT = 0.01,
             TURNING_WEIGHT = 0,
-            ACTION_REPEAT = 2,
+            ACTION_REPEAT = 1,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_ms2000_ar2_c0075_phase_4_c01_em1_25",
+            AGENT_ID = "sac_ar1_c005_to_c01_em_3to1_25_rb_3e5",
             )
 
     # train_2(MAX_TIMESTEPS = int(2e6),

@@ -42,7 +42,7 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_ms2000_ar2_c005_phase_4b_c01_em15e1" + "_latest"
+    SAC_MODEL_PATH + "sac_ms2000_ar2_c005_to_c01_em_3to1_25_continue" + "_latest"
 )
 
 # agent.load(

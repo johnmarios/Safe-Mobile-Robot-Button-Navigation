@@ -122,9 +122,35 @@ def main():
     
     # den vriseki troxi apofugis. ulopoiisi me entrpy scheculer
 
+    # train_4(MAX_TIMESTEPS = int(2e6),
+    #         START_TIMESTEPS = 0,
+    #         LOAD_MODEL = "sac_ms2000_ar2_c0_phase_2_c005_best",
+    #         LOAD_RESULTS_PATH = "",
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 5e-5,
+    #         CRITIC_LR = 5e-5,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.01,
+    #         TURNING_WEIGHT = 0,
+    #         ACTION_REPEAT = 2,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_ms2000_ar2_c005_to_c01_em_3to1_25",
+    #         )
+    
+    # efage crash to apo pano sta 300k iter fml
+    #sunexisi tou -->
+    
+
     train_4(MAX_TIMESTEPS = int(2e6),
             START_TIMESTEPS = 0,
-            LOAD_MODEL = "sac_ms2000_ar2_c0_phase_2_c005_best",
+            LOAD_MODEL = "sac_ms2000_ar2_c005_to_c01_em_3to1_25_latest",
             LOAD_RESULTS_PATH = "",
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
@@ -141,9 +167,11 @@ def main():
             ACTION_REPEAT = 2,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_ms2000_ar2_c005_to_c01_em_3to1_25",
+            AGENT_ID = "sac_ms2000_ar2_c005_to_c01_em_3to1_25_continue",
             )
     
+
+
     # train_2(MAX_TIMESTEPS = int(1e6),
     #         START_TIMESTEPS = int(3e5),
     #         LOAD_MODEL = None,

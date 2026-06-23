@@ -17,6 +17,7 @@ def train_4(MAX_TIMESTEPS,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
+            REPLAY_BUFFER_SIZE = int(1e6),
             EVAL_FREQ = 50000,
             SAC_EVAL_EPISODES = 10,
             GAMMA = 0.99,
@@ -69,7 +70,8 @@ def train_4(MAX_TIMESTEPS,
         tau=TAU,
         actor_lr=ACTOR_LR,
         critic_lr=CRITIC_LR,
-        entropy_multiplier=entropy_multiplier
+        entropy_multiplier=entropy_multiplier,
+        replay_buffer_size = REPLAY_BUFFER_SIZE
     )
 
     if LOAD_MODEL is not None:
@@ -179,10 +181,12 @@ def train_4(MAX_TIMESTEPS,
 
             # entropy schedule 
 
-            if t < int(1e5):
+            if t < int(2e5):
                 agent.target_entropy = - 3.0 * action_dim
-            elif t < int(5e5):
+            elif t < int(6e5):
                 agent.target_entropy = - 2.0 * action_dim
+            # if  t < int(5e5):
+            #     agent.target_entropy = - 2.0 * action_dim
             elif t < int(1e6):
                 agent.target_entropy = - 1.5 * action_dim
             else:
