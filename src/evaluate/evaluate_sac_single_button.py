@@ -54,6 +54,13 @@ def evaluate_policy_act_rep(
             for _ in range(ACTION_REPEAT):
 
                 next_state, reward, cost, terminated, truncated, info = env.step(action)
+                
+                # if goal is met end ep
+                if info.get("goal_met", False):
+                    print("Goal met!")
+                    terminated = True
+                #
+
 
                 reward_repeat += reward
                 cost_repeat += cost

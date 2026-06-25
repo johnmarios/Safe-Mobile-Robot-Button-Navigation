@@ -26,7 +26,13 @@ def render_policy(agent, env_name, episodes=5, max_steps = 1000, action_repeat=1
             for _ in range(action_repeat):
 
                 next_state, reward, cost, terminated, truncated, info = env.step(action)
-
+                
+                # if goal is met end ep
+                if info.get("goal_met", False):
+                    print("Goal met!")
+                    terminated = True
+                #
+                
                 total_reward += reward
                 total_cost += cost
 

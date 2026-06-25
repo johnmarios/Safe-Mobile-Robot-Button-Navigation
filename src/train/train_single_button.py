@@ -6,18 +6,18 @@ import matplotlib.pyplot as plt
 #import json
 
 from train.sac import SAC
-from evaluate.evaluate_sac_act_rep import evaluate_policy_act_rep
+from evaluate.evaluate_sac_single_button import evaluate_policy_act_rep
 from render.render_sac import render_policy
 from config import *
 
-def train_4(MAX_TIMESTEPS,
+def train_5(MAX_TIMESTEPS,
             START_TIMESTEPS,
             LOAD_MODEL,
             LOAD_RESULTS_PATH,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
-            REPLAY_BUFFER_SIZE = int(1e6),
+             REPLAY_BUFFER_SIZE = int(1e6),
             EVAL_FREQ = 50000,
             SAC_EVAL_EPISODES = 10,
             GAMMA = 0.99,
@@ -142,6 +142,13 @@ def train_4(MAX_TIMESTEPS,
 
             next_state, reward, cost, terminated, truncated, info = env.step(action)
 
+            # if goal is met end ep
+            if info.get("goal_met", False):
+                print("Goal met!")
+                terminated = True
+            #
+
+
             total_reward += reward
             total_cost += cost
 
@@ -178,29 +185,6 @@ def train_4(MAX_TIMESTEPS,
             t >= START_TIMESTEPS
             and agent.replay_buffer.size >= BATCH_SIZE
         ):
-
-            # entropy schedule 
-
-            # if t < (int(1e5) + START_TIMESTEPS):
-            #     agent.target_entropy = - 3.0 * action_dim
-            # elif t < (int(3e5) + START_TIMESTEPS):
-            #     agent.target_entropy = - 2.0 * action_dim
-            # # if  t < int(5e5):
-            # #     agent.target_entropy = - 2.0 * action_dim
-            # elif t < (int(6e5) + START_TIMESTEPS):
-            #     agent.target_entropy = - 1.5 * action_dim
-            # else:
-            #     agent.target_entropy = - 1.25 * action_dim
-
-
-            
-            if t < (int(2e5) + START_TIMESTEPS):
-                agent.target_entropy = - 2.0 * action_dim
-            elif t < (int(1e6) + START_TIMESTEPS):
-                agent.target_entropy = - 1.5 * action_dim
-            else:
-                agent.target_entropy = - 1.25 * action_dim
-
 
             critic_loss, actor_loss, alpha_loss, alpha = agent.train(BATCH_SIZE)
 

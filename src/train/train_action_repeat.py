@@ -17,6 +17,7 @@ def train_2(MAX_TIMESTEPS,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
+             REPLAY_BUFFER_SIZE = int(1e6),
             EVAL_FREQ = 50000,
             SAC_EVAL_EPISODES = 10,
             GAMMA = 0.99,
@@ -69,7 +70,8 @@ def train_2(MAX_TIMESTEPS,
         tau=TAU,
         actor_lr=ACTOR_LR,
         critic_lr=CRITIC_LR,
-        entropy_multiplier=entropy_multiplier
+        entropy_multiplier=entropy_multiplier,
+        replay_buffer_size = REPLAY_BUFFER_SIZE
     )
 
     if LOAD_MODEL is not None:
@@ -214,6 +216,7 @@ def train_2(MAX_TIMESTEPS,
             avg_reward, avg_cost, avg_turn_penalty, eval_rewards_history_r, eval_costs_history_r, eval_turn_penalty_h = evaluate_policy_act_rep(
                 agent,
                 TURNING_WEIGHT,
+                MAX_STEPS,
                 env_name=ENV_NAME,
                 eval_episodes=SAC_EVAL_EPISODES,
                 ACTION_REPEAT=ACTION_REPEAT
