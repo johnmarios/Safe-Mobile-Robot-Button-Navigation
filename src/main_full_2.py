@@ -1,8 +1,32 @@
 from train.train_turning_penalty import train_1
 from train.train_action_repeat import train_2
 from train.train_entropy_scheduler import train_4
+from train.train_single_button import train_5
 
 def main():
+    # proto attempt gia sinlge button 
+    train_5(MAX_TIMESTEPS = int(7e5),
+            START_TIMESTEPS = int(5e4),
+            LOAD_MODEL = None,
+            LOAD_RESULTS_PATH = None,
+            ENV_NAME = "SafetyRacecarButton2-v0",
+            MAX_STEPS = 500,
+            BATCH_SIZE = 256,
+            REPLAY_BUFFER_SIZE = int(3e5),
+            EVAL_FREQ = 10000,
+            SAC_EVAL_EPISODES = 30,
+            GAMMA = 0.99,
+            TAU = 0.005,
+            ACTOR_LR = 5e-5,
+            CRITIC_LR = 5e-5,
+            entropy_multiplier = 1.0,
+            COST_WEIGHT = 0.0,
+            TURNING_WEIGHT = 0,
+            ACTION_REPEAT = 2,
+            SEED = 0,
+            SAC_MODEL_PATH = "models/",
+            AGENT_ID = "sac_single_B_ar2_c0_em1_rbs3e5_st5e4_mt1e6",
+            )
 
     # train_2(MAX_TIMESTEPS = int(2e6),
     #         START_TIMESTEPS = 0,
@@ -95,28 +119,28 @@ def main():
     #         )
     
     #sunexeia tou apopano epeidi pigaine pros freeze. test me action repeat1 gia perissotero sensitivity
-    train_4(MAX_TIMESTEPS = int(2e6),
-            START_TIMESTEPS = int(5e4),
-            LOAD_MODEL = "sac_ar2_c005_to_c01_em_3to1_25_rb_3e5_st5e4_best",
-            LOAD_RESULTS_PATH = "",
-            ENV_NAME = "SafetyRacecarButton2-v0",
-            MAX_STEPS = 1000,
-            BATCH_SIZE = 256,
-            REPLAY_BUFFER_SIZE = int(3e5),
-            EVAL_FREQ = 25000,
-            SAC_EVAL_EPISODES = 30,
-            GAMMA = 0.99,
-            TAU = 0.005,
-            ACTOR_LR = 5e-5,
-            CRITIC_LR = 5e-5,
-            entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.01,
-            TURNING_WEIGHT = 0,
-            ACTION_REPEAT = 1,
-            SEED = 0,
-            SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_ar2_to_ar1_c01_em_2to1_25_rb_3e5_st5e4",
-            )
+    # train_4(MAX_TIMESTEPS = int(2e6),
+    #         START_TIMESTEPS = int(5e4),
+    #         LOAD_MODEL = "sac_ar2_c005_to_c01_em_3to1_25_rb_3e5_st5e4_best",
+    #         LOAD_RESULTS_PATH = "",
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 1000,
+    #         BATCH_SIZE = 256,
+    #         REPLAY_BUFFER_SIZE = int(3e5),
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 5e-5,
+    #         CRITIC_LR = 5e-5,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.01,
+    #         TURNING_WEIGHT = 0,
+    #         ACTION_REPEAT = 1,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_ar2_to_ar1_c01_em_2to1_25_rb_3e5_st5e4",
+    #         )
 
     # train_2(MAX_TIMESTEPS = int(2e6),
     #         START_TIMESTEPS = int(2e5),

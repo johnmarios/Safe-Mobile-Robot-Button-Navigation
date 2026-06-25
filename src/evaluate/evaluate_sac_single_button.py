@@ -26,6 +26,7 @@ def evaluate_policy_single_b(
     episode_turn_penalties = []
     successes = 0
     successful_steps = []
+    episode_lengths = []
 
     for episode in range(eval_episodes):
 
@@ -60,7 +61,7 @@ def evaluate_policy_single_b(
                 # if goal is met end ep
                 if info.get("goal_met", False):
                     successes += 1
-                    successful_steps.append(steps)
+                    successful_steps.append(steps+1)
                     print("Goal met!")
                     terminated = True
                 #
@@ -82,7 +83,8 @@ def evaluate_policy_single_b(
             total_turn_penalty += turn_penalty
 
             prev_action = action.copy()
-
+        
+        episode_lengths.append(steps)
         episode_rewards.append(total_reward)
         episode_costs.append(total_cost)
         episode_turn_penalties.append(total_turn_penalty)
@@ -107,6 +109,8 @@ def evaluate_policy_single_b(
         mean_success_steps = np.mean(successful_steps)
     else:
         mean_success_steps = MAX_STEPS
+
+    mean_episode_length = np.mean(episode_lengths)
     
     print(
         f"Mean reward = {np.mean(episode_rewards):.2f}, "
@@ -114,8 +118,9 @@ def evaluate_policy_single_b(
         f"Mean turn penalty = {np.mean(episode_turn_penalties):.2f}"
     )
     print(
-        f"Success rate = {100*success_rate:.1f}% |"
-        f"Mean steps to goal = {mean_success_steps:.1f}"
+        f"Success rate = {100*success_rate:.1f}% | "
+        f"Mean steps to goal = {mean_success_steps:.1f} | "
+        f"Mean episode length = {mean_episode_length:.1f}"
     )
 
     env.close()

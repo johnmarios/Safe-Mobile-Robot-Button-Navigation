@@ -4,10 +4,34 @@ from train.train_entropy_scheduler import train_4
 def main():
 
     # neo peirama: meiosi megethos epeisodiou se 500 me action repeat 2
+    # *afou teleiose* to kalutero mexri tora avg reward exi ftasei to 16 se peak gia mikos ep 1000
 
-     train_2(MAX_TIMESTEPS = int(1e6),
+    #  train_2(MAX_TIMESTEPS = int(1e6),
+    #         START_TIMESTEPS = int(5e4),
+    #         LOAD_MODEL = None,
+    #         LOAD_RESULTS_PATH = None,
+    #         ENV_NAME = "SafetyRacecarButton2-v0",
+    #         MAX_STEPS = 500,
+    #         BATCH_SIZE = 256,
+    #         REPLAY_BUFFER_SIZE = int(3e5),
+    #         EVAL_FREQ = 25000,
+    #         SAC_EVAL_EPISODES = 30,
+    #         GAMMA = 0.99,
+    #         TAU = 0.005,
+    #         ACTOR_LR = 5e-5,
+    #         CRITIC_LR = 5e-5,
+    #         entropy_multiplier = 1.0,
+    #         COST_WEIGHT = 0.0,
+    #         TURNING_WEIGHT = 0,
+    #         ACTION_REPEAT = 2,
+    #         SEED = 0,
+    #         SAC_MODEL_PATH = "models/",
+    #         AGENT_ID = "sac_ms_500_ar2_c0_em1_mt1e6_st_5e4",
+    #         )
+     #phase2 tou pano "sac_ms_500_ar2_c0_em1_mt1e6_st_5e4"
+    train_2(MAX_TIMESTEPS = int(1e6),
             START_TIMESTEPS = int(5e4),
-            LOAD_MODEL = None,
+            LOAD_MODEL = "sac_ms_500_ar2_c0_em1_mt1e6_st_5e4_best",
             LOAD_RESULTS_PATH = None,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 500,
@@ -20,12 +44,12 @@ def main():
             ACTOR_LR = 5e-5,
             CRITIC_LR = 5e-5,
             entropy_multiplier = 1.0,
-            COST_WEIGHT = 0.0,
+            COST_WEIGHT = 0.005,
             TURNING_WEIGHT = 0,
             ACTION_REPEAT = 2,
             SEED = 0,
             SAC_MODEL_PATH = "models/",
-            AGENT_ID = "sac_ms_500_ar2_c0_em1_mt1e6_st_5e4",
+            AGENT_ID = "sac_ms_500_ar2_c0toc005_em1_mt1e6_st_5e4",
             )
     
 

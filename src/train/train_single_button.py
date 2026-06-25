@@ -16,7 +16,7 @@ def train_5(MAX_TIMESTEPS,
             ENV_NAME = "SafetyRacecarButton2-v0",
             MAX_STEPS = 1000,
             BATCH_SIZE = 256,
-             REPLAY_BUFFER_SIZE = int(1e6),
+            REPLAY_BUFFER_SIZE = int(1e6),
             EVAL_FREQ = 50000,
             SAC_EVAL_EPISODES = 10,
             GAMMA = 0.99,
@@ -94,7 +94,8 @@ def train_5(MAX_TIMESTEPS,
         eval_turn_penalties,
         eval_turn_penalties_history,
         eval_success_rates,
-        eval_success_steps
+        eval_success_steps,
+        eval_episodes_length
     ) = load_data(LOAD_RESULTS_PATH)
 
     # Initial state
@@ -233,7 +234,8 @@ def train_5(MAX_TIMESTEPS,
                 mean_success_steps,
                 eval_rewards_history_r, 
                 eval_costs_history_r, 
-                eval_turn_penalty_h 
+                eval_turn_penalty_h,
+                mean_episode_length
                 )= evaluate_policy_single_b(
                             agent,
                             TURNING_WEIGHT,
@@ -251,6 +253,7 @@ def train_5(MAX_TIMESTEPS,
             eval_turn_penalties_history.append(eval_turn_penalty_h)
             eval_success_rates.append(success_rate)
             eval_success_steps.append(mean_success_steps)
+            eval_episodes_length.append(mean_episode_length)
 
             score = avg_reward - COST_WEIGHT * avg_cost - avg_turn_penalty
             
@@ -284,10 +287,14 @@ def train_5(MAX_TIMESTEPS,
 
                 best_score = score
                 best_success_rate = success_rate
+                best_success_steps = mean_success_steps
 
                 agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
                 print(f"New best model saved "
-                      f"(score = {score:.2f})")
+                      f"Success = {100*success_rate:.1f}"
+                      f"Steps = {mean_success_steps}"
+                      )
+                     
                 
 
             # plots and results save
@@ -309,7 +316,8 @@ def train_5(MAX_TIMESTEPS,
                  eval_turn_penalties,
                  eval_turn_penalties_history,
                  eval_success_rates,
-                 eval_success_steps
+                 eval_success_steps,
+                 eval_episodes_length
                  )
 
 
@@ -363,7 +371,8 @@ def train_5(MAX_TIMESTEPS,
                  eval_turn_penalties,
                  eval_turn_penalties_history,
                  eval_success_rates,
-                 eval_success_steps
+                 eval_success_steps,
+                 eval_episodes_length
                  )
 
     env.close()
@@ -393,7 +402,8 @@ def save_results(RESULTS_PATH,
                  eval_turn_penalties,
                  eval_turn_penalties_history,
                  eval_success_rates,
-                 eval_success_steps
+                 eval_success_steps,
+                 eval_episodes_length
                 ):
     
     score_history = np.array(eval_rewards) - COST_WEIGHT*np.array(eval_costs) - np.array(eval_turn_penalties)
@@ -491,6 +501,10 @@ def save_results(RESULTS_PATH,
         np.array(eval_success_steps)
     )
 
+    np.save(
+        f"{RESULTS_PATH}/eval_episodes_length.npy",
+        np.array(eval_episodes_length)
+    )
 
     # Reward avg curve eval
     plt.figure(figsize=(8,5))
@@ -674,6 +688,17 @@ def save_results(RESULTS_PATH,
     plt.close()
 
 
+    plt.figure(figsize=(8,5))
+    plt.plot(eval_episodes_length, marker='o')
+    plt.xlabel("Evaluation")
+    plt.ylabel("Mean Episode Length")
+    plt.title("Mean Episode Length")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/eval_episodes_length_curve.png")
+    plt.close()
+
+
 
 
 
@@ -746,7 +771,11 @@ def load_data(LOAD_RESULTS_PATH):
         eval_success_steps = np.load(
             f"{LOAD_RESULTS_PATH}/eval_success_steps.npy"
         ).tolist()
+
         
+        eval_episodes_length = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_episodes_length.npy"
+        ).tolist()
     
 
 
@@ -767,6 +796,7 @@ def load_data(LOAD_RESULTS_PATH):
         eval_turn_penalties_history = []
         eval_success_rates =[]
         eval_success_steps = []
+        eval_episodes_length = []
 
     return (
         eval_rewards,
@@ -784,5 +814,6 @@ def load_data(LOAD_RESULTS_PATH):
         eval_turn_penalties,
         eval_turn_penalties_history,
         eval_success_rates,
-        eval_success_steps
+        eval_success_steps,
+        eval_episodes_length
     )
