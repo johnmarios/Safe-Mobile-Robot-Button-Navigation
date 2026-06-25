@@ -114,8 +114,14 @@ def train_5(MAX_TIMESTEPS,
     if len(eval_rewards)>0:
         score_history = np.array(eval_rewards)-COST_WEIGHT*np.array(eval_costs)- np.array(eval_turn_penalties)
         best_score = np.max(score_history)
+        best_success_rate = np.max(eval_success_rates)
+
+        idx = np.argmax(eval_success_rates)
+        best_success_steps = eval_success_steps[idx]
     else:
         best_score = -np.inf
+        best_success_rate =  -np.inf
+        best_success_steps = np.inf
 
     for t in range(MAX_TIMESTEPS):
 
@@ -271,11 +277,13 @@ def train_5(MAX_TIMESTEPS,
             # Save best model
 
             #gia ayto to run pou den exei cost
-            score = success_rate
+            
 
-            if score > best_score:
+            #if score > best_score:
+            if success_rate > best_success_rate or (np.isclose(success_rate,best_success_rate) and mean_success_steps < best_success_steps):
 
                 best_score = score
+                best_success_rate = success_rate
 
                 agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
                 print(f"New best model saved "
@@ -728,6 +736,20 @@ def load_data(LOAD_RESULTS_PATH):
         actor_loss_history = np.load(
             f"{LOAD_RESULTS_PATH}/actor_loss_history.npy"
         ).tolist()
+
+
+        eval_success_rates = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_success_rates.npy"
+        ).tolist()
+
+
+        eval_success_steps = np.load(
+            f"{LOAD_RESULTS_PATH}/eval_success_steps.npy"
+        ).tolist()
+        
+    
+
+
     else:
         eval_rewards = []
         eval_costs = []
