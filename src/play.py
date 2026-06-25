@@ -3,6 +3,7 @@ import safety_gymnasium
 
 from train.sac import SAC
 from render.render_sac import render_policy
+from render.render_sac_single_button import render_policy_single_b
 from config import *
 
 # Device
@@ -52,7 +53,15 @@ print("Phase 0 model loaded successfully.")
 print("Model loaded successfully.")
 
 # Watch policy
-render_policy(
+# render_policy(
+#     agent,
+#     ENV_NAME,
+#     episodes=20,
+#     max_steps=500,
+#     action_repeat=2
+# )
+
+render_policy_single_b(
     agent,
     ENV_NAME,
     episodes=20,

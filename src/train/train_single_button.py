@@ -6,9 +6,8 @@ import matplotlib.pyplot as plt
 #import json
 
 from train.sac import SAC
-from evaluate.evaluate_sac_single_button import evaluate_policy_act_rep
+from evaluate.evaluate_sac_single_button import evaluate_policy_single_b
 from render.render_sac import render_policy
-from config import *
 
 def train_5(MAX_TIMESTEPS,
             START_TIMESTEPS,
@@ -219,15 +218,23 @@ def train_5(MAX_TIMESTEPS,
             t >= START_TIMESTEPS and
             agent.replay_buffer.size >= BATCH_SIZE
         ):
-            
-            avg_reward, avg_cost, avg_turn_penalty, eval_rewards_history_r, eval_costs_history_r, eval_turn_penalty_h = evaluate_policy_act_rep(
-                agent,
-                TURNING_WEIGHT,
-                MAX_STEPS,
-                env_name=ENV_NAME,
-                eval_episodes=SAC_EVAL_EPISODES,
-                ACTION_REPEAT=ACTION_REPEAT
-            )
+            (
+                avg_reward,
+                avg_cost,
+                avg_turn_penalty,
+                success_rate,
+                mean_success_steps,
+                eval_rewards_history_r, 
+                eval_costs_history_r, 
+                eval_turn_penalty_h 
+                )= evaluate_policy_single_b(
+                            agent,
+                            TURNING_WEIGHT,
+                            MAX_STEPS,
+                            env_name=ENV_NAME,
+                            eval_episodes=SAC_EVAL_EPISODES,
+                            ACTION_REPEAT=ACTION_REPEAT
+                        )
 
             eval_rewards.append(avg_reward)
             eval_costs.append(avg_cost)

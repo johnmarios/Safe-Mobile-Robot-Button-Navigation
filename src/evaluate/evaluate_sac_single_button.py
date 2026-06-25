@@ -3,7 +3,7 @@ import numpy as np
 
 
 
-def evaluate_policy_act_rep(
+def evaluate_policy_single_b(
     agent,
     TURNING_WEIGHT,
     MAX_STEPS,
@@ -24,6 +24,8 @@ def evaluate_policy_act_rep(
     episode_rewards = []
     episode_costs = []
     episode_turn_penalties = []
+    successes = 0
+    successful_steps = []
 
     for episode in range(eval_episodes):
 
@@ -57,6 +59,8 @@ def evaluate_policy_act_rep(
                 
                 # if goal is met end ep
                 if info.get("goal_met", False):
+                    successes += 1
+                    successful_steps.append(steps + 1)
                     print("Goal met!")
                     terminated = True
                 #
@@ -96,13 +100,33 @@ def evaluate_policy_act_rep(
 
     # print("Evaluation costs:")
     # print(episode_costs)
+    
+    success_rate = successes / eval_episodes
 
+    if successes > 0 :
+        mean_success_steps = np.mean(successful_steps)
+    else:
+        mean_success_steps = MAX_STEPS
+    
     print(
         f"Mean reward = {np.mean(episode_rewards):.2f}, "
         f"Mean cost = {np.mean(episode_costs):.2f}, "
         f"Mean turn penalty = {np.mean(episode_turn_penalties):.2f}"
     )
+    print(
+        f"Success rate = {100*success_rate:.1f}% |"
+        f"Mean steps to goal = {mean_success_steps:.1f}"
+    )
 
     env.close()
 
-    return np.mean(episode_rewards), np.mean(episode_costs), np.mean(episode_turn_penalties), episode_rewards, episode_costs, episode_turn_penalties
+    return (
+        np.mean(episode_rewards), 
+        np.mean(episode_costs), 
+        np.mean(episode_turn_penalties), 
+        success_rate,
+        mean_success_steps,
+        episode_rewards,
+        episode_costs, 
+        episode_turn_penalties
+    )

@@ -2,7 +2,7 @@ import safety_gymnasium
 
 
 
-def render_policy(agent, env_name, episodes=5, max_steps = 1000, action_repeat=1):
+def render_policy_single_b(agent, env_name, episodes=5, max_steps = 1000, action_repeat=1):
 
     env = safety_gymnasium.make(
         env_name,
@@ -32,7 +32,7 @@ def render_policy(agent, env_name, episodes=5, max_steps = 1000, action_repeat=1
                     print("Goal met!")
                     terminated = True
                 #
-                
+
                 total_reward += reward
                 total_cost += cost
 
@@ -50,6 +50,7 @@ def render_policy(agent, env_name, episodes=5, max_steps = 1000, action_repeat=1
             f"Episode {episode+1}: "
             f"Reward = {total_reward:.2f}, "
             f"Cost = {total_cost:.2f}"
+            f"Steps = {steps}"
         )
 
     env.close()
