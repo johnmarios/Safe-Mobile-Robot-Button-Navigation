@@ -60,7 +60,7 @@ def evaluate_policy_single_b(
                 # if goal is met end ep
                 if info.get("goal_met", False):
                     successes += 1
-                    successful_steps.append(steps + 1)
+                    successful_steps.append(steps)
                     print("Goal met!")
                     terminated = True
                 #

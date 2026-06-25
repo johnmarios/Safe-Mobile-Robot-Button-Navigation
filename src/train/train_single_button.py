@@ -92,7 +92,9 @@ def train_5(MAX_TIMESTEPS,
         actor_loss_history,
         turn_penalty_history,
         eval_turn_penalties,
-        eval_turn_penalties_history
+        eval_turn_penalties_history,
+        eval_success_rates,
+        eval_success_steps
     ) = load_data(LOAD_RESULTS_PATH)
 
     # Initial state
@@ -143,7 +145,6 @@ def train_5(MAX_TIMESTEPS,
 
             # if goal is met end ep
             if info.get("goal_met", False):
-                print("Goal met!")
                 terminated = True
             #
 
@@ -242,6 +243,8 @@ def train_5(MAX_TIMESTEPS,
             eval_costs_history.append(eval_costs_history_r)
             eval_turn_penalties.append(avg_turn_penalty)
             eval_turn_penalties_history.append(eval_turn_penalty_h)
+            eval_success_rates.append(success_rate)
+            eval_success_steps.append(mean_success_steps)
 
             score = avg_reward - COST_WEIGHT * avg_cost - avg_turn_penalty
             
@@ -254,7 +257,9 @@ def train_5(MAX_TIMESTEPS,
                 f"Average reward: {avg_reward:.2f} | "
                 f"Average cost: {avg_cost:.2f} | "
                 f"Average turn penalty: {avg_turn_penalty:.2f} | "
-                f"Score: {score:.2f}"
+                f"Score: {score:.2f} |"
+                f"Success: {100*success_rate:.1f}% |"
+                f"Steps tp goal: {mean_success_steps:.1f}"
             )
 
             print(
@@ -264,6 +269,10 @@ def train_5(MAX_TIMESTEPS,
             agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_latest")
             print("The latest model was saved")
             # Save best model
+
+            #gia ayto to run pou den exei cost
+            score = success_rate
+
             if score > best_score:
 
                 best_score = score
@@ -290,7 +299,9 @@ def train_5(MAX_TIMESTEPS,
                  COST_WEIGHT,
                  turn_penalty_history,
                  eval_turn_penalties,
-                 eval_turn_penalties_history
+                 eval_turn_penalties_history,
+                 eval_success_rates,
+                 eval_success_steps
                  )
 
 
@@ -342,7 +353,9 @@ def train_5(MAX_TIMESTEPS,
                  COST_WEIGHT,
                  turn_penalty_history,
                  eval_turn_penalties,
-                 eval_turn_penalties_history
+                 eval_turn_penalties_history,
+                 eval_success_rates,
+                 eval_success_steps
                  )
 
     env.close()
@@ -370,7 +383,9 @@ def save_results(RESULTS_PATH,
                  COST_WEIGHT,
                  turn_penalty_history,
                  eval_turn_penalties,
-                 eval_turn_penalties_history
+                 eval_turn_penalties_history,
+                 eval_success_rates,
+                 eval_success_steps
                 ):
     
     score_history = np.array(eval_rewards) - COST_WEIGHT*np.array(eval_costs) - np.array(eval_turn_penalties)
@@ -457,6 +472,17 @@ def save_results(RESULTS_PATH,
         f"{RESULTS_PATH}/score_history_eval.npy",
         np.array(score_history_eval)
     )
+
+    np.save(
+        f"{RESULTS_PATH}/eval_success_rates.npy",
+        np.array(eval_success_rates)
+    )
+
+    np.save(
+        f"{RESULTS_PATH}/eval_success_steps.npy",
+        np.array(eval_success_steps)
+    )
+
 
     # Reward avg curve eval
     plt.figure(figsize=(8,5))
@@ -617,6 +643,32 @@ def save_results(RESULTS_PATH,
     plt.savefig(f"{RESULTS_PATH}/eval_turn_penalty_std_curve.png")
     plt.close()
 
+    # Success rate curve
+    plt.figure(figsize=(8,5))
+    plt.plot(np.array(eval_success_rates) * 100, marker='o')
+    plt.xlabel("Evaluation")
+    plt.ylabel("Success Rate (%)")
+    plt.title("Evaluation Success Rate")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/eval_success_rates_curve.png")
+    plt.close()
+
+    # Mean steps to goal curve
+    plt.figure(figsize=(8,5))
+    plt.plot(eval_success_steps, marker='o')
+    plt.xlabel("Evaluation")
+    plt.ylabel("Mean Steps")
+    plt.title("Mean Steps to Goal")
+    plt.grid()
+    plt.tight_layout()
+    plt.savefig(f"{RESULTS_PATH}/eval_success_steps_curve.png")
+    plt.close()
+
+
+
+
+
 def load_data(LOAD_RESULTS_PATH):
 
     if os.path.exists(f"{LOAD_RESULTS_PATH}/eval_rewards.npy"):
@@ -691,6 +743,8 @@ def load_data(LOAD_RESULTS_PATH):
         turn_penalty_history = []
         eval_turn_penalties = []
         eval_turn_penalties_history = []
+        eval_success_rates =[]
+        eval_success_steps = []
 
     return (
         eval_rewards,
@@ -706,5 +760,7 @@ def load_data(LOAD_RESULTS_PATH):
         actor_loss_history,
         turn_penalty_history,
         eval_turn_penalties,
-        eval_turn_penalties_history
+        eval_turn_penalties_history,
+        eval_success_rates,
+        eval_success_steps
     )
