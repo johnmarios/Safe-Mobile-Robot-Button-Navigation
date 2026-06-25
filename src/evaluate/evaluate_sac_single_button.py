@@ -133,5 +133,6 @@ def evaluate_policy_single_b(
         mean_success_steps,
         episode_rewards,
         episode_costs, 
-        episode_turn_penalties
+        episode_turn_penalties,
+        mean_episode_length
     )
