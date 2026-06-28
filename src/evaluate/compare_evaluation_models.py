@@ -175,10 +175,32 @@ def compare_eval_models(MODELS,
 
         plt.close()
 
-    plot_metric("reward", "Reward", "reward_comparison.png")
-    plot_metric("cost", "Cost", "cost_comparison.png")
-    plot_metric("score", "Score", "score_comparison.png")
-    
+    def plot_simple(metric, ylabel, output_name):
+
+        values = [results[m][metric] for m in names]
+
+        plt.figure(figsize=(8,5))
+        plt.bar(names, values)
+        plt.ylabel(ylabel)
+        plt.title(ylabel)
+        plt.grid()
+        plt.tight_layout()
+
+        plt.savefig(SAVE_PATH / output_name)
+        plt.close()
+
+    if SINGLE_BUTTON:
+        plot_metric("reward", "Reward", "reward_comparison.png")
+        plot_metric("cost", "Cost", "cost_comparison.png")
+   
+        plot_simple("success_rate", "Success Rate", "success_rate.png")
+        plot_simple("success_steps", "Mean Success Length", "success_length.png")
+        plot_simple("episode_length", "Mean Episode Length", "episode_length.png")
+    else:
+        plot_metric("reward", "Reward", "reward_comparison.png")
+        plot_metric("cost", "Cost", "cost_comparison.png")
+        plot_metric("score", "Score", "score_comparison.png")
+        
 
 if __name__ == "__main__":
     MODELS = [
