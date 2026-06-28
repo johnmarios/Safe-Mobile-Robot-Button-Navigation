@@ -178,7 +178,7 @@ def compare_eval_models(MODELS,
     plot_metric("reward", "Reward", "reward_comparison.png")
     plot_metric("cost", "Cost", "cost_comparison.png")
     plot_metric("score", "Score", "score_comparison.png")
-    env.close()
+    
 
 if __name__ == "__main__":
     MODELS = [
