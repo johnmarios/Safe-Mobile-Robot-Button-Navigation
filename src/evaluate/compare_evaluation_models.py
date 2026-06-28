@@ -179,8 +179,9 @@ def compare_eval_models(MODELS,
 
         values = [results[m][metric] for m in names]
 
-        plt.figure(figsize=(8,5))
+        plt.figure(figsize=(14,6))
         plt.bar(names, values)
+        plt.xticks(rotation=45,ha="right")
         plt.ylabel(ylabel)
         plt.title(ylabel)
         plt.grid()
