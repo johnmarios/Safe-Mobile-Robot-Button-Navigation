@@ -43,7 +43,7 @@ agent = SAC(
 
 # Load model
 agent.load(
-    SAC_MODEL_PATH + "sac_ms_500_ar2_c0_em1_mt1e6_st_5e4" + "_latest"
+    SAC_MODEL_PATH + "sac_single_B_ar2_c05_em1_rbs3e5_st5e4_mt1e6_cont1_v2" + "_best"
 )
 
 # agent.load(
@@ -53,13 +53,13 @@ print("Phase 0 model loaded successfully.")
 print("Model loaded successfully.")
 
 # Watch policy
-# render_policy(
-#     agent,
-#     ENV_NAME,
-#     episodes=20,
-#     max_steps=500,
-#     action_repeat=2
-# )
+render_policy(
+    agent,
+    ENV_NAME,
+    episodes=20,
+    max_steps=500,
+    action_repeat=2
+)
 
 render_policy_single_b(
     agent,

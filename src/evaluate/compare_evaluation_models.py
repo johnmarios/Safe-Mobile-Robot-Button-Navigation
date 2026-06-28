@@ -11,12 +11,15 @@ from train.sac import SAC
 import torch
 import safety_gymnasium
 from evaluate.evaluate_sac import evaluate_policy
+from evaluate.evaluate_sac_single_button import evaluate_policy_single_b
 
 
 def compare_eval_models(MODELS,
                         ENV_NAME,
                         EVAL_EPISODES,
                         COST_WEIGHT,
+                        ACTION_REPEAT,
+                        SINGLE_BUTTON,
                         FOLDER_NAME):
     
 
@@ -40,7 +43,9 @@ def compare_eval_models(MODELS,
     # Dimensions
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]
-    max_action = float(env.action_space.high[0])
+    max_action = torch.FloatTensor(
+        env.action_space.high
+    ).to(device)
 
     # Agent
     agent = SAC(
@@ -50,8 +55,8 @@ def compare_eval_models(MODELS,
         device=device,
         discount=0.99,
         tau=0.005,
-        actor_lr=1e-4,
-        critic_lr=1e-4,
+        actor_lr=1e-5,
+        critic_lr=1e-5,
         entropy_multiplier=1.0
     )
 
@@ -61,35 +66,78 @@ def compare_eval_models(MODELS,
 
         agent.load(f"models/{model}")
 
-        avg_reward, avg_cost, reward_history, cost_history = evaluate_policy(
-            agent,
-            env_name=ENV_NAME,
-            eval_episodes= EVAL_EPISODES
-        )
+        if SINGLE_BUTTON is True:
+            (
+                avg_reward,
+                avg_cost,
+                avg_turn_penalty,
+                success_rate,
+                mean_success_steps,
+                eval_rewards_history_r, 
+                eval_costs_history_r, 
+                eval_turn_penalty_h,
+                mean_episode_length
+                )= evaluate_policy_single_b(
+                            agent,
+                            TURNING_WEIGHT = 0,
+                            MAX_STEPS = 500,
+                            env_name=ENV_NAME,
+                            eval_episodes=EVAL_EPISODES,
+                            ACTION_REPEAT=ACTION_REPEAT
+                        )
 
-        score_history = (
-            np.array(reward_history)
-            - COST_WEIGHT * np.array(cost_history)
-        )
+            results[model] = {
+                "reward_mean": np.mean(eval_rewards_history_r),
+                "reward_error": 1.96*np.std(eval_rewards_history_r)/np.sqrt(EVAL_EPISODES),
 
-        results[model] = {
-            "reward_mean": np.mean(reward_history),
-            "reward_error": 1.96*np.std(reward_history)/np.sqrt(EVAL_EPISODES),
+                "cost_mean": np.mean(eval_costs_history_r),
+                "cost_error": 1.96*np.std(eval_costs_history_r)/np.sqrt(EVAL_EPISODES),
 
-            "cost_mean": np.mean(cost_history),
-            "cost_error": 1.96*np.std(cost_history)/np.sqrt(EVAL_EPISODES),
+                "success_rate": success_rate,
 
-            "score_mean": np.mean(score_history),
-            "score_error": 1.96*np.std(score_history)/np.sqrt(EVAL_EPISODES)
-        }
+                "success_steps": mean_success_steps,
 
-        print(
-            f"{model} | "
-            f"Reward {np.mean(reward_history):.2f} ± {np.std(reward_history):.2f} | "
-            f"Cost {np.mean(cost_history):.2f} ± {np.std(cost_history):.2f} | "
-            f"Score {np.mean(score_history):.2f} ± {np.std(score_history):.2f} | "
-            f"Score error {results[model]['score_error']:.2f} "
-        )
+                "episode_length": mean_episode_length
+            }
+
+            print(
+                f"{model} | "
+                f"Cost {np.mean(eval_costs_history_r):.2f} ± {np.std(eval_costs_history_r):.2f} | "
+                f"success_rate {success_rate:.2f} | "
+                f"success_steps {mean_success_steps:.2f} | "
+                f"episode_length {mean_episode_length:.2f}"
+            )
+        else:
+
+            avg_reward, avg_cost, reward_history, cost_history = evaluate_policy(
+                agent,
+                env_name=ENV_NAME,
+                eval_episodes= EVAL_EPISODES
+            )
+
+            score_history = (
+                np.array(reward_history)
+                - COST_WEIGHT * np.array(cost_history)
+            )
+
+            results[model] = {
+                "reward_mean": np.mean(reward_history),
+                "reward_error": 1.96*np.std(reward_history)/np.sqrt(EVAL_EPISODES),
+
+                "cost_mean": np.mean(cost_history),
+                "cost_error": 1.96*np.std(cost_history)/np.sqrt(EVAL_EPISODES),
+
+                "score_mean": np.mean(score_history),
+                "score_error": 1.96*np.std(score_history)/np.sqrt(EVAL_EPISODES)
+            }
+
+            print(
+                f"{model} | "
+                f"Reward {np.mean(reward_history):.2f} ± {np.std(reward_history):.2f} | "
+                f"Cost {np.mean(cost_history):.2f} ± {np.std(cost_history):.2f} | "
+                f"Score {np.mean(score_history):.2f} ± {np.std(score_history):.2f} | "
+                f"Score error {results[model]['score_error']:.2f} "
+            )
     names = list(results.keys())
 
 
@@ -134,14 +182,20 @@ def compare_eval_models(MODELS,
 
 if __name__ == "__main__":
     MODELS = [
-        "sac_cost_002_entropy_01_best",
-        "sac_cost_002_entropy_1_best",
-        "sac_cost_002_entropy_10_best"
+        "sac_single_B_ar2_c0toc05_em1_rbs3e5_st5e4_mt1e6_best",
+        "sac_single_B_ar2_c0toc05_em1_rbs3e5_st5e4_mt1e6_latest",
+        "sac_single_B_ar2_c05_em1_rbs3e5_st5e4_mt1e6_cont1_best",
+        "sac_single_B_ar2_c05_em1_rbs3e5_st5e4_mt1e6_cont1_latest",
+        "sac_single_B_ar2_c05_em1_rbs3e5_st5e4_mt1e6_cont1_v2_best",
+        "sac_single_B_ar2_c05_em1_rbs3e5_st5e4_mt1e6_cont1_v2_latest"
+
     ]
 
     compare_eval_models(MODELS,
                         "SafetyRacecarButton2-v0",
                         EVAL_EPISODES = 100,
-                        COST_WEIGHT = 0.002,
-                        FOLDER_NAME = "evaluations_comparison_cost_002_entropy_01_to_10"
+                        COST_WEIGHT = 0.05,
+                        ACTION_REPEAT = 2,
+                        SINGLE_BUTTON = True,
+                        FOLDER_NAME = "evaluations_comparison_single_b_cost_05_models"
     )           

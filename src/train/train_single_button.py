@@ -119,20 +119,26 @@ def train_5(MAX_TIMESTEPS,
 
         idx = np.argmax(eval_success_rates)
         best_success_steps = eval_success_steps[idx]
+        best_cost = eval_costs[idx]
     else:
         best_score = -np.inf
         best_success_rate =  -np.inf
         best_success_steps = np.inf
+        best_cost = np.inf
 
     for t in range(MAX_TIMESTEPS):
 
         #episode_timesteps += 1
 
         # Action selection
-        if t < START_TIMESTEPS:
-            action = env.action_space.sample()
+        if LOAD_MODEL is None:
+            if t < START_TIMESTEPS:
+                action = env.action_space.sample()
+            else:
+                action = agent.select_action(state)
+        
         else:
-            action = agent.select_action(state)
+             action = agent.select_action(state)
 
         if episode_timesteps == 0:
             turn_penalty = 0
@@ -266,9 +272,9 @@ def train_5(MAX_TIMESTEPS,
                 f"Average reward: {avg_reward:.2f} | "
                 f"Average cost: {avg_cost:.2f} | "
                 f"Average turn penalty: {avg_turn_penalty:.2f} | "
-                f"Score: {score:.2f} |"
-                f"Success: {100*success_rate:.1f}% |"
-                f"Steps tp goal: {mean_success_steps:.1f}"
+                f"Score: {score:.2f} | "
+                f"Success: {100*success_rate:.1f}% | "
+                f"Steps tο goal: {mean_success_steps:.1f}"
             )
 
             print(
@@ -283,17 +289,40 @@ def train_5(MAX_TIMESTEPS,
             
 
             #if score > best_score:
-            if success_rate > best_success_rate or (np.isclose(success_rate,best_success_rate) and mean_success_steps < best_success_steps):
+            if COST_WEIGHT == 0:
+                if (success_rate > best_success_rate 
+                    or (np.isclose(success_rate,best_success_rate) 
+                        and mean_success_steps < best_success_steps)):
 
-                best_score = score
-                best_success_rate = success_rate
-                best_success_steps = mean_success_steps
+                    best_score = score
+                    best_success_rate = success_rate
+                    best_success_steps = mean_success_steps
 
-                agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
-                print(f"New best model saved "
-                      f"Success = {100*success_rate:.1f}"
-                      f"Steps = {mean_success_steps}"
-                      )
+                    agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
+                    print(f"New best model saved "
+                        f"Success = {100*success_rate:.1f} "
+                        f"Steps = {mean_success_steps} "
+                        )
+
+            else:
+                if (success_rate > best_success_rate 
+                    or (np.isclose(success_rate,best_success_rate) 
+                        and avg_cost < best_cost)
+                    or (np.isclose(success_rate,best_success_rate) 
+                        and np.isclose(avg_cost,best_cost)
+                        and mean_success_steps < best_success_steps)):
+
+                    best_score = score
+                    best_success_rate = success_rate
+                    best_success_steps = mean_success_steps
+                    best_cost = avg_cost
+
+                    agent.save(SAC_MODEL_PATH + f"{AGENT_ID}_best")
+                    print(f"New best model saved "
+                        f"Success = {100*success_rate:.1f} "
+                        f"Steps = {mean_success_steps:.2f} "
+                        f"Cost = {avg_cost:.2f} "
+                        )
                      
                 
 
