@@ -1,0 +1,55 @@
+{
+  "models": [
+
+    {
+      "name": "TD3_0.02",
+      "type": "td3",
+      "model": "td3_model_0.02.pt",
+      "action_repeat": 2
+    },
+    {
+      "name": "TD3_0.01",
+      "type": "td3",
+      "model": "td3_model_0.01.pt",
+      "action_repeat": 2
+    },
+    {
+      "name": "TD3_0.005",
+      "type": "td3",
+      "model": "td3_model_0.005.pt",
+      "action_repeat": 2
+    },
+    {
+      "name": "SAC_0.005",
+      "type": "sac",
+      "model": "sac_ms_500_ar2_c0toc005_em1_mt1e6_st_5e4_best_actor.pth",
+      "action_repeat": 2
+    },
+    {
+      "name": "SAC_SB 0 to 0.05",
+      "type": "sac",
+      "model": "sac_single_B_ar2_c0toc05_em1_rbs3e5_st5e4_mt1e6_best_actor.pth",
+      "action_repeat": 2
+    },
+    {
+      "name": "SAC_SB 0.05 to 0.1",
+      "type": "sac",
+      "model": "sac_single_B_ar2_c05toc1_em1_rbs3e5_st5e4_mt1e6_best_actor.pth",
+      "action_repeat": 2
+    },
+    {
+      "name": "SAC 0.005 to 0.01",
+      "type": "sac",
+      "model": "sac_ar2_c005_to_c01_em_3to1_25_rb_3e5_st5e4_best_actor.pth",
+      "action_repeat": 2
+    },
+    {
+      "name": "Random",
+      "type": "random"
+    },
+    {
+      "name": "Rule-based",
+      "type": "rule_based"
+    }
+  ]
+}

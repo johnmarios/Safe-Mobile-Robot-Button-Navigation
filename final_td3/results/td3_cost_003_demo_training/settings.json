@@ -1,0 +1,9 @@
+{
+  "env_id": "SafetyRacecarButton2-v0",
+  "run_name": "td3_cost_003_demo_training",
+  "load_mode": "branch",
+  "total_steps": 1500000,
+  "action_repeat": 2,
+  "cost_penalty": 0.03,
+  "learning_rate": 3e-05
+}

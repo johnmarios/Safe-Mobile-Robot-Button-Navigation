@@ -1,0 +1,12 @@
+[
+  {
+    "controller": "sac",
+    "episode": 1,
+    "seed": 43,
+    "steps": 1000,
+    "reward": 5.84822742919658,
+    "cost": 452.0,
+    "goal_met": false,
+    "video": "/app/outputs/sac_seed43_episode1.mp4"
+  }
+]

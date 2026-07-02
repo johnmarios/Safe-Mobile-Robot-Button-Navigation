@@ -1,0 +1,15 @@
+services:
+  render:
+    build: .
+    image: safety-racecar-button2-controllers
+    volumes:
+      - ./models:/app/models:ro
+      - ./outputs:/app/outputs
+
+  compare:
+    build: .
+    image: safety-racecar-button2-controllers
+    entrypoint: ["python", "-m", "app.compare"]
+    volumes:
+      - ./models:/app/models:ro
+      - ./outputs:/app/outputs

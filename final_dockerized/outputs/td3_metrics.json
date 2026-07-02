@@ -1,0 +1,12 @@
+[
+  {
+    "controller": "td3",
+    "episode": 1,
+    "seed": 43,
+    "steps": 1000,
+    "reward": 21.13583479648135,
+    "cost": 145.0,
+    "goal_met": false,
+    "video": "/app/outputs/td3_seed43_episode1.mp4"
+  }
+]
